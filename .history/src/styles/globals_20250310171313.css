@@ -1,0 +1,259 @@
+.artwork-slider {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  padding: 30px 60px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.slider-container {
+  width: 100%;
+  height: 420px;
+  display: flex;
+  position: relative;
+  overflow: visible;
+  gap: 25px;
+  padding: 15px 0;
+}
+
+.slide {
+  min-width: calc(33.33% - 17px);
+  height: 390px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(180deg, #40E0D0 0%, #20B2AA 100%);
+  transform-origin: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 30px;
+  color: white;
+}
+
+.consultation-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.consultation-type {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.consultation-card h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.consultation-card p {
+  font-size: 16px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.slide:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0.95);
+}
+
+.slide:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.05);
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px 25px;
+  background: linear-gradient(180deg, 
+    transparent 0%,
+    rgba(0,0,0,0.7) 30%,
+    rgba(0,0,0,0.85) 100%);
+  color: white;
+  transform: translateY(10px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  backdrop-filter: blur(3px);
+}
+
+.slide:hover .slide-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-content h3 {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transform: translateY(10px);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide:hover .slide-content h3 {
+  transform: translateY(0);
+}
+
+.slide-content p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.slide:hover .slide-content p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.slider-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.slider-button.prev {
+  left: -24px;
+}
+
+.slider-button.next {
+  right: -24px;
+}
+
+.slider-button svg {
+  font-size: 20px;
+  color: #222;
+  transition: transform 0.3s ease;
+}
+
+.slider-button:hover svg {
+  transform: scale(1.1);
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 30px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dot.active {
+  background: white;
+  width: 40px;
+}
+
+/* Keep showing 3 cards even on medium screens */
+@media (max-width: 1200px) {
+  .artwork-slider {
+    max-width: 1100px;
+  }
+  
+  .slide {
+    min-width: calc(33.33% - 17px);
+    height: 360px;
+  }
+}
+
+/* Only switch to 2 cards on very small screens */
+@media (max-width: 768px) {
+  .artwork-slider {
+    padding: 20px 40px;
+  }
+
+  .slide {
+    min-width: calc(50% - 12px);
+    height: 340px;
+  }
+  
+  .slider-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .slider-button.prev {
+    left: -20px;
+  }
+
+  .slider-button.next {
+    right: -20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .artwork-slider {
+    padding: 15px 30px;
+  }
+
+  .slide {
+    min-width: calc(100% - 10px);
+    height: 320px;
+  }
+} 

@@ -1,0 +1,3833 @@
+@charset "utf-8";
+
+/*
+/*	Copyright (c) 2022 Marketify
+/*	Author: Marketify
+/*	This file is made for CURRENT TEMPLATE
+
+
+01)	TOKYO TOKYO BASE
+02) TOKYO MOBILE MENU
+03) TOKYO LEFTPART
+04) TOKYO RIGHTPART
+05) TOKYO HOME
+06) TOKYO ABOUT
+07) TOKYO PORTFOLIO
+08) TOKYO NEWS
+09) TOKYO CONTACT
+10) TOKYO MAGIC CURSOR
+11) TOKYO MEDIA QUERIES (FOR SMALL DEVIVES)
+
+
+/*---------------------------------------------------*/
+/*	01) TOKYO BASE
+/*---------------------------------------------------*/
+
+/* BASIC STYLES */
+body {
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.tokyo_tm_all_wrap {
+  width: 100%;
+  height: 100vh;
+  clear: both;
+  float: left;
+  position: relative;
+}
+
+.leftpart {
+  width: 450px;
+  height: 100vh;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background-color: #fff;
+  padding: 50px 100px;
+  z-index: 10;
+}
+
+.rightpart {
+  width: calc(100% - 450px);
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.rightpart_in {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  height: auto;
+}
+
+/* HEADER STYLES */
+.tokyo_tm_topbar {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 15;
+  background-color: #fff;
+  display: none;
+}
+
+/* HOME STYLES */
+.tokyo_tm_home {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.home_content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.avatar .image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.details {
+  text-align: center;
+  width: 100%;
+  margin:0;
+  padding: 0;
+  clear: both;
+}
+
+.name {
+	font-size: 55px;
+	font-weight: 900;
+	line-height: 1;
+	position: relative; /* Added */
+  }
+  
+  .name span {
+	font-weight: 400;
+	font-size: 24px; /* Smaller font size */
+	position: absolute; /* Added */
+	top: 0; /* Position at the top */
+	right: -0.4em; /* Reduced space, moved closer to the name */
+	transform: translateY(-70%) translateX(-215%); /* Adjusted positioning */
+  }
+
+.details h3{
+	letter-spacing: 0;
+}
+
+.details span{
+	font-weight: 400;
+}
+
+.job {
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
+/* CARD SLIDER */
+.card-slider {
+  width: 100%;
+  max-width: 900px; /* Reduced from 1200px */
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 40px;
+  overflow: hidden;
+}
+
+.card-slider-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 15px; /* Reduced from 20px */
+  width: 100%;
+}
+
+.card {
+  flex: 0 0 calc(33.333% - 10px); /* Adjusted to show exactly 3 cards */
+  min-width: 220px; /* Reduced from 280px */
+  max-width: 280px;
+  background: #fff;
+  border-radius: 8px; /* Reduced from 12px */
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  opacity: 1;
+  display: block;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Reduced from -10px */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.card img {
+  width: 100%;
+  height: 160px; /* Reduced from 200px */
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05); /* Reduced from 1.1 */
+}
+
+.card-content {
+  padding: 15px; /* Reduced from 20px */
+  text-align: center;
+  background: #fff;
+}
+
+.card-content h6 {
+  margin: 0;
+  font-size: 16px; /* Reduced from 18px */
+  color: #333;
+  font-weight: 600;
+}
+
+/* Slider Navigation */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35px; /* Reduced from 40px */
+  height: 35px; /* Reduced from 40px */
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.slider-nav:hover:not(:disabled) {
+  background: #f5f5f5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.slider-nav:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background: #f5f5f5;
+}
+
+.slider-nav.prev {
+  left: 5px; /* Reduced from 0 */
+}
+
+.slider-nav.next {
+  right: 5px; /* Reduced from 0 */
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .card-slider {
+    max-width: 700px;
+  }
+  
+  .card {
+    flex: 0 0 calc(33.333% - 10px); /* Keep showing 3 cards */
+  }
+}
+
+@media (max-width: 768px) {
+  .card-slider {
+    max-width: 500px;
+    padding: 15px 25px;
+  }
+  
+  .card {
+    flex: 0 0 calc(50% - 10px); /* Show 2 cards on tablet */
+  }
+  
+  .slider-nav {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 0 0 calc(100% - 10px); /* Show 1 card on mobile */
+  }
+  
+  .card-slider {
+    padding: 10px 20px;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .leftpart {
+    width: 350px;
+    padding: 50px 50px;
+  }
+  .rightpart {
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .leftpart {
+    display: none;
+  }
+  .rightpart {
+    padding-left: 0;
+  }
+  .tokyo_tm_topbar {
+    display: block;
+  }
+  .home_content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .card {
+    flex: 0 0 250px;
+  }
+  .tokyo_tm_section {
+    padding: 80px 0;
+  }
+}
+
+body::-webkit-scrollbar{
+  width: 0px;
+}
+svg{
+	fill: currentcolor;
+	width: 15px;
+	height: 15px;
+}
+img.svg{
+	width: 15px;
+	height: 15px;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #6f6f6f;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #6f6f6f;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #6f6f6f;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #6f6f6f;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: #6f6f6f;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color: #6f6f6f;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-weight:500;
+	line-height: 1.4;
+	font-family: "Montserrat";
+	color: #000; /* Updated text color */
+}
+
+h1 { font-size: 45px; }
+h2 { font-size: 36px; }
+h3 { font-size: 30px; }
+h4 { font-size: 24px; }
+h5 { font-size: 20px; }
+h6 { font-size: 16px; }
+
+a{
+	text-decoration: none;
+}
+
+.tokyo_tm_all_wrap,
+.tokyo_tm_all_wrap *{
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	   -moz-box-sizing: border-box; /* Firefox, other Gecko */
+			box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+/* Preloader */
+body.loading {
+  overflow: hidden;
+}
+
+#preloader{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 99999;
+    display: flex;
+    background-color: #fff;
+}
+#preloader:before,
+#preloader:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+    background-color: #000;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+#preloader:after{
+    left: auto;
+    right: 0;
+}
+#preloader .loader_line{
+    margin: auto;
+    width: 1px;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: all 0.8s ease 0s;
+    -o-transition: all 0.8s ease 0s;
+    transition: all 0.8s ease 0s;
+}
+.loader_line:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 0%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: #fff;
+    -webkit-animation: lineheight 1000ms ease-in-out 0s forwards;
+    -o-animation: lineheight 1000ms ease-in-out 0s forwards;
+    animation: lineheight 1000ms ease-in-out 0s forwards;
+}
+.loader_line:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #999999;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-animation: lineround 1200ms linear 0s infinite;
+    -o-animation: lineround 1200ms linear 0s infinite;
+    animation: lineround 1200ms linear 0s infinite;
+    animation-delay: 2000ms;
+}
+
+@keyframes lineheight{
+    0%{
+        height: 0%;
+    }
+    100%{
+        height: 100%;
+    }
+}
+
+@keyframes lineround{
+    0%{
+        -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        transform: translateY(-100%);
+    }
+    100%{
+        -webkit-transform: translateY(200%);
+        -ms-transform: translateY(200%);
+        -o-transform: translateY(200%);
+        transform: translateY(200%);
+    }
+}
+
+/*hiding all*/
+.preloaded .loader_line:after{
+    opacity: 0;
+}
+.preloaded  .loader_line{
+    opacity: 0;
+    height: 100%!important;
+}
+.preloaded:before,
+.preloaded:after{
+    -webkit-animation: preloadedzero 300ms ease-in-out 500ms forwards;
+    -o-animation: preloadedzero 300ms ease-in-out 500ms forwards;
+    animation: preloadedzero 300ms ease-in-out 500ms forwards;
+}
+@keyframes preloadedzero{
+    0%{
+        width: 50%;
+    }
+    100%{
+        width: 0%;
+    }
+}
+
+/*---------------------------------------------------*/
+/*	02) TOKYO MOBILE MENU
+/*---------------------------------------------------*/
+
+.tokyo_tm_topbar{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 50px;
+	background-color: #fff;
+	z-index: 14;
+	display: none;
+}
+.tokyo_tm_topbar .topbar_inner{
+	width: 100%;
+	height: 100%;
+	clear: both;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 20px;
+}
+.tokyo_tm_topbar .logo img{
+	max-width: 100px;
+	max-height: 40px;
+}
+.tokyo_tm_topbar .logo h3{
+	font-weight: 900;
+	font-family: "Poppins";
+	font-size: 25px;
+	letter-spacing: 4px;
+}
+.tokyo_tm_topbar .logo[data-type="image"] img{display: inline-block;}
+.tokyo_tm_topbar .logo[data-type="image"] h3{display: none;}
+.tokyo_tm_topbar .logo[data-type="text"] img{display: none;}
+.tokyo_tm_topbar .logo[data-type="text"] h3{display: inline-block;}
+
+.tokyo_tm_topbar .hamburger{
+	padding: 0px;
+}
+.tokyo_tm_topbar .hamburger-inner, 
+.tokyo_tm_topbar .hamburger-inner:after, 
+.tokyo_tm_topbar .hamburger-inner:before{
+	width: 30px;
+	height: 2px;
+}
+.tokyo_tm_topbar .trigger{
+	position: relative;
+	top: 5px;
+}
+.tokyo_tm_topbar .hamburger-box{
+	width: 30px;
+}
+.tokyo_tm_mobile_menu{
+	position: fixed;
+	top: 50px;
+	right: -200px;
+	height: 100vh;
+	width: 200px;
+	z-index: 15;
+	background-color: #fff;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_mobile_menu.opened{
+	right: 0px;
+}
+.tokyo_tm_mobile_menu .menu_list{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	text-align: right;
+	padding: 100px 20px 0px 20px;
+}
+.tokyo_tm_mobile_menu .menu_list ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_mobile_menu .menu_list ul li{
+	margin: 0px 0px 7px 0px;
+}
+.tokyo_tm_mobile_menu .menu_list ul li a{
+	color: #000;
+	font-family: "Montserrat";
+}
+
+/*---------------------------------------------------*/
+/*	03) TOKYO LEFTPART
+/*---------------------------------------------------*/
+
+.tokyo_tm_all_wrap .leftpart{
+	width: 450px;
+	height: 100vh;
+	position: fixed;
+	display: flex;
+	align-items: center;
+	z-index: 12;
+	padding: 0px 90px;
+	background-color: #fff;
+}
+.tokyo_tm_all_wrap .leftpart_inner{
+	width: 100%;
+	height: auto;
+}
+.tokyo_tm_all_wrap .leftpart .logo img{
+	max-width: 150px;
+}
+.tokyo_tm_all_wrap .leftpart .logo h3{
+	font-family: "Poppins";
+	font-weight: 900;
+	font-size: 31px;
+	letter-spacing: 5px;
+}
+.tokyo_tm_all_wrap .leftpart .logo[data-type="image"] img{display: inline-block;}
+.tokyo_tm_all_wrap .leftpart .logo[data-type="image"] h3{display: none;}
+.tokyo_tm_all_wrap .leftpart .logo[data-type="text"] img{display: none;}
+.tokyo_tm_all_wrap .leftpart .logo[data-type="text"] h3{display: inline-block;}
+.tokyo_tm_all_wrap .leftpart .menu{
+	padding: 50px 0px 50px 0px;
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_all_wrap .leftpart .menu ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_all_wrap .leftpart .menu ul li{
+	margin: 0px;
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_all_wrap .leftpart .menu ul li a{
+	color: #767676;
+	display: inline-block;
+	font-weight: 500;
+	font-family: "Montserrat";
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_all_wrap .leftpart .menu ul li a:hover{
+	color: #000;
+}
+.tokyo_tm_all_wrap .leftpart .menu ul li.active a{
+	color: #000;
+}
+.tokyo_tm_all_wrap .leftpart .copyright{
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_all_wrap .leftpart .copyright p{
+	font-size: pt;
+	color: #999;
+	font-family: "Montserrat";
+	line-height: 25px;
+}
+.tokyo_tm_all_wrap .leftpart .copyright a{
+	color: #787878;
+	font-weight: 500;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_all_wrap .leftpart .copyright a:hover{
+	color: #000;
+}
+
+/*---------------------------------------------------*/
+/*	04) TOKYO RIGHTPART 
+/*---------------------------------------------------*/
+
+.tokyo_tm_all_wrap .rightpart{
+	width: 100%;
+	min-height: 100vh;
+	float: left;
+	position: relative;
+	background-color: #f8f8f8;
+	padding-left: 450px;
+}
+.tokyo_tm_all_wrap .rightpart_in{
+	position: relative;
+	width: 100%;
+	float: left;
+	clear: both;
+	border-left: 1px solid #ebebeb;
+	min-height: 100vh;
+}
+.tokyo_tm_section{
+	position: absolute;
+    top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	overflow: hidden;
+	overflow-y: scroll;
+	
+	opacity: 0;
+	visibility: hidden;
+	z-index: 8;
+	transition: visibility 1s linear, opacity 0s linear;
+	-moz-transition: visibility 1s linear, opacity 0s linear;
+	-webkit-transition: visibility1s linear, opacity 0s linear;
+	-o-transition: visibility 1s linear, opacity 0s linear;
+}
+.tokyo_tm_section.animated {
+	opacity: 1;
+	visibility: visible;
+	z-index: 9;
+}
+.tokyo_tm_section.active {
+	opacity: 1;
+	visibility: visible;
+	z-index: 1;
+	height: auto;
+	min-height: 100vh;
+	overflow-y: auto;
+	padding: 100px 0;
+}
+.tokyo_tm_section.hidden {
+	opacity: 0;
+	visibility: hidden;
+	z-index: 9;
+}
+.tokyo_tm_section::-webkit-scrollbar{
+  width: 0px;
+}
+
+/*---------------------------------------------------*/
+/*	05) TOKYO HOME
+/*---------------------------------------------------*/
+
+.tokyo_tm_home{
+	width: 100%;
+	min-height: 60vh;
+	clear: both;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+.tokyo_tm_home .home_content{
+	display: flex;
+	align-items: center;
+}
+.tokyo_tm_home .avatar{
+	min-width: 300px;
+	min-height: 300px;
+	position: relative;
+	border-radius: 100%;
+}
+.tokyo_tm_home .avatar[data-type="square"] .image{
+	animation: none;
+}
+.tokyo_tm_home .avatar[data-type="circle"] .image{
+	animation: none;
+	border-radius: 100%;
+}
+.tokyo_tm_home .avatar .image{
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-repeat: no-repeat;
+	background-position:center;
+	background-size: cover;
+	animation: morph 8s ease-in-out infinite 1s;
+	background-blend-mode: multiply;
+	-webkit-box-shadow: inset 0px 0px 0px 9px rgba(255,255,255,.3);
+    -moz-box-shadow: inset 0px 0px 0px 9px rgba(255,255,255,.3);
+    box-shadow: inset 0px 0px 0px 9px rgba(255,255,255,.3);
+}
+
+@keyframes morph {
+	 0% {
+		 border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+	 50% {
+		 border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+	}
+	 100% {
+		 border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+}
+
+.tokyo_tm_home .details{
+	text-align: left;
+}
+.tokyo_tm_home .details .name{
+	font-size: 55px;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin-bottom: 14px;
+	color: #000; /* Updated text color */
+}
+.tokyo_tm_home .details .job{
+	font-family: "Montserrat";
+	font-weight: 500;
+	max-width: 450px;
+	margin-bottom: 25px;
+	color: #767676; /* Updated text color */
+}
+.tokyo_tm_home .social{
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_home .social ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_home .social ul li{
+	margin: 0px 8px 0px 0px;
+	display: inline-block;
+}
+.tokyo_tm_home .social ul li:last-child{
+	margin-right: 0px;
+}
+.tokyo_tm_home .social ul li a{
+	color: #000; /* Updated icon color */
+	font-size: 20px;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_home .social ul li a:hover{
+	color: #000;
+}
+
+/*---------------------------------------------------*/
+/*	06) TOKYO ABOUT
+/*---------------------------------------------------*/
+
+.tokyo_tm_about{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding: 100px 0px 100px 0px;
+}
+
+.tokyo_tm_button{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_button a{
+	color: #fff;
+	display: inline-block;
+	background-color: #000;
+	padding: 9px 40px 14px 40px;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_about .top_author_image{
+	width: 20vh;
+	height: auto;
+	clear: both;
+	float: left;
+	position: relative;
+	margin-bottom: 35px;
+}
+.tokyo_tm_about .top_author_image img{
+	min-width: 100%;
+}
+.tokyo_tm_about .about_title{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	border-bottom: 1px solid #DFDFDF;
+	padding-bottom: 20px;
+	margin-bottom: 27px;
+}
+.tokyo_tm_about .about_title h3{
+    font-size: 22px;
+    font-weight: 700;
+}
+.tokyo_tm_about .about_text{
+   	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	border-bottom: 1px solid #DFDFDF;
+	padding-bottom: 31px;
+	margin-bottom: 30px;
+}
+.tokyo_tm_about .about_text p{
+   	margin-bottom: 11px;
+}
+.tokyo_tm_about .about_text p:last-child{
+   	margin-bottom: 0px;
+}
+.tokyo_tm_short_info{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	display: flex;
+	border-bottom: 1px solid #DFDFDF;
+	padding-bottom: 30px;
+	margin-bottom: 40px;
+}
+.tokyo_tm_short_info .left{
+	width: 50%;
+	padding-right: 50px;
+}
+.tokyo_tm_short_info .right{
+	width: 50%;
+	padding-left: 50px;
+}
+.tokyo_tm_info{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_info ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_info ul li{
+	margin: 0px;
+}
+.tokyo_tm_info ul li span:first-child{
+	min-width: 100px;
+    float: left;
+    margin-right: 10px;
+    font-weight: 700;
+	color: #000;
+}
+.tokyo_tm_info ul li a{
+	color: #767676;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_info ul li a:hover{
+	color: #000;
+}
+.tokyo_tm_progressbox{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	background-color: #fff;
+	padding: 93px 0px 100px 0px;	
+}
+.tokyo_tm_progressbox .in{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	display: flex;
+}
+.tokyo_tm_progressbox .left{
+	width: 50%;
+	padding-right: 50px;
+}
+.tokyo_tm_progressbox .right{
+	width: 50%;
+	padding-left: 50px;
+}
+.tokyo_progress{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.progress_inner{
+	width:100%;
+	margin-bottom:17px;
+}
+.progress_inner:last-child{
+	margin-bottom: 0px;
+}
+.progress_inner > span{
+	margin:0px 0px 5px 0px;
+	width:100%;
+	display:block;
+	text-align:left;
+	color: #000;
+}
+.progress_inner span.number{
+	float: right;
+}
+.progress_inner .background{
+	background:rgba(0,0,0,.09);
+	width:100%;
+	min-width:100%;
+	position:relative;
+	height:3px;
+}
+.progress_inner .background .bar_in{
+	background:#000;
+	overflow:hidden;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+}
+.progress_inner .background .bar{
+	width:100%;
+	height:100%;
+	position: relative;
+}
+.tokyo_tm_skillbox{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding: 10px 0px 10px 0px;
+}
+.tokyo_tm_skillbox .in{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	display: flex;
+}
+.tokyo_tm_skillbox .left{
+	width: 50%;
+	padding-right: 50px;
+}
+.tokyo_tm_skillbox .right{
+	width: 50%;
+	padding-left: 50px;
+}
+.tokyo_section_title{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	margin-bottom: 40px;
+}
+.tokyo_section_title h3{
+    font-size: 20px;
+    font-weight: 700;
+}
+.tokyo_tm_skill_list{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_skill_list ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_skill_list ul li{
+	margin: 0px;
+	padding-left: 25px;
+	position: relative;
+}
+.tokyo_tm_skill_list ul li .svg{
+	color: #000;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.tokyo_tm_resumebox{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	background-color: #fff;
+	padding: 93px 0px;
+}
+.tokyo_tm_resumebox .in{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	display: flex;
+}
+.tokyo_tm_resumebox .left{
+	width: 50%;
+	padding-right: 50px;
+}
+.tokyo_tm_resumebox .right{
+	width: 50%;
+	padding-left: 50px;
+}
+.tokyo_tm_resume_list{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_resume_list ul{
+	margin: 0px;
+	list-style-type: none;
+	position: relative;
+	display: inline-block;
+	padding-top: 10px;
+}
+.tokyo_tm_resume_list ul:before{
+	content: "";
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.07);
+}
+.tokyo_tm_resume_list ul li{
+	margin: 0px;
+	width: 100%;
+	float: left;
+	position: relative;
+	padding-left: 20px;
+	padding-bottom: 45px;
+}
+.tokyo_tm_resume_list ul li:last-child{padding-bottom: 0px;}
+.tokyo_tm_resume_list ul li:before{
+	content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    background: #fff;
+    border-radius: 100%;
+    border: solid 1px #CCC;
+    left: -9px;
+    top: 8px;
+}
+.tokyo_tm_resume_list ul li .list_inner{
+	width: 100%;
+	height: auto;
+	clear: both;
+	display: flex;
+	position: relative;
+}
+.tokyo_tm_resume_list ul li .time{
+	width: 50%;
+	padding-right: 20px;
+}
+.tokyo_tm_resume_list ul li .time span{
+	display: inline-block;
+	padding: 5px 25px;
+	background-color: rgba(0,0,0,.05);
+	border-radius: 50px;
+	font-size: 14px;
+	white-space: nowrap;
+}
+.tokyo_tm_resume_list ul li .place{
+	width: 50%;
+	padding-left: 20px;
+}
+.tokyo_tm_resume_list ul li .place h3{
+	font-size: 16px;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+.tokyo_tm_resume_list ul li .place span{
+	font-size: 14px;
+}
+.tokyo_tm_testimonials{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding: 100px 0px;
+}
+.tokyo_tm_testimonials .list{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	overflow: hidden;
+}
+.tokyo_tm_testimonials .list ul{
+	margin: 0px;
+	list-style-type: none;
+	cursor: e-resize;
+}
+.tokyo_tm_testimonials .list ul li{
+	margin: 0px;
+}
+.tokyo_tm_testimonials .list ul li .list_inner{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	position: relative;
+}
+.tokyo_tm_testimonials .list ul li .text{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	position: relative;
+	border: 2px solid #E5EDF4;
+	padding: 40px;
+	margin-bottom: 30px;
+}
+.tokyo_tm_testimonials .list ul li .text:before{
+	position: absolute;
+	content: "";
+	height: 0px;
+    width: 0px;
+	top: 100%;
+    left: 50px;
+    border: solid transparent;
+    border-top-color: #E5EDF4;
+    border-width: 18px 18px 0px 0px;
+}
+.tokyo_tm_testimonials .list ul li .text:after{
+	position: absolute;
+	content: "";
+	top: 100%;
+    left: 50px;
+	height: 0px;
+    width: 0px;
+    border: solid transparent;
+    border-top-color: #f6fbff;
+    border-width: 14px 13px 0px 0px;
+    margin-left: 2px;
+}
+.tokyo_tm_testimonials .list ul li .text i{
+	position: absolute;
+	z-index: 1;
+	font-size: 30px;
+	top: -29px;
+	left: 50px;
+}
+.tokyo_tm_testimonials .details{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	display: flex;
+	align-items: center;
+	padding-left: 20px;
+}
+.tokyo_tm_testimonials .details .image{
+	position: relative;
+	width: 60px;
+	height: 60px;
+}
+.tokyo_tm_testimonials .details .image .main{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: 100%;
+}
+.tokyo_tm_testimonials .details .info{
+	padding-left: 20px;
+}
+.tokyo_tm_testimonials .details .info h3{
+	font-size: 16px;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+.tokyo_tm_testimonials .details .info span{
+	font-size: 14px;
+}
+.tokyo_tm_testimonials .owl-carousel .owl-stage-outer{
+	overflow: hidden;
+}
+.tokyo_tm_testimonials .owl-carousel .owl-stage-outer{
+	overflow: visible;
+}
+.tokyo_tm_testimonials .owl-item.active{
+	opacity: 1;
+}
+.tokyo_tm_testimonials .owl-item{
+	opacity: 0;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with transparency */
+    color: white; /* Text color */
+    text-align: center; /* Center the text */
+    padding: 10px; /* Add some padding */
+}
+
+/*---------------------------------------------------*/
+/*	07) TOKYO SERVICE
+/*---------------------------------------------------*/
+
+.tokyo_tm_services{
+	width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+    padding: 100px 0px;
+    background: #f8f8f8;
+}
+.tokyo_tm_services .list{
+	width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+}
+
+.tokyo_tm_services .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.tokyo_tm_services .service-item {
+    width: 100%;
+    margin: 0;
+}
+
+.tokyo_tm_services .service-item .list_inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 40px 30px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 320px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+
+@media (max-width: 1200px) {
+    .tokyo_tm_services .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tokyo_tm_services .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .tokyo_tm_services .service-item .list_inner {
+        min-height: auto;
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tokyo_tm_services {
+        padding: 60px 0;
+    }
+    
+    .tokyo_tm_services .list {
+        margin-top: 40px;
+    }
+    
+    .tokyo_tm_services .service-item .list_inner {
+        padding: 25px 20px;
+    }
+}
+
+.tokyo_tm_services .list ul li .number{
+	font-family: "Montserrat", sans-serif;
+	font-size: 80px;
+	font-weight: 800;
+	color: rgba(0,0,0,0.05);
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	transition: all 0.4s ease;
+	line-height: 1;
+}
+.tokyo_tm_services .list ul li .list_inner:hover .number{
+	color: rgba(0,0,0,0.08);
+	transform: scale(1.2) rotate(10deg);
+}
+.tokyo_tm_services .list ul li .title{
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 20px;
+	position: relative;
+	z-index: 1;
+	transition: all 0.4s ease;
+	padding-right: 80px;
+	color: #000;
+}
+.tokyo_tm_services .list ul li .text{
+	color: #666;
+	font-size: 16px;
+	line-height: 1.8;
+	position: relative;
+	z-index: 1;
+	transition: all 0.4s ease;
+}
+.tokyo_tm_services .list ul li .service_icon{
+	width: 60px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0,0,0,0.03);
+	border-radius: 15px;
+	margin-bottom: 25px;
+	transition: all 0.4s ease;
+	position: relative;
+	z-index: 1;
+}
+.tokyo_tm_services .list ul li .list_inner:hover .service_icon{
+	background: rgba(0,0,0,0.05);
+	transform: rotate(-10deg);
+}
+.tokyo_tm_services .list ul li .list_inner::after{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background: linear-gradient(90deg, #000 0%, #333 100%);
+	transition: all 0.4s ease;
+	opacity: 0;
+}
+.tokyo_tm_services .list ul li .list_inner:hover::after{
+	opacity: 1;
+}
+@media (max-width: 1200px) {
+	.tokyo_tm_services .list ul {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 25px;
+	}
+}
+@media (max-width: 768px) {
+	.tokyo_tm_services .list ul {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+	
+	.tokyo_tm_services .list ul li .list_inner {
+		min-height: auto;
+		padding: 30px 25px;
+	}
+	
+	.tokyo_tm_services .list ul li .number {
+		font-size: 60px;
+	}
+	
+	.tokyo_tm_services .list ul li .title {
+		font-size: 20px;
+		margin-bottom: 15px;
+	}
+}
+@media (max-width: 480px) {
+	.tokyo_tm_services {
+		padding: 60px 0;
+	}
+	
+	.tokyo_tm_services .list {
+		margin-top: 40px;
+	}
+	
+	.tokyo_tm_services .list ul li .list_inner {
+		padding: 25px 20px;
+	}
+	
+	.tokyo_tm_services .list ul li .number {
+		font-size: 50px;
+	}
+}
+
+.tokyo_tm_services .list ul li .list_inner:hover .tokyo_tm_read_more a span{
+	transform: translateX(0%);
+}
+.tokyo_tm_services .popup_service_image{
+	opacity: 0;
+	visibility: hidden;
+	display: none;
+	position: absolute;
+	z-index: -111;
+}
+.tokyo_tm_services .service_hidden_details{
+	opacity: 0;
+	visibility: hidden;
+	display: none;
+	position: absolute;
+	z-index: -111;
+}
+.tokyo_tm_modalbox .service_popup_informations{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_modalbox .service_popup_informations .image{
+	width: 100%;
+	float: left;
+	position: relative;
+	margin-bottom: 37px;
+}
+.tokyo_tm_modalbox .service_popup_informations .image img{
+	position: relative;
+	min-width: 100%;
+	opacity: 0;
+}
+.tokyo_tm_modalbox .service_popup_informations .image .main{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.tokyo_tm_modalbox .service_popup_informations .main_title{
+	width: 100%;
+	float: left;
+	margin-bottom: 23px;
+}
+.tokyo_tm_modalbox .service_popup_informations .main_title h3{
+	font-size: 23px;
+	font-weight: 600;
+}
+.tokyo_tm_modalbox .service_popup_informations .descriptions{
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_modalbox .service_popup_informations .descriptions p{
+	margin-bottom: 15px;
+}
+.tokyo_tm_modalbox .service_popup_informations .descriptions p:last-child{
+	margin-bottom: 0px;
+}
+.tokyo_tm_partners{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	background-color: #fff;
+	padding: 100px 0px;
+}
+.tokyo_tm_partners .partners_inner{
+	width: 100%;
+    float: left;
+    clear: both;
+    overflow: hidden;
+    border: 2px solid #eee;
+}
+.tokyo_tm_partners ul{
+	margin: -2px -10px -2px -2px;
+    list-style-type: none;
+    padding-top: 2px;
+    float: left;
+    padding-left: 2px;
+    min-width: calc(100% + 12px);
+} 
+.tokyo_tm_partners ul li{
+	margin: 0px;
+    float: left;
+    width: 25%;
+    border: 2px solid #eee;
+    text-align: center;
+    height: 145px;
+    line-height: 145px;
+    position: relative;
+    margin-top: -2px;
+    margin-left: -2px;
+    overflow: hidden;
+} 
+.tokyo_tm_partners ul li img{
+	max-width: 50%;
+    max-height: 100px;
+} 
+.tokyo_tm_partners ul li .list_inner{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	opacity: .5;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_partners ul li .list_inner:hover{
+	opacity: 1;
+}
+.tokyo_tm_pricing{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding: 100px 0px 60px 0px;
+	background-color: #fff;
+}
+.tokyo_tm_pricing .tokyo_tm_button a{
+	padding: 6px 40px 11px 40px;
+}
+.tokyo_tm_pricing .list{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_pricing .list > ul{
+	margin: 0px 0px 0px -40px;
+	list-style-type: none;
+}
+.tokyo_tm_pricing .list > ul > li{
+	margin: 0px 0px 40px 0px;
+	padding-left: 40px;
+	width: 33.3333%;
+	float: left;
+}
+.tokyo_tm_pricing .list > ul > li .list_inner{
+	width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+    position: relative;
+    border: 1px solid rgba(0,0,0,.1);
+	padding: 27px 40px 45px;
+}
+.tokyo_tm_pricing .price{
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_pricing .price h3{
+	font-size: 40px;
+    font-weight: 600;
+}
+.tokyo_tm_pricing .price span{
+	position: relative;
+    display: inline-block;
+}
+.tokyo_tm_pricing .price .currency{
+	position: absolute!important;
+    bottom: 10px;
+    right: -10px;
+    font-size: 15px;
+}
+.tokyo_tm_pricing .plan{
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_pricing .plan h3{
+	font-weight: 600;
+	font-size: 20px;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.tokyo_tm_pricing .item{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_pricing .item li{
+	margin: 0px;
+	opacity: .5;
+}
+.tokyo_tm_pricing .item li.active{
+	opacity: 1;
+}
+.tokyo_tm_pricing .tokyo_tm_button{
+	margin-top: 30px;
+}
+.tokyo_tm_pricing .popular{
+	position: absolute;
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    font-size: 13px;
+    padding: 0 20px 3px;
+    top: -17px;
+    right: 10px;
+}
+.tokyo_tm_facts{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding: 100px 0px 60px 0px;
+}
+.tokyo_tm_facts .list{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_facts .list ul{
+	margin: 0px 0px 0px -40px;
+	list-style-type: none;
+}
+.tokyo_tm_facts .list ul li{
+	margin: 0px 0px 40px 0px;
+	padding-left: 40px;
+	width: 33.333%;
+	float: left;
+}
+.tokyo_tm_facts .list ul li .list_inner{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	position: relative;
+	border: 1px solid rgba(0,0,0,.1);
+	text-align: center;
+    padding: 40px 20px;
+}
+.tokyo_tm_facts .list h3{
+	font-weight: 600;
+	font-size: 20px;
+	margin-bottom: 3px;
+}
+
+/*---------------------------------------------------*/
+/*	07) TOKYO PORTFOLIO
+/*---------------------------------------------------*/
+
+.tokyo_tm_title{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	margin-bottom: 62px;
+}
+.tokyo_tm_title h3{
+	font-weight: 800;
+	font-family: "Montserrat";
+} 
+.tokyo_tm_title span{
+	display: inline-block;
+	background-color: rgba(0,0,0,.04);
+	text-transform: uppercase;
+	padding: 4px 10px;
+	font-weight: 600;
+	font-size: 12px;
+	color: #333;
+	font-family: "Montserrat";
+	letter-spacing: 0px;
+	margin-bottom: 11px;
+}
+.tokyo_tm_title .title_flex{
+	width: 100%;
+	height: auto;
+	clear: both;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.tokyo_tm_portfolio .portfolio_filter ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_portfolio .portfolio_filter ul li{
+	margin: 0px 25px 0px 0px;
+	display: inline-block;
+}
+.tokyo_tm_portfolio .portfolio_filter ul li:last-child{
+	margin-right: 0px;
+}
+.tokyo_tm_portfolio .portfolio_filter ul li a{
+	color: #767676;
+	display: inline-block;
+	font-weight: 500;
+	font-family: "Montserrat";
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_portfolio .portfolio_filter ul li a.current{
+	color: #000;
+}
+.tokyo_tm_portfolio .portfolio_filter ul li a:hover{
+	color: #000;
+}
+.tokyo_tm_portfolio .list_wrapper{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_portfolio{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding: 100px 0px 40px 0px;
+}
+.tokyo_tm_portfolio .portfolio_list{
+	margin: 0px 0px 0px -40px;
+	list-style-type: none;
+}
+.tokyo_tm_portfolio .portfolio_list li{
+	margin: 0px 0px 40px 0px;
+	float: left;
+	width: 33.3333%;
+	padding-left: 40px;
+}
+.tokyo_tm_portfolio .portfolio_list li .inner{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+.tokyo_tm_portfolio .portfolio_list li .inner img{
+	opacity: 0;
+	min-width: 100%;
+}
+.tokyo_tm_portfolio .portfolio_list li .inner .abs_image{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_portfolio .portfolio_list li .inner:hover .abs_image{
+	transform: scale(1.1) translateZ(0);
+}
+.tokyo_tm_portfolio_titles {
+	white-space: nowrap;
+	background: #ffffff;
+	font-size: 18px;
+	padding: 5px 15px;
+	font-family: "Montserrat";
+	font-weight: 600;
+	color: #000;
+	position: fixed;
+	z-index: 15;
+	opacity: 0;
+	visibility: hidden;
+}
+.tokyo_tm_portfolio_titles.visible {
+	opacity: 1;
+	visibility: visible;
+}
+.tokyo_tm_portfolio_titles .work__cat {
+	position: absolute;
+	background: #ffffff;
+	top: 100%;
+	left: 0;
+	margin-top: -10px;
+	font-family: "Mulish";
+	font-weight: 500;
+	padding: 5px 15px;
+	color: #767676;
+	font-size: 15px;
+}
+.entry{position: relative;}
+.tokyo_tm_portfolio .popup_details{
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	z-index: -11;
+	display: none;
+	
+}
+.tokyo_tm_modalbox .details_all_wrap{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_modalbox .popup_details{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_modalbox .popup_details .top_image{
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 37px;
+}
+.tokyo_tm_modalbox .popup_details .top_image img{
+	position: relative;
+	min-width: 100%;
+	opacity: 0;
+}
+.tokyo_tm_modalbox .popup_details .top_image .main{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.tokyo_tm_modalbox .portfolio_main_title{
+	width: 100%;
+	float: left;
+	margin-bottom: 28px;
+}
+.tokyo_tm_modalbox .portfolio_main_title h3{
+	font-weight: 700;
+    font-size: 23px;
+    margin-bottom: 5px;
+}
+.tokyo_tm_modalbox .main_details{
+	width: 100%;
+	height: auto;
+	clear: both;
+	display: flex;
+	margin-bottom: 90px;
+}
+.tokyo_tm_modalbox .main_details .textbox{
+	width: 70%;
+	padding-right: 40px;
+}
+.tokyo_tm_modalbox .main_details .textbox p{
+	margin-bottom: 18px;
+}
+.tokyo_tm_modalbox .main_details .textbox p:last-child{
+	margin-bottom: 0px;
+}
+.tokyo_tm_modalbox .main_details .detailbox{
+	width: 30%;
+	padding-left: 40px;
+}
+.tokyo_tm_modalbox .main_details .detailbox > ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_modalbox .main_details .detailbox > ul > li{
+	margin: 0px 0px 8px 0px;
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_modalbox .main_details .detailbox > ul > li:last-child{
+	margin-bottom: 0px;
+}
+.tokyo_tm_modalbox .main_details .detailbox .first{
+    font-weight: 700;
+	display: block;
+	color: #000;
+	margin-bottom: 3px;
+}
+.tokyo_tm_modalbox .main_details .detailbox span a{
+	color: #767676;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_modalbox .main_details .detailbox span a:hover{
+	color: #000;
+}
+.tokyo_tm_modalbox .main_details .detailbox .share{
+	margin: 0px;
+	list-style-type: none;
+	position: relative;
+	top: 7px;
+}
+.tokyo_tm_modalbox .main_details .detailbox .share li{
+	margin: 0px 5px 0px 0px;
+	display: inline-block;
+}
+.tokyo_tm_modalbox .main_details .detailbox .share li:last-child{
+	margin-right: 0px;
+}
+.tokyo_tm_modalbox .main_details .detailbox .share li a{
+	color: #000;
+	font-size: 18px;
+}
+.tokyo_tm_modalbox .additional_images{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_modalbox .additional_images ul{
+	margin: 0px 0px 0px -30px;
+	list-style-type: none;
+}
+.tokyo_tm_modalbox .additional_images ul li{
+	margin: 0px 0px 30px 0px;
+	float: left;
+	width: 50%;
+	padding-left: 30px;
+}
+.tokyo_tm_modalbox .additional_images ul li:nth-child(3n-2){
+	width: 100%;
+}
+.tokyo_tm_modalbox .additional_images ul li .list_inner{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	position: relative;
+}
+.tokyo_tm_modalbox .additional_images ul li .my_image{
+	position: relative;
+}
+.tokyo_tm_modalbox .additional_images ul li .my_image img{
+	opacity: 0;
+	min-width: 100%;
+}
+.tokyo_tm_modalbox .additional_images ul li .my_image .main{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+/*---------------------------------------------------*/
+/*	08) TOKYO NEWS 
+/*---------------------------------------------------*/
+
+.tokyo_tm_news{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding: 100px 0px 45px 0px;
+}
+.tokyo_tm_news ul{
+	margin: 0px 0px 0px -50px;
+	list-style-type: none;
+}
+.tokyo_tm_news ul li{
+	margin: 0px 0px 50px 0px;
+	float: left;
+	width: 50%;
+	padding-left: 50px;
+}
+.tokyo_tm_news ul li .list_inner{
+	width: 100%;
+	height: 100%;
+	clear: both;
+	float: left;
+	position: relative;
+	box-shadow: 0px 0px 20px rgba(0,0,0,.07);
+}
+.tokyo_tm_news ul li .image{
+	position: relative;
+	overflow: hidden;
+}
+.tokyo_tm_news ul li .image img{
+	min-width: 100%;
+	opacity: 0;
+}
+.tokyo_tm_news ul li .image .main{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position:center; 
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_news ul li .list_inner .image:hover .main{
+	transform: scale(1.1) translateZ(0);
+}
+.tokyo_tm_news ul li .details{
+	width: 100%;
+	float: left;
+	padding: 30px 40px 25px 40px;
+	background-color: #fff;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_news ul li .list_inner:hover .details{
+	box-shadow: 0px 0px 20px rgba(0,0,0,.12);
+}
+.tokyo_tm_news ul li .details .title{
+	margin-bottom: 10px;
+	line-height: 1.4;
+}
+.tokyo_tm_news ul li .details .title a{
+	color: #000;
+	font-size: 18px;
+	font-weight: 600;
+	display: inline-block;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_news ul li .details .title a:hover{
+	color: #000;
+}
+.tokyo_tm_news ul li .details .date{
+	font-family: "Montserrat";
+	font-size: 13px;
+	color: #767676;
+}
+.tokyo_tm_news ul li .details .date a{
+	color: #767676;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_news ul li .details .date a:hover{
+	color: #000;
+}
+.tokyo_tm_news ul li .details .date span{
+	position: relative;	
+}
+.tokyo_tm_news ul li .details .date span:before{
+	position: relative;
+	content: "/";
+	font-size: 10px;
+	padding: 0px 7px 0px 2px;
+}
+.tokyo_tm_news ul li .extra{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 25px;
+	position: relative;
+}
+.tokyo_tm_news ul li .extra:before{
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 1px;
+	background-color: rgba(0,0,0,.1);
+	bottom: -7px;
+}
+.tokyo_tm_read_more{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+.tokyo_tm_read_more a{
+	display: inline-block;
+	overflow: hidden;
+    color: #000;
+	padding-right: 32px;
+    position: relative;
+	text-transform: uppercase;
+    font-weight: 500;
+	font-size: 12px;
+	font-family: "Montserrat";
+}
+.tokyo_tm_read_more a:before{
+	position: absolute;
+	content: '';
+    background-color: #000;
+    margin: auto;
+	width: 100%;
+	height: 1px;
+	top: 0px;
+    left: 0px;
+	bottom: 0px;
+    transform: scaleX(.2);
+    transform-origin: left center;
+	animation: read-more-anim;
+    animation-fill-mode: forwards;
+    animation-duration: .4s;
+    animation-timing-function: cubic-bezier(.6, .01, 0, 1);
+}
+.tokyo_tm_read_more a span{
+	display: inline-block;
+    position: relative;
+	background-color: #fff;
+	z-index: 1; 
+    transition: .6s cubic-bezier(.6, .01, 0, 1);
+	transform: translateX(-110%);
+}
+.tokyo_tm_news ul li .list_inner:hover .tokyo_tm_read_more a:before{
+	animation: read-more-anim-2;
+	animation-fill-mode: forwards;
+	animation-duration: .4s;
+	animation-timing-function: cubic-bezier(.6,.01,0,1);
+}
+.tokyo_tm_news ul li .list_inner:hover .tokyo_tm_read_more a span{
+	transform: translateX(0%);
+}
+
+@keyframes read-more-anim{
+    0% {
+        transform-origin: right center;
+        transform: scaleX(.2);
+    }
+    70% {
+        transform-origin: right center;
+    }
+    71% {
+        transform-origin: left center;
+        transform: scaleX(1);
+    }
+
+    100% {
+        transform-origin: left center;
+        transform: scaleX(.2);
+    }
+}
+
+@keyframes read-more-anim-2{
+    0% {
+        transform-origin: left center;
+        transform: scaleX(.2);
+    }
+    70% {
+        transform-origin: left center;
+        transform: scaleX(1);
+    }
+    71% {
+        transform-origin: right center;
+    }
+    100% {
+        transform-origin: right center;
+        transform: scaleX(.2);
+    }
+}
+
+.tokyo_tm_modalbox .details .extra{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	margin-bottom: 30px;
+}
+.tokyo_tm_modalbox .details .extra:before{
+	position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0,0,0,.1);
+    bottom: -10px;
+}
+.tokyo_tm_modalbox .tokyo_tm_read_more{
+	display: none;
+}
+.tokyo_tm_full_link{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 4;
+}
+.tokyo_tm_modalbox{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 100vh;
+	z-index: 15;
+	background-color: rgba(0,0,0,.8);
+	opacity: 0;
+	visibility: hidden;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_modalbox.opened{
+	opacity: 1;
+	visibility: visible;
+}
+.tokyo_tm_modalbox .container{
+	height: 100vh;
+}
+.tokyo_tm_modalbox .box_inner{
+	position: absolute;
+	top: 70px;
+	bottom: 70px;
+	width: 968px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #fff;
+	z-index: 1;
+	opacity: 0;
+	visibility: hidden;
+	margin-top: -20px;
+	transition-delay: .3s;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_modalbox.opened .box_inner{
+	opacity: 1;
+	visibility: visible;
+	margin-top: 0px;
+}
+.tokyo_tm_modalbox .close{
+	position: fixed;
+	left: 100%;
+	top: 0px;
+	margin-left: 30px;
+	z-index: 10;
+}
+.tokyo_tm_modalbox .close a{
+	display: block;
+	width: 40px;
+	height: 40px;
+	color: #fff;
+	border:2px solid #fff;
+	border-radius: 10px;
+	position: relative;
+	
+	-webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_modalbox .close a:hover{
+	border-radius: 100%;
+}
+.tokyo_tm_modalbox .close a i{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.tokyo_tm_modalbox .description_wrap{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+	padding: 50px;
+	overflow-y: scroll;
+}
+.tokyo_tm_modalbox .description_wrap:after{
+	position: fixed;
+	content: "";
+	right: 0px;
+	left: 0px;
+	bottom: 0px;
+	height: 50px;
+	background-color: #fff;
+	z-index: 3;
+}
+.tokyo_tm_modalbox .description_wrap:before{
+	position: fixed;
+	content: "";
+	right: 0px;
+	left: 0px;
+	top: 0px;
+	height: 50px;
+	background-color: #fff;
+	z-index: 3;
+}
+.tokyo_tm_modalbox .details{
+	width: 100%;
+	float: left;
+	margin-bottom: 20px;
+}
+.tokyo_tm_modalbox .description_wrap .image{
+	position: relative;
+	z-index: -1;
+	margin-bottom: 40px;
+}
+.tokyo_tm_modalbox .description_wrap .image img{
+	min-width: 100%;
+}
+.tokyo_tm_modalbox .description_wrap .image .main{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.tokyo_tm_modalbox .details .title{
+	font-weight: 600;
+	font-size: 23px;
+	margin-bottom: 9px;
+}
+.tokyo_tm_modalbox .date{
+	text-transform: uppercase;
+    font-family: "Montserrat";
+    font-size: 12px;
+    color: #767676;
+}
+.tokyo_tm_modalbox .date a{
+    color: #767676;
+	
+    -webkit-transition: all .3s ease;
+	   -moz-transition: all .3s ease;
+	    -ms-transition: all .3s ease;
+	     -o-transition: all .3s ease;
+	        transition: all .3s ease;
+}
+.tokyo_tm_modalbox .date a:hover{
+	color: #000;
+}
+.tokyo_tm_modalbox .date span{
+	position: relative;
+    margin-left: 11px;
+}
+.tokyo_tm_modalbox .date span:before{
+	position: absolute;
+    content: "";
+    margin-top: 0px;
+    top: 50%;
+    transform: translateY(-50%) rotate(15deg);
+    right: 100%;
+    background-color: #939393;
+    width: 1px;
+    height: 9px;
+    margin-right: 7px;
+}
+.tokyo_tm_news .main_content{
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	z-index: -11;
+	display: none;
+}
+body.modal{
+	overflow-y: hidden;
+}
+.tokyo_tm_modalbox .main_content{
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_modalbox .main_content .descriptions{
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_modalbox .main_content .descriptions .bigger{
+	color: #888;
+	font-size: 20px;		
+	margin-bottom: 31px;
+}
+.tokyo_tm_modalbox .main_content .descriptions p{
+	margin-bottom: 22px;
+}
+.tokyo_tm_modalbox .main_content .descriptions p:last-child{
+	margin-bottom: 0px;
+}
+.tokyo_tm_modalbox .main_content .quotebox{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	position: relative;
+	padding-left: 70px;
+	margin-bottom: 24px;
+}
+.tokyo_tm_modalbox .main_content .quotebox p{
+	font-size: 20px;
+	margin-bottom: 23px;
+}
+.tokyo_tm_modalbox .main_content .icon{
+	position: absolute;
+	left: 0px;
+	top: 5px;
+}
+.tokyo_tm_modalbox .main_content .icon i{
+	font-size: 40px;
+	color: #000;
+}
+.tokyo_tm_modalbox .description_wrap::-webkit-scrollbar{
+  width: 11px;
+}
+.tokyo_tm_modalbox .description_wrap{
+  scrollbar-width: thin;
+  scrollbar-color: #999 #fff;
+}
+.tokyo_tm_modalbox .description_wrap:-webkit-scrollbar-track{
+  background: #fff;
+}
+.tokyo_tm_modalbox .description_wrap::-webkit-scrollbar-thumb{
+  background-color: #999;
+  border-radius: 6px;
+  border: 3px solid #fff;
+}
+
+/*---------------------------------------------------*/
+/*	09) TOKYO CONTACT
+/*---------------------------------------------------*/
+
+.tokyo_tm_contact{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	padding: 100px 0px 100px 0px;
+}
+.tokyo_tm_contact .map_wrap{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+	margin-bottom: 50px;
+}
+.tokyo_tm_contact .fields{
+	width: 100%;
+	height: auto;
+	clear: both;
+	float: left;
+}
+.tokyo_tm_contact .fields .first{
+	width: 100%;
+	float: left;
+}
+.tokyo_tm_contact .fields ul{
+	margin: 0px;
+	list-style-type: none;
+}
+.tokyo_tm_contact .fields ul li{
+	width: 100%;
+	margin: 0px 0px 30px 0px;
+	float: left;
+}
+.tokyo_tm_contact .fields ul li input{
+	width: 100%;
+	border: 1px solid rgba(0,0,0,.2);
+	background-color: transparent;
+}
+.tokyo_tm_contact .fields ul li input:focus{
+	outline: none;
+	border: 1px solid rgba(0,0,0,.5);
+}
+.tokyo_tm_contact .fields .last textarea{
+	width: 100%;
+	border: 1px solid rgba(0,0,0,.2);
+	height: 120px;
+	resize: none;
+	margin-bottom: 20px;
+	background-color: transparent;
+}
+.tokyo_tm_contact .fields .last textarea:focus{
+	outline: none;
+	border: 1px solid rgba(0,0,0,.5);
+} 
+.tokyo_tm_contact .empty_notice{
+	color: #F52225;
+	margin-bottom: 7px;
+	display: none;
+	text-align: left;
+	font-weight: 500;
+}
+.tokyo_tm_contact .contact_error{
+	color: #F52225;
+	text-align: left;
+	font-weight: 500;
+}
+.tokyo_tm_contact .returnmessage{
+	color:#3A00FF;
+	margin-bottom: 7px;
+	text-align: left;
+	font-weight: 500;
+}
+
+/*---------------------------------------------------*/
+/*	10) TOKYO MAGIC CURSOR
+/*---------------------------------------------------*/
+
+.tokyo_tm_all_wrap[data-magic-cursor="hide"] .mouse-cursor{
+	display: none;
+}
+.mouse-cursor{
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  visibility: hidden;
+}
+.cursor-inner {
+  margin-left: -3px;
+  margin-top: -3px;
+  width: 6px;
+  height: 6px;
+  z-index: 50;
+  background-color: #000;
+  -webkit-transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;
+  transition: width .3s ease-in-out, height .3s ease-in-out, margin .3s ease-in-out, opacity .3s ease-in-out;
+}
+.cursor-inner.cursor-hover {
+  margin-left: -40px;
+  margin-top: -40px;
+  width: 80px;
+  height: 80px;
+  background-color: #000;
+  opacity: .3;
+}
+.cursor-outer {
+  margin-left: -15px;
+  margin-top: -15px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #000;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 50;
+  opacity: .5;
+  -webkit-transition: all .08s ease-out;
+  transition: all .08s ease-out;
+}
+.cursor-outer.cursor-hover{opacity: 0;}
+
+/*---------------------------------------------------*/
+/*	11) TOKYO MEDIA QUERIES (FOR SMALL DEVIVES)
+/*---------------------------------------------------*/
+
+@media (max-width: 1600px) {
+	.container{max-width: 968px;}
+	.tokyo_tm_all_wrap .leftpart{width: 400px;}
+	.tokyo_tm_all_wrap .rightpart{padding-left: 350px;}
+	.tokyo_tm_all_wrap .leftpart{width: 350px;padding: 0px 70px;}
+	.tokyo_tm_home .avatar{min-width: 250px;min-height: 250px;}
+	.tokyo_tm_home .details .name{font-size: 48px;margin-bottom: 10px;}
+	.tokyo_tm_home .details .job{margin-bottom: 22px;}
+	.tokyo_tm_modalbox .box_inner{width: 850px;}
+}
+@media (max-width: 1200px) {
+	.tokyo_tm_topbar{display: block;}
+	.tokyo_tm_section{padding-left: 0px;}
+	.tokyo_tm_all_wrap .leftpart{display: none;}
+	.tokyo_tm_all_wrap .rightpart{padding-left: 0px;}
+	.tokyo_tm_all_wrap .rightpart_in{border-left: none;}
+	.tokyo_tm_about{padding-top: 10px;}
+	.tokyo_tm_portfolio{padding-top: 130px;}
+	.tokyo_tm_contact{padding-top: 130px;}
+	.tokyo_tm_news{padding-top: 130px;}
+	.tokyo_tm_services{padding-top: 130px;}
+	.tokyo_tm_modalbox .description_wrap{padding: 40px;}
+	.tokyo_tm_modalbox .box_inner{width: 500px;}
+	.tokyo_tm_modalbox .main_details{flex-direction: column;}
+	.tokyo_tm_modalbox .main_details .textbox{padding-right: 0px;width: 100%;margin-bottom: 30px;}
+	.tokyo_tm_modalbox .main_details .detailbox{padding-left: 0px;width: 100%;}
+	.tokyo_tm_modalbox .additional_images ul{margin: 0px;}
+	.tokyo_tm_modalbox .additional_images ul li{padding-left: 0px;width: 100%;}
+	.tokyo_tm_modalbox .description_wrap:after{height: 40px;}
+	.tokyo_tm_modalbox .description_wrap:before{height: 40px;}
+}
+@media (max-width: 1040px) {
+	.mouse-cursor{display: none;}
+	.tokyo_tm_home .home_content{flex-direction: column;text-align: center;}
+	.tokyo_tm_home .avatar{margin-bottom: 30px;}
+	.tokyo_tm_home .details{margin-left: 0px;}
+	.tokyo_tm_title .title_flex{flex-direction: column;align-items: flex-start;}
+	.tokyo_tm_title .portfolio_filter{padding-top: 48px;}
+	.container{padding: 0px 20px;}
+	.tokyo_tm_services .list ul li{width: 50%;}
+	.tokyo_tm_partners ul li{width: 33.3333%;}
+	.tokyo_tm_modalbox .details .title{font-size: 20px;}
+	.tokyo_tm_modalbox .portfolio_main_title h3{font-size: 20px;}
+	.tokyo_tm_modalbox .service_popup_informations .main_title h3{font-size: 20px;}
+}
+@media (max-width: 768px) {
+	.tokyo_tm_home .details .name{font-size: 30px;}
+	.tokyo_tm_home .avatar{min-width: 200px;min-height: 200px;}
+	.tokyo_tm_portfolio .portfolio_list{margin: 0px;}
+	.tokyo_tm_portfolio .portfolio_list li{width: 100%;padding-left: 0px;}
+	.tokyo_tm_news ul{margin: 0px;}
+	.tokyo_tm_news ul li{width: 100%;padding-left: 0px;}
+	.tokyo_tm_news ul li .details{padding-left: 30px;padding-right: 30px;}
+	.tokyo_tm_modalbox .main_content .icon{position: relative;margin-bottom: 25px;}
+	.tokyo_tm_modalbox .main_content .quotebox{padding-left: 0px;}
+	.tokyo_tm_modalbox .close a{width: 30px;height: 30px;font-size: 14px;}
+	.tokyo_tm_modalbox .close{left: auto;right: 0px;top: -40px;}
+	.tokyo_tm_modalbox .box_inner{width: 300px;}
+	.tokyo_tm_modalbox .description_wrap{padding: 20px;}
+	.tokyo_tm_short_info{flex-direction: column;}
+	.tokyo_tm_short_info .left{width: 100%;padding-right: 0px;}
+	.tokyo_tm_short_info .right{width: 100%;padding-left: 0px;}
+	.tokyo_tm_progressbox .in{flex-direction: column;}
+	.tokyo_tm_progressbox .in .left{width: 100%;padding-right: 0px;margin-bottom: 60px;}
+	.tokyo_tm_progressbox .in .right{width: 100%;padding-left: 0px;}
+	.tokyo_tm_skillbox .in{flex-direction: column;}
+	.tokyo_tm_skillbox .in .left{width: 100%;padding-right: 0px;margin-bottom: 60px;}
+	.tokyo_tm_skillbox .in .right{width: 100%;padding-left: 0px;}
+	.tokyo_tm_resumebox .in{flex-direction: column;}
+	.tokyo_tm_resumebox .in .left{width: 100%;padding-right: 0px;margin-bottom: 60px;}
+	.tokyo_tm_resumebox .in .right{width: 100%;padding-left: 0px;}
+	.tokyo_tm_services .list ul{margin: 0px;}
+	.tokyo_tm_services .list ul li{width: 100%;padding-left: 0px;}
+	.tokyo_tm_partners ul li{width: 50%;}
+	.tokyo_tm_facts .list ul{margin: 0px;}
+	.tokyo_tm_facts .list ul li{width: 100%;padding-left: 0px;}
+	.tokyo_tm_pricing .list > ul{margin: 0px;}
+	.tokyo_tm_pricing .list > ul > li{width: 100%;padding-left: 0px;}
+	.tokyo_tm_modalbox .description_wrap:after{height: 20px;}
+	.tokyo_tm_modalbox .description_wrap:before{height: 20px;}
+	.tokyo_tm_modalbox .portfolio_main_title{margin-bottom: 20px;}
+}
+
+.card-slider {
+	display: flex;
+	overflow: hidden;
+	width: 100%;
+	justify-content: center; /* Center the cards */
+}
+.card {
+	flex: 1 0 15%; /* Adjusts the width of each card to be smaller */
+	margin: 0 5px; /* Space between cards */
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+	border-radius: 15px; /* More rounded corners */
+	overflow: hidden;
+	display: none; /* Initially hide all cards */
+	transition: transform 0.3s, box-shadow 0.3s; /* Smooth scaling and shadow effect */
+	margin-bottom: 20px; /* Increased space below cards */
+}
+.card:hover {
+	transform: scale(1.05); /* Scale up on hover */
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
+}
+.card img {
+	width: 100%; /* Make image responsive */
+	height: auto; /* Maintain aspect ratio */
+	object-fit: cover; /* Ensure the image covers the area without distortion */
+	transition: transform 0.3s; /* Smooth image scaling */
+}
+.card img:hover {
+	transform: scale(1.1); /* Slightly scale image on hover */
+}
+.card-content {
+	padding: 20px; /* Increased padding for better spacing */
+	font-size: 1em; /* Slightly larger text size */
+	text-align: center; /* Center text */
+	background-color: #f9f9f9; /* Light background for content area */
+	transition: background-color 0.3s; /* Smooth background color transition */
+}
+.card-content:hover {
+	background-color: #f1f1f1; /* Darker background on hover */
+}
+
+.tokyo_tm_portfolio .portfolio_list img {
+    width: 100%; /* Make image responsive */
+    height: 100%; /* Set height to 100% for square aspect ratio */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+/* Add these styles to the existing CSS file */
+
+/* MOBILE MENU STYLES */
+.tokyo_tm_mobile_menu {
+  position: fixed;
+  top: 50px;
+  right: -100%;
+  width: 100%;
+  height: calc(100vh - 50px);
+  background-color: #fff;
+  z-index: 15;
+  transition: all 0.3s ease;
+  overflow: auto;
+}
+
+.tokyo_tm_mobile_menu.opened {
+  right: 0;
+}
+
+.tokyo_tm_mobile_menu .menu_list {
+  padding: 50px 20px;
+}
+
+.tokyo_tm_mobile_menu .menu_list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tokyo_tm_mobile_menu .menu_list ul li {
+  margin-bottom: 15px;
+}
+
+.tokyo_tm_mobile_menu .menu_list ul li a {
+  color: #333;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+  padding: 10px 0;
+}
+
+.tokyo_tm_mobile_menu .menu_list ul li.active a {
+  color: #000;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+  padding: 15px;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+}
+
+.hamburger-box {
+  width: 30px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  width: 30px;
+  height: 2px;
+  background-color: #333;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -10px;
+}
+
+.hamburger-inner::after {
+  bottom: -10px;
+}
+
+.hamburger--slider .hamburger-inner {
+  top: 2px;
+}
+
+.hamburger--slider.is-active .hamburger-inner {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+
+.hamburger--slider.is-active .hamburger-inner::before {
+  transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+  opacity: 0;
+}
+
+.hamburger--slider.is-active .hamburger-inner::after {
+  transform: translate3d(0, -20px, 0) rotate(-90deg);
+}
+
+/* Portfolio Styles */
+.tokyo_tm_portfolio {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  padding: 100px 0;
+}
+
+.tokyo_tm_portfolio .portfolio_list {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  margin-top: 60px;
+}
+
+.tokyo_tm_portfolio .portfolio_list ul {
+  margin: 0 -40px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tokyo_tm_portfolio .portfolio_list ul li {
+  width: 33.3333%;
+  padding: 0 40px;
+  margin-bottom: 40px;
+}
+
+.tokyo_tm_portfolio .portfolio_list ul li .inner {
+  width: 100%;
+  height: 100%;
+  clear: both;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.tokyo_tm_portfolio .portfolio_list .entry {
+  position: relative;
+  overflow: hidden;
+}
+
+.tokyo_tm_portfolio .portfolio_list .entry img {
+  min-width: 100%;
+  opacity: 0;
+}
+
+.tokyo_tm_portfolio .portfolio_list .entry .main_image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+}
+
+.tokyo_tm_portfolio .portfolio_list .entry:hover .main_image {
+  transform: scale(1.1);
+}
+
+.tokyo_tm_portfolio .portfolio_list .mobile_title {
+  display: none;
+}
+
+.tokyo_tm_portfolio .portfolio_list .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.tokyo_tm_portfolio .portfolio_list .entry:hover .overlay {
+  opacity: 1;
+}
+
+.tokyo_tm_portfolio .portfolio_list .overlay_inner {
+  text-align: center;
+  color: #fff;
+}
+
+.tokyo_tm_portfolio .portfolio_list .overlay_inner h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.tokyo_tm_portfolio .portfolio_list .overlay_inner span {
+  font-size: 16px;
+  color: #999;
+}
+
+@media (max-width: 1040px) {
+  .tokyo_tm_portfolio .portfolio_list ul li {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .tokyo_tm_portfolio {
+    padding: 60px 0;
+  }
+  .tokyo_tm_portfolio .portfolio_list {
+    margin-top: 40px;
+  }
+  .tokyo_tm_portfolio .portfolio_list ul {
+    margin: 0;
+  }
+  .tokyo_tm_portfolio .portfolio_list ul li {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  .tokyo_tm_portfolio .portfolio_list .mobile_title {
+    display: block;
+    padding: 20px;
+    background: #f8f8f8;
+  }
+  .tokyo_tm_portfolio .portfolio_list .mobile_title h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  .tokyo_tm_portfolio .portfolio_list .mobile_title span {
+    font-size: 14px;
+    color: #666;
+  }
+  .tokyo_tm_portfolio .portfolio_list .overlay {
+    display: none;
+  }
+}
+
+/* Contact Styles */
+.tokyo_tm_contact {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  padding: 100px 0;
+}
+
+.tokyo_tm_contact .contact_info {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  margin-top: 60px;
+  display: flex;
+}
+
+.tokyo_tm_contact .contact_info .left {
+  width: 40%;
+  padding-right: 40px;
+}
+
+.tokyo_tm_contact .contact_info .right {
+  width: 60%;
+  padding-left: 40px;
+}
+
+.tokyo_tm_contact .contact_info .left ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.tokyo_tm_contact .contact_info .left ul li {
+  margin-bottom: 30px;
+}
+
+.tokyo_tm_contact .contact_info .left ul li:last-child {
+  margin-bottom: 0;
+}
+
+.tokyo_tm_contact .contact_info .left ul li .list_inner {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.tokyo_tm_contact .contact_info .left ul li h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.tokyo_tm_contact .contact_info .left ul li p {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+.tokyo_tm_contact .contact_info .left ul li p a {
+  color: #666;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.tokyo_tm_contact .contact_info .left ul li p a:hover {
+  color: #000;
+}
+
+.tokyo_tm_contact .fields {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.tokyo_tm_contact .fields .first {
+  width: 100%;
+  float: left;
+  margin-bottom: 30px;
+}
+
+.tokyo_tm_contact .fields .first ul {
+  margin: 0 -15px;
+  list-style-type: none;
+  display: flex;
+}
+
+.tokyo_tm_contact .fields .first ul li {
+  margin: 0;
+  padding: 0 15px;
+  width: 50%;
+}
+
+.tokyo_tm_contact .fields input,
+.tokyo_tm_contact .fields textarea {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  padding: 0 20px;
+  font-size: 14px;
+  color: #333;
+  resize: none;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.tokyo_tm_contact .fields textarea {
+  height: 150px;
+  padding: 15px 20px;
+}
+
+.tokyo_tm_contact .fields input:focus,
+.tokyo_tm_contact .fields textarea:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.tokyo_tm_button {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  margin-top: 20px;
+}
+
+.tokyo_tm_button button {
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+  padding: 12px 40px;
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+.tokyo_tm_button button:hover {
+  background-color: transparent;
+  color: #000;
+}
+
+@media (max-width: 1040px) {
+  .tokyo_tm_contact .contact_info {
+    flex-direction: column;
+  }
+  .tokyo_tm_contact .contact_info .left {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 50px;
+  }
+  .tokyo_tm_contact .contact_info .right {
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .tokyo_tm_contact {
+    padding: 60px 0;
+  }
+  .tokyo_tm_contact .contact_info {
+    margin-top: 40px;
+  }
+  .tokyo_tm_contact .fields .first ul {
+    flex-direction: column;
+  }
+  .tokyo_tm_contact .fields .first ul li {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .tokyo_tm_contact .fields .first ul li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tokyo_tm_section_wrap {
+  width: 100%;
+  height: 100vh;
+  clear: both;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.tokyo_tm_section {
+  width: 100%;
+  height: auto;
+  clear: both;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+  transition: all .3s ease;
+  padding: 100px 0;
+}
+
+.tokyo_tm_section.active {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+
+.social_list {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: flex-start; /* Changed to left align */
+  padding: 0;
+  width: 100%;
+}
+
+.social_list li {
+  list-style: none;
+}
+
+.social_list a {
+  color: #767676;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  text-decoration: none;
+}
+
+.social_list a:hover {
+  color: #000;
+  transform: translateY(-3px);
+}
+
+/* Remove unnecessary styles */
+.social_list a::before {
+  display: none;
+}
+
+/* For contact page specific styling */
+.contact_social_list {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .social_list {
+    justify-content: center; /* Center on mobile */
+  }
+}
+/* Container styles */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+  }
+  
+  /* Home content styles */
+  .tokyo_tm_home {
+	padding: 20px 0;
+  }
+  
+  .home_content {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	margin-bottom: 40px;
+  }
+  
+  .avatar {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	overflow: hidden;
+  }
+  
+  .avatar .image {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+  }
+  
+  .details {
+	flex: 1;
+  }
+  
+  .name {
+	font-size: 28px;
+	font-weight: 600;
+	margin: 0 0 10px;
+	color: #333;
+  }
+  
+  .name span {
+	color: #666;
+  }
+  
+  .job {
+	font-size: 16px;
+	color: #666;
+	margin: 0 0 15px;
+  }
+  
+  .job span {
+	color: #333;
+	font-weight: 500;
+  }
+  
+  .social_list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	gap: 15px;
+  }
+  
+  .social_list li a {
+	color: #666;
+	font-size: 18px;
+	transition: color 0.3s ease;
+  }
+  
+  .social_list li a:hover {
+	color: #333;
+  }
+  
+  /* Section title */
+  .section-title {
+	font-size: 24px;
+	font-weight: 600;
+	color: #333;
+  }
+  
+  /* Artwork slider styles */
+  .artwork-slider {
+	width: 100%;
+	max-width: 1400px;
+	margin: 0 auto;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin-left:0;
+	margin-right: 0;
+  }
+  
+  .slider-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	margin-left:0;
+	margin-right: 0;
+  }
+  
+  .slide {
+	transition: all 0.5s ease-in-out;
+	height: 100%;
+	margin-left:0;
+	margin-right: 0;
+  }
+  
+  .artwork-card {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-left:0;
+	margin-right: 0;
+  }
+  
+  .artwork-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 8px;
+	margin-bottom: 0;
+	margin-left:0;
+	margin-right: 0;
+  }
+  
+  .artwork-content {
+	padding: 5px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+  }
+  
+  .artwork-content h3 {
+	font-size: 24px;
+	font-weight: 600;
+	margin: 0 0 8px 0;
+	color: #333;
+  }
+  
+  .artwork-content p {
+	font-size: 16px;
+	line-height: 1.4;
+	color: #666;
+	margin: 0;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+  }
+  
+  /* Slider navigation */
+  .slider-button {
+	position: absolute;
+	top: 40%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: white;
+	border: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2;
+	transition: all 0.3s ease;
+  }
+  
+  .slider-button:hover {
+	background: #f5f5f5;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .slider-button.prev {
+	left: 10px;
+  }
+  
+  .slider-button.next {
+	right: 10px;
+  }
+  
+  .slider-dots {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 15px;
+  }
+  
+  .dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #ddd;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	transition: all 0.3s ease;
+  }
+  
+  .dot:hover {
+	background: #bbb;
+  }
+  
+  .dot.active {
+	background: #666;
+	transform: scale(1.2);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+	.container {
+	  padding: 0 15px;
+	}
+  
+	.home_content {
+	  flex-direction: column;
+	  text-align: center;
+	  gap: 20px;
+	}
+  
+	.social_list {
+	  justify-content: center;
+	}
+  
+	.artwork-slider {
+	  padding: 15px;
+	  height: calc(100vh - 250px);
+	}
+  
+	.artwork-image {
+	  height: 60%;
+	}
+  
+	.artwork-content {
+	  height: 40%;
+	}
+  
+	.artwork-content h3 {
+	  font-size: 20px;
+	  margin-bottom: 6px;
+	}
+  
+	.artwork-content p {
+	  font-size: 14px;
+	  line-height: 1.3;
+	}
+  
+	.slider-button {
+	  width: 32px;
+	  height: 32px;
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.name {
+	  font-size: 24px;
+	}
+  
+	.job {
+	  font-size: 14px;
+	}
+  
+	.section-title {
+	  font-size: 20px;
+	}
+  }
+  
+  /* New About Page Styles */
+  .about_header {
+    text-align: left;
+    margin-bottom: 60px;
+  }
+  
+  .about_header .subtitle {
+    display: inline-block;
+    background-color: rgba(0,0,0,.04);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .about_header .main_title {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    color: #000;
+  }
+  
+  .about_profile {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 50px;
+    margin-bottom: 60px;
+    align-items: start;
+  }
+  
+  .profile_image {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .profile_image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .profile_image:hover img {
+    transform: scale(1.05);
+  }
+  
+  .profile_content {
+    padding: 20px 0;
+  }
+  
+  .profile_name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #000;
+  }
+  
+  .profile_title {
+    display: block;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 25px;
+  }
+  
+  .profile_text {
+    color: #444;
+    line-height: 1.8;
+  }
+  
+  .profile_text p {
+    margin-bottom: 20px;
+  }
+  
+  .about_info_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .info_card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .info_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+  
+  .info_card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 25px 0;
+    color: #000;
+  }
+  
+  .info_card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .info_card ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .info_card ul li:last-child {
+    border-bottom: none;
+  }
+  
+  .info_card .label {
+    font-weight: 500;
+    color: #666;
+  }
+  
+  .info_card .value {
+    color: #000;
+  }
+  
+  .info_card .value a {
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .info_card .value a:hover {
+    color: #666;
+  }
+  
+  .about_cta {
+    text-align: center;
+  }
+  
+  .cta_button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .cta_button:hover {
+    background-color: transparent;
+    color: #000;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .about_profile {
+      grid-template-columns: 250px 1fr;
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about_header .main_title {
+      font-size: 32px;
+    }
+  
+    .about_profile {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  
+    .profile_image {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  
+    .profile_content {
+      text-align: center;
+    }
+  
+    .about_info_grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .info_card {
+      padding: 25px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about_header .main_title {
+      font-size: 28px;
+    }
+  
+    .profile_name {
+      font-size: 26px;
+    }
+  
+    .profile_title {
+      font-size: 16px;
+    }
+  
+    .info_card ul li {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+  }
+  

@@ -1,0 +1,546 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.tokyo_tm_all_wrap {
+  width: 100%;
+  height: 100vh;
+  clear: both;
+  float: left;
+  position: relative;
+}
+
+.rightpart {
+  width: calc(100% - 450px);
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.rightpart_in {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+}
+
+.tokyo_tm_section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  padding: 100px 0;
+}
+
+.tokyo_tm_section.active {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+  z-index: 1;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  height: auto;
+}
+
+/* About section specific styles */
+.tokyo_tm_about {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  padding: 0;
+}
+
+.tokyo_tm_about .about_image {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  margin-bottom: 45px;
+}
+
+.tokyo_tm_about .about_image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tokyo_tm_about .description {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.tokyo_tm_about .description .left {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.tokyo_tm_about .description .text {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  margin-bottom: 35px;
+}
+
+/* Remove conflicting card styles from App.css */
+.card {
+  display: block;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.card.active {
+  display: block;
+  opacity: 1;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Services Section Styles */
+.tokyo_tm_services {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.tokyo_tm_services .list ul {
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -30px;
+}
+
+.tokyo_tm_services .list ul li {
+  width: calc(50% - 30px);
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.tokyo_tm_services .list_inner {
+  width: 100%;
+  height: 100%;
+  clear: both;
+  float: left;
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 45px 30px;
+  transition: all .3s ease;
+}
+
+.tokyo_tm_services .list_inner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.tokyo_tm_services .number {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #E3E3E3;
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.tokyo_tm_services .title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.tokyo_tm_services .text {
+  color: #767676;
+}
+
+/* Portfolio Section Styles */
+.tokyo_tm_portfolio {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  padding: 0;
+}
+
+.portfolio_list {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.portfolio_list ul.gallery_zoom {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.portfolio_list ul.gallery_zoom li {
+  width: calc(33.333% - 20px);
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.portfolio_list .inner {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.portfolio_list .entry {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.portfolio_list img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.portfolio_list .abs_image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform 0.3s ease;
+}
+
+.portfolio_list .entry:hover .abs_image {
+  transform: scale(1.1);
+}
+
+.portfolio_list .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.portfolio_list .entry:hover .overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.portfolio_list .overlay_inner {
+  text-align: center;
+  padding: 20px;
+}
+
+.portfolio_list .overlay h3 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 10px 0;
+}
+
+.portfolio_list .overlay span {
+  color: #fff;
+  font-size: 16px;
+}
+
+/* Contact Section Styles */
+.tokyo_tm_contact {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.contact_info {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  display: flex;
+  gap: 50px;
+}
+
+.contact_info .left {
+  width: 40%;
+}
+
+.contact_info .right {
+  width: 60%;
+}
+
+.contact_info .left ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.contact_info .left ul li {
+  margin-bottom: 30px;
+}
+
+.contact_info .left ul li:last-child {
+  margin-bottom: 0;
+}
+
+.contact_info .left h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.contact_info .left p,
+.contact_info .left a {
+  color: #767676;
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+.contact_info .left a:hover {
+  color: #000;
+}
+
+.fields .first ul {
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 30px;
+}
+
+.fields .first ul li {
+  width: 50%;
+}
+
+.fields input,
+.fields textarea {
+  width: 100%;
+  border: 1px solid #E5E5E5;
+  background-color: transparent;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: all .3s ease;
+}
+
+.fields input:focus,
+.fields textarea:focus {
+  border-color: #000;
+}
+
+.fields textarea {
+  height: 150px;
+  resize: none;
+}
+
+.tokyo_tm_button button {
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all .3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.tokyo_tm_button button:hover {
+  background-color: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .tokyo_tm_services .list ul li {
+    width: calc(100% - 30px);
+  }
+  
+  .portfolio_list ul.gallery_zoom li {
+    width: calc(50% - 15px);
+  }
+  
+  .contact_info {
+    flex-direction: column;
+  }
+  
+  .contact_info .left,
+  .contact_info .right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio_list ul.gallery_zoom li {
+    width: 100%;
+  }
+  
+  .fields .first ul {
+    flex-direction: column;
+  }
+  
+  .fields .first ul li {
+    width: 100%;
+  }
+  
+  .portfolio_list .portfolio_image img {
+    height: 250px;
+  }
+}
+
+.leftpart {
+  width: 450px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+  border-right: 1px solid #E5E5E5;
+}
+
+.leftpart_inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.logo {
+  margin-bottom: 20px;
+  height: auto;
+  padding: 0;
+}
+
+.logo h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.menu {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.menu ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu ul li {
+  margin-bottom: 15px;
+}
+
+.menu ul li:last-child {
+  margin-bottom: 0;
+}
+
+.menu ul li a {
+  color: #767676;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all .3s ease;
+}
+
+.menu ul li a:hover,
+.menu ul li.active a {
+  color: #000;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #767676;
+}
+
+.copyright a {
+  color: #000;
+  text-decoration: none;
+}

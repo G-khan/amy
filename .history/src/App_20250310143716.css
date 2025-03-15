@@ -1,0 +1,148 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.tokyo_tm_all_wrap {
+  width: 100%;
+  height: 100vh;
+  clear: both;
+  float: left;
+  position: relative;
+}
+
+.rightpart {
+  width: calc(100% - 450px);
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.rightpart_in {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.tokyo_tm_section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  padding: 100px 0;
+}
+
+.tokyo_tm_section.active {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  height: auto;
+}
+
+/* About section specific styles */
+.tokyo_tm_about {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  padding: 0;
+}
+
+.tokyo_tm_about .about_image {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  margin-bottom: 45px;
+}
+
+.tokyo_tm_about .about_image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tokyo_tm_about .description {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.tokyo_tm_about .description .left {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+}
+
+.tokyo_tm_about .description .text {
+  width: 100%;
+  height: auto;
+  clear: both;
+  float: left;
+  margin-bottom: 35px;
+}
+
+/* Remove conflicting card styles from App.css */
+.card {
+  display: block;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.card.active {
+  display: block;
+  opacity: 1;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.read-the-docs {
+  color: #888;
+}

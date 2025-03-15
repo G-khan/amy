@@ -1,0 +1,5 @@
+Foodier (LLM Cohere)|https://github.com/ijzepeda-LC/Foodier
+Spotify Recommender System|https://github.com/ijzepeda-LC/spotify_recom_system
+Pixel Heist|https://github.com/ijzepeda-LC/Pixel_Heist
+Lecture Summarizer|https://github.com/ijzepeda-LC/hackathon
+Kadabra - Shazaam for movies|https://github.com/ijzepeda-LC/Kadabra_AML2404
