@@ -91,3 +91,6 @@ out/
 *.pid
 *.gz
 *.swp 
+
+.history
+.history/*
