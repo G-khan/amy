@@ -181,6 +181,7 @@ body {
   scroll-behavior: smooth;
   padding: 10px;
   position: relative;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .card {
@@ -292,20 +293,41 @@ body {
 @media (max-width: 768px) {
   .card-slider {
     max-width: 500px;
-    padding: 15px 40px;
+    padding: 15px 25px;
+    touch-action: pan-x pinch-zoom; /* Enable horizontal touch gestures */
+  }
+  
+  .card-slider-container {
+    scroll-snap-type: x mandatory; /* Enable snap points */
+    -webkit-user-select: none; /* Prevent text selection while swiping */
+    user-select: none;
+  }
+  
+  .card {
+    min-width: 260px;
+    flex: 0 0 calc(100% - 20px);
+    scroll-snap-align: center; /* Snap cards to center */
+  }
+  
+  .card img {
+    height: 200px;
+    pointer-events: none; /* Prevent image dragging on mobile */
   }
   
   .slider-nav {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    opacity: 0.7; /* Make buttons slightly transparent on mobile */
+  }
+
+  /* Hide scrollbar on mobile */
+  .card-slider-container::-webkit-scrollbar {
+    display: none;
   }
   
-  .slider-nav.prev {
-    left: 0;
-  }
-  
-  .slider-nav.next {
-    right: 0;
+  .card-slider-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
