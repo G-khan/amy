@@ -3470,3 +3470,705 @@ body.loading {
     border-radius: 10px;
   }
   
+/*---------------------------------------------------*/
+/*	11) TOKYO MEDIA QUERIES (FOR SMALL DEVICES)
+/*---------------------------------------------------*/
+
+/* Large Tablets and Small Laptops */
+@media (max-width: 1200px) {
+  .leftpart {
+    width: 350px;
+    padding: 50px 50px;
+  }
+  
+  .rightpart {
+    width: calc(100% - 350px);
+    padding-left: 0;
+  }
+  
+  .tokyo_tm_home .avatar {
+    min-width: 250px;
+    min-height: 250px;
+  }
+  
+  .tokyo_tm_home .details .name {
+    font-size: 45px;
+  }
+  
+  .tokyo_tm_services .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .tokyo_tm_about .short_info {
+    flex-direction: column;
+  }
+  
+  .tokyo_tm_about .short_info .left,
+  .tokyo_tm_about .short_info .right {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .tokyo_tm_about .short_info .right {
+    margin-top: 30px;
+  }
+  
+  .tokyo_tm_progressbox .in,
+  .tokyo_tm_skillbox .in,
+  .tokyo_tm_resumebox .in {
+    flex-direction: column;
+  }
+  
+  .tokyo_tm_progressbox .left,
+  .tokyo_tm_progressbox .right,
+  .tokyo_tm_skillbox .left,
+  .tokyo_tm_skillbox .right,
+  .tokyo_tm_resumebox .left,
+  .tokyo_tm_resumebox .right {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .tokyo_tm_progressbox .right,
+  .tokyo_tm_skillbox .right,
+  .tokyo_tm_resumebox .right {
+    margin-top: 50px;
+  }
+}
+
+/* Tablets and Mobile Landscape */
+@media (max-width: 1024px) {
+  .leftpart {
+    width: 300px;
+    padding: 40px 30px;
+  }
+  
+  .rightpart {
+    width: calc(100% - 300px);
+  }
+  
+  .tokyo_tm_home .avatar {
+    min-width: 200px;
+    min-height: 200px;
+  }
+  
+  .tokyo_tm_home .details .name {
+    font-size: 38px;
+  }
+  
+  .tokyo_tm_home .details .job {
+    font-size: 16px;
+  }
+  
+  .container {
+    padding: 0 30px;
+  }
+  
+  .tokyo_tm_section.active {
+    padding: 80px 0;
+  }
+  
+  .tokyo_tm_title .title_flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .tokyo_tm_title .portfolio_filter {
+    padding-top: 30px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_filter ul li {
+    margin: 0 15px 0 0;
+  }
+  
+  .tokyo_tm_contact .contact_info {
+    flex-direction: column;
+  }
+  
+  .tokyo_tm_contact .contact_info .left {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+  
+  .tokyo_tm_contact .contact_info .right {
+    width: 100%;
+    padding-left: 0;
+  }
+  
+  .tokyo_tm_contact .fields .first ul {
+    flex-direction: column;
+  }
+  
+  .tokyo_tm_contact .fields .first ul li {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .tokyo_tm_contact .fields .first ul li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  /* Hide desktop sidebar and show mobile topbar */
+  .leftpart {
+    display: none !important;
+    width: 0;
+  }
+  
+  .rightpart {
+    width: 100% !important;
+    padding-left: 0 !important;
+    left: 0;
+  }
+  
+  .tokyo_tm_topbar {
+    display: block !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Adjust content padding for mobile */
+  .tokyo_tm_section.active {
+    padding: 70px 0 60px 0;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  /* Home section mobile adjustments */
+  .tokyo_tm_home {
+    min-height: 50vh;
+    padding: 40px 0;
+  }
+  
+  .tokyo_tm_home .home_content {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+  
+  .tokyo_tm_home .avatar {
+    min-width: 180px;
+    min-height: 180px;
+    margin-bottom: 0;
+  }
+  
+  .tokyo_tm_home .details {
+    margin-left: 0;
+  }
+  
+  .tokyo_tm_home .details .name {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .tokyo_tm_home .details .job {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .tokyo_tm_home .social {
+    justify-content: center;
+  }
+  
+  /* Card slider mobile improvements */
+  .card-slider {
+    max-width: 100%;
+    padding: 10px 30px;
+    margin-top: 20px;
+  }
+  
+  .card-slider-container {
+    scroll-snap-type: x mandatory;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  .card {
+    min-width: 280px;
+    flex: 0 0 calc(100% - 20px);
+    scroll-snap-align: center;
+  }
+  
+  .card img {
+    height: 200px;
+    pointer-events: none;
+  }
+  
+  .slider-nav {
+    width: 35px;
+    height: 35px;
+    opacity: 0.8;
+  }
+  
+  .slider-nav.prev {
+    left: 0;
+  }
+  
+  .slider-nav.next {
+    right: 0;
+  }
+  
+  /* Hide scrollbar on mobile */
+  .card-slider-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .card-slider-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Services mobile grid */
+  .tokyo_tm_services .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .tokyo_tm_services .service-item .list_inner {
+    min-height: auto;
+    padding: 30px 25px;
+  }
+  
+  .tokyo_tm_services .list ul li .number {
+    font-size: 60px;
+  }
+  
+  .tokyo_tm_services .list ul li .title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-right: 60px;
+  }
+  
+  /* Portfolio mobile grid */
+  .tokyo_tm_portfolio .portfolio_list {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list .entry {
+    height: 280px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_filter {
+    margin-bottom: 30px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_filter ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_filter ul li {
+    margin: 0;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_filter ul li a {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.05);
+    font-size: 14px;
+  }
+  
+  /* About section mobile */
+  .tokyo_tm_about {
+    padding: 60px 0;
+  }
+  
+  .tokyo_tm_about .top_author_image {
+    width: 150px;
+    margin: 0 auto 30px auto;
+    display: block;
+  }
+  
+  .tokyo_tm_about .about_title h3 {
+    font-size: 20px;
+  }
+  
+  /* Contact mobile */
+  .tokyo_tm_contact {
+    padding: 60px 0;
+  }
+  
+  .tokyo_tm_contact .contact_info {
+    margin-top: 30px;
+  }
+  
+  .tokyo_tm_contact .fields input,
+  .tokyo_tm_contact .fields textarea {
+    height: 50px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  .tokyo_tm_contact .fields textarea {
+    height: 120px;
+  }
+  
+  /* Modal mobile improvements */
+  .tokyo_tm_modalbox .box_inner {
+    width: 95vw;
+    max-height: 90vh;
+    margin: 20px;
+  }
+  
+  .tokyo_tm_modalbox .main_details {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .tokyo_tm_modalbox .top_image {
+    height: 250px;
+  }
+  
+  .tokyo_tm_modalbox .portfolio_main_title h3 {
+    font-size: 22px;
+  }
+  
+  .tokyo_tm_modalbox .description_wrap {
+    padding: 20px;
+  }
+  
+  /* Mobile menu improvements */
+  .tokyo_tm_mobile_menu {
+    width: 100%;
+    right: -100%;
+  }
+  
+  .tokyo_tm_mobile_menu .menu_list {
+    padding: 20px;
+  }
+  
+  .tokyo_tm_mobile_menu .menu_list ul li a {
+    font-size: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  /* Social list mobile */
+  .social_list {
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .social_list a {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .tokyo_tm_section.active {
+    padding: 60px 0 50px 0;
+  }
+  
+  /* Home section small mobile */
+  .tokyo_tm_home .avatar {
+    min-width: 150px;
+    min-height: 150px;
+  }
+  
+  .tokyo_tm_home .details .name {
+    font-size: 28px;
+  }
+  
+  .tokyo_tm_home .details .job {
+    font-size: 14px;
+  }
+  
+  /* Card slider small mobile */
+  .card-slider {
+    padding: 10px 25px;
+  }
+  
+  .card {
+    min-width: 260px;
+  }
+  
+  .card-content {
+    padding: 15px;
+  }
+  
+  .card-content h6 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .card-content p {
+    font-size: 13px;
+  }
+  
+  /* Services small mobile */
+  .tokyo_tm_services {
+    padding: 50px 0;
+  }
+  
+  .tokyo_tm_services .service-item .list_inner {
+    padding: 25px 20px;
+  }
+  
+  .tokyo_tm_services .list ul li .number {
+    font-size: 50px;
+  }
+  
+  .tokyo_tm_services .list ul li .title {
+    font-size: 18px;
+    padding-right: 50px;
+  }
+  
+  /* Portfolio small mobile */
+  .tokyo_tm_portfolio {
+    padding: 50px 0;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list .entry {
+    height: 250px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list .overlay_inner h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list .overlay_inner p {
+    font-size: 14px;
+  }
+  
+  /* About small mobile */
+  .tokyo_tm_about {
+    padding: 50px 0;
+  }
+  
+  .tokyo_tm_about .top_author_image {
+    width: 120px;
+  }
+  
+  .tokyo_tm_about .about_title h3 {
+    font-size: 18px;
+  }
+  
+  /* Contact small mobile */
+  .tokyo_tm_contact {
+    padding: 50px 0;
+  }
+  
+  .tokyo_tm_contact .fields input,
+  .tokyo_tm_contact .fields textarea {
+    height: 45px;
+    padding: 0 15px;
+  }
+  
+  .tokyo_tm_contact .fields textarea {
+    height: 100px;
+    padding: 15px;
+  }
+  
+  /* Modal small mobile */
+  .tokyo_tm_modalbox .box_inner {
+    width: 98vw;
+    margin: 10px;
+  }
+  
+  .tokyo_tm_modalbox .top_image {
+    height: 200px;
+  }
+  
+  .tokyo_tm_modalbox .portfolio_main_title h3 {
+    font-size: 20px;
+  }
+  
+  .tokyo_tm_modalbox .description_wrap {
+    padding: 15px;
+  }
+  
+  /* Social list small mobile */
+  .social_list {
+    gap: 15px;
+  }
+  
+  .social_list a {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
+  /* Topbar small mobile */
+  .tokyo_tm_topbar .topbar_inner {
+    padding: 0 15px;
+  }
+  
+  .tokyo_tm_topbar .logo h3 {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .tokyo_tm_home .details .name {
+    font-size: 24px;
+  }
+  
+  .tokyo_tm_home .avatar {
+    min-width: 120px;
+    min-height: 120px;
+  }
+  
+  .card {
+    min-width: 240px;
+  }
+  
+  .tokyo_tm_services .list ul li .title {
+    font-size: 16px;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list .entry {
+    height: 220px;
+  }
+  
+  .tokyo_tm_modalbox .box_inner {
+    width: 100vw;
+    margin: 0;
+    border-radius: 0;
+  }
+  
+  .tokyo_tm_modalbox .top_image {
+    height: 180px;
+  }
+}
+
+/* Landscape Mobile Fixes */
+@media (max-width: 768px) and (orientation: landscape) {
+  .tokyo_tm_home {
+    min-height: 40vh;
+    padding: 20px 0;
+  }
+  
+  .tokyo_tm_home .avatar {
+    min-width: 120px;
+    min-height: 120px;
+  }
+  
+  .tokyo_tm_home .details .name {
+    font-size: 24px;
+  }
+  
+  .tokyo_tm_section.active {
+    padding: 60px 0 40px 0;
+  }
+  
+  .card-slider {
+    margin-top: 10px;
+  }
+  
+  .card {
+    min-width: 200px;
+  }
+  
+  .card img {
+    height: 150px;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .tokyo_tm_home .avatar .image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover {
+    transform: none;
+  }
+  
+  .tokyo_tm_services .service-item .list_inner:hover {
+    transform: none;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list .inner:hover {
+    transform: none;
+  }
+  
+  .slider-nav:hover {
+    transform: translateY(-50%);
+  }
+  
+  /* Improve touch targets */
+  .slider-nav {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .tokyo_tm_mobile_menu .menu_list ul li a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .tokyo_tm_contact .fields input,
+  .tokyo_tm_contact .fields textarea {
+    min-height: 44px;
+  }
+  
+  .tokyo_tm_button button {
+    min-height: 44px;
+    padding: 12px 30px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .tokyo_tm_topbar,
+  .leftpart,
+  .slider-nav,
+  .tokyo_tm_mobile_menu,
+  .tokyo_tm_modalbox {
+    display: none !important;
+  }
+  
+  .rightpart {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+  
+  .tokyo_tm_section.active {
+    padding: 0 !important;
+  }
+  
+  .card-slider {
+    display: none !important;
+  }
+  
+  .tokyo_tm_portfolio .portfolio_list {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+  

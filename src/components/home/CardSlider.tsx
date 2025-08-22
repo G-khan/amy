@@ -10,6 +10,8 @@ interface Artwork {
 const CardSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const artworks: Artwork[] = [
     {
@@ -30,7 +32,15 @@ const CardSlider: React.FC = () => {
     }
   ];
 
-  const cardsPerView = 3;
+  // Responsive cards per view
+  const getCardsPerView = () => {
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  };
+
+  const [cardsPerView, setCardsPerView] = useState(getCardsPerView());
   const maxIndex = Math.max(0, artworks.length - cardsPerView);
 
   const slideNext = () => {
@@ -45,12 +55,45 @@ const CardSlider: React.FC = () => {
     }
   };
 
+  // Touch handlers for mobile swiping
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentIndex < maxIndex) {
+      slideNext();
+    }
+    if (isRightSwipe && currentIndex > 0) {
+      slidePrev();
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCardsPerView(getCardsPerView());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     if (containerRef.current) {
       const translateX = -(currentIndex * (100 / cardsPerView));
       containerRef.current.style.transform = `translateX(${translateX}%)`;
     }
-  }, [currentIndex]);
+  }, [currentIndex, cardsPerView]);
 
   return (
     <div className="card-slider">
@@ -62,7 +105,13 @@ const CardSlider: React.FC = () => {
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
 
-      <div className="card-slider-container" ref={containerRef}>
+      <div 
+        className="card-slider-container" 
+        ref={containerRef}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         {artworks.map((artwork, index) => (
           <div 
             key={index} 
@@ -71,7 +120,10 @@ const CardSlider: React.FC = () => {
               display: 'block',
               visibility: 'visible',
               opacity: index >= currentIndex && index < currentIndex + cardsPerView ? 1 : 0.5,
-              transform: `translateX(${index * (100 / cardsPerView)}%)`
+              transform: `translateX(${index * (100 / cardsPerView)}%)`,
+              minWidth: cardsPerView === 1 ? '100%' : undefined,
+              maxWidth: '100%',
+              overflow: 'hidden'
             }}
           >
             <img src={artwork.image} alt={artwork.title} />

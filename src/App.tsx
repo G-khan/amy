@@ -8,6 +8,7 @@ import Portfolio from './components/portfolio/Portfolio'
 import Contact from './components/contact/Contact'
 import Preloader from './components/layout/Preloader'
 import './assets/css/style.css'
+import './assets/css/mobile-fixes.css'
 import './App.css'
 
 function App() {
