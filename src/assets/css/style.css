@@ -165,10 +165,10 @@ body {
 /* CARD SLIDER */
 .card-slider {
   position: relative;
-  max-width: 1100px;
-  width: 82%;
-  padding: 10px 60px;
-  margin-top: 1em;
+  max-width: 100%;
+  width: 90%;
+  padding: 10px 40px;
+  margin-top: 0.5em;
   display: flex;
   overflow: hidden;
   justify-content: center; /* Center the cards */
@@ -185,7 +185,7 @@ body {
 }
 
 .card {
-  min-width: 250px;
+  min-width: 15.64em;
   flex: 0 0 calc(33.33% - 20px);
   background: #fff;
   border-radius: 8px;
@@ -196,10 +196,10 @@ body {
 
 
 .card img {
-  object-fit: cover;
+  object-fit: fill;
   transition: transform 0.3s ease;
-  width: 100%; /* Make image responsive */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
 }
 
 
@@ -2083,7 +2083,7 @@ body.loading {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 2000;
   opacity: 0;
   visibility: hidden;
   display: flex;
@@ -2099,7 +2099,9 @@ body.loading {
 
 .tokyo_tm_modalbox .box_inner {
   position: relative;
-  max-width: 95vh;
+  /* Use viewport width for modal width to avoid horizontal clipping */
+  width: min(55vw, 95vw);
+  max-width: 95vw;
   max-height: 85vh;
   background: #fff;
   border-radius: 20px;
@@ -3385,7 +3387,8 @@ body.loading {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1100;
+    /* Higher than .tokyo_tm_modalbox (2000) to appear on top */
+    z-index: 3000;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -3446,7 +3449,7 @@ body.loading {
   }
   
   .card img:hover {
-    transform: scale(1.1);
+    transform: scale(1.10);
   }
   
   .card-content {
@@ -3457,7 +3460,7 @@ body.loading {
   }
   
   .card-content:hover {
-    background-color: #f1f1f1;
+    background-color: #fff;
   }
   
   .tokyo_tm_portfolio .portfolio_list img {

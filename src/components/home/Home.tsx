@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faPinterestP } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { portfolioItems, categories, type PortfolioItem } from '../../data/portfolioData';
 
 const Home = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -11,42 +13,19 @@ const Home = () => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   // Minimum swipe distance in pixels
   const minSwipeDistance = 50;
 
-  const artworks = [
-    {
-      image: "https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fm=jpg&w=400&h=300&fit=crop",
-      title: "Artistic Title 1",
-      description: "A beautiful piece showcasing the interplay of texture and color."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1531280558162-f4839ae86457?q=80&w=400&h=300&fit=crop&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Artistic Title 2",
-      description: "An exploration of form and movement through textured elements."
-    },
-    {
-      image: "https://plus.unsplash.com/premium_photo-1664438942214-fee803f245b5?q=80&w=400&h=300&fit=crop&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Artistic Title 3",
-      description: "A contemporary take on traditional artistic methods."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1580039648058-ce393a58a10b?q=80&w=400&h=300&fit=crop&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Artistic Title 4",
-      description: "An abstract interpretation of natural phenomena."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fm=jpg&w=400&h=300&fit=crop",
-      title: "Artistic Title 5",
-      description: "A beautiful piece showcasing the interplay of texture and color."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1531280558162-f4839ae86457?q=80&w=400&h=300&fit=crop&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Artistic Title 6",
-      description: "An exploration of form and movement through textured elements."
-    }
-  ];
+  // Use portfolio items as artworks for the homepage slider
+  const artworks = portfolioItems.map(item => ({
+    image: item.image,
+    title: item.title,
+    description: item.description.short
+  }));
 
   useEffect(() => {
     // Check if device is mobile
@@ -128,6 +107,24 @@ const Home = () => {
     setTouchEnd(null);
   };
 
+  const openModal = (item: PortfolioItem) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null);
+  };
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
+  const closeFullscreen = () => {
+    setIsFullscreen(false);
+  };
+
   return (
     <div className="container">
       <div className="tokyo_tm_home">
@@ -182,11 +179,11 @@ const Home = () => {
             onTouchEnd={onTouchEnd}
           >
             {artworks.map((artwork, index) => (
-              <div key={index} className="card">
+              <div key={index} className="card" onClick={() => openModal(portfolioItems[index])}>
                 <img src={artwork.image} alt={artwork.title} />
                 <div className="card-content">
                   <h6>{artwork.title}</h6>
-                  <p>{artwork.description}</p>
+          
                 </div>
               </div>
             ))}
@@ -200,6 +197,90 @@ const Home = () => {
             <FontAwesomeIcon icon={faChevronRight} />
           </button>
         </div>
+
+        {/* Modal (rendered in portal to avoid clipping/stacking issues) */}
+        {isModalOpen && selectedItem && createPortal(
+          (
+            <div className="tokyo_tm_modalbox opened">
+              <div className="box_inner">
+                <div className="close">
+                  <a href="#home" onClick={(e) => {
+                    e.preventDefault();
+                    closeModal();
+                  }}>
+                    <i className="icon-cancel">✕</i>
+                  </a>
+                </div>
+                <div className="description_wrap">
+                  <div className="popup_details">
+                    <div className="top_image" onClick={toggleFullscreen}>
+                      <img 
+                        src={selectedItem.image} 
+                        alt={selectedItem.title}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                    <div className="portfolio_main_title">
+                      <h3 className="gradient-text">{selectedItem.title}</h3>
+                      <span className="category-badge">{categories.find(cat => cat.id === selectedItem.category)?.name}</span>
+                    </div>
+                    <div className="main_details">
+                      <div className="textbox">
+                        {selectedItem.description.full.split('\n\n').map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </div>
+                      <div className="detailbox">
+                        <ul>
+                          <li>
+                            <span className="first">Teknik</span>
+                            <span>{selectedItem.details.technique}</span>
+                          </li>
+                          <li>
+                            <span className="first">Boyut</span>
+                            <span>{selectedItem.details.size}</span>
+                          </li>
+                          <li>
+                            <span className="first">Yıl</span>
+                            <span>{selectedItem.details.year}</span>
+                          </li>
+                          <li>
+                            <span className="first">Durum</span>
+                            <span>{selectedItem.details.status}</span>
+                          </li>
+                          <li>
+                            <span className="first">Paylaş</span>
+                            <ul className="share">
+                              <li><a href="#" aria-label="Share on Facebook"><i className="fab fa-facebook-f"></i></a></li>
+                              <li><a href="#" aria-label="Share on Twitter"><i className="fab fa-twitter"></i></a></li>
+                              <li><a href="#" aria-label="Share on Instagram"><i className="fab fa-instagram"></i></a></li>
+                              <li><a href="#" aria-label="Share on Pinterest"><i className="fab fa-pinterest-p"></i></a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ),
+          document.body
+        )}
+
+        {isFullscreen && selectedItem && createPortal(
+          (
+            <div className={`fullscreen-image-modal ${isFullscreen ? 'opened' : ''}`} onClick={closeFullscreen}>
+              <div className="close-fullscreen" onClick={closeFullscreen}>X</div>
+              <img 
+                src={selectedItem.image} 
+                alt={selectedItem.title}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          ),
+          document.body
+        )}
       </div>
     </div>
   );
