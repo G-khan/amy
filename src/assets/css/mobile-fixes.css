@@ -647,10 +647,10 @@
     touch-action: manipulation !important;
   }
 }
-
 /* Fix for Android Chrome specific issues */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   .card-slider-container {
     scroll-behavior: smooth !important;
   }
 }
+
