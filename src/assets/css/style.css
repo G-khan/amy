@@ -719,7 +719,7 @@ body.loading {
 /*---------------------------------------------------*/
 
 .tokyo_tm_all_wrap .leftpart{
-	width: 400px;
+	width: 320px;
 	height: 100vh;
 	position: fixed;
 	display: flex;
@@ -810,7 +810,7 @@ body.loading {
 	float: left;
 	position: relative;
 	background-color: #f8f8f8;
-	padding-left: 450px;
+	padding-left: 320px;
 }
 .tokyo_tm_all_wrap .rightpart_in{
 	position: relative;
