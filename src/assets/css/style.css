@@ -41,18 +41,17 @@ body {
 }
 
 .leftpart {
-  width: 450px;
   height: 100vh;
   position: fixed;
   left: 0px;
   top: 0px;
   background-color: #fff;
-  padding: 50px 100px;
+  padding: 50px 60px;
   z-index: 10;
 }
 
 .rightpart {
-  width: calc(100% - 450px);
+  width: calc(100% - 350px);
   height: 100vh;
   position: fixed;
   right: 0;
@@ -720,13 +719,12 @@ body.loading {
 /*---------------------------------------------------*/
 
 .tokyo_tm_all_wrap .leftpart{
-	width: 450px;
+	width: 400px;
 	height: 100vh;
 	position: fixed;
 	display: flex;
 	align-items: center;
 	z-index: 12;
-	padding: 0px 90px;
 	background-color: #fff;
 }
 .tokyo_tm_all_wrap .leftpart_inner{
