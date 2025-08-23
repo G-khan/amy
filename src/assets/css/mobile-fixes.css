@@ -728,3 +728,67 @@
   }
 }
 
+/* Instagram Feed Section Styles */
+.instagram-feed-section {
+  width: 100%;
+  margin: 80px 0;
+  padding: 60px 20px;
+  background: #f8f8f8;
+}
+
+.instagram-feed-section .section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.instagram-feed-section .section-title h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.elfsight-instagram-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Responsive adjustments for Instagram Feed */
+@media (max-width: 768px) {
+  .instagram-feed-section {
+    margin: 60px 0;
+    padding: 40px 0;
+  }
+  
+  .instagram-feed-section .section-title h2 {
+    font-size: 28px;
+  }
+  
+  .elfsight-instagram-container {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .instagram-feed-section {
+    margin: 40px 0;
+    padding: 30px 0;
+  }
+  
+  .instagram-feed-section .section-title h2 {
+    font-size: 24px;
+  }
+  
+  .elfsight-instagram-container {
+    min-height: 250px;
+  }
+}
+
