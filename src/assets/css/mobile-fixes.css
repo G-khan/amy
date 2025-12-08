@@ -761,6 +761,37 @@
   min-height: 400px;
 }
 
+/* EmbedSocial Widget - Horizontal Grid Layout */
+.embedsocial-hashtag {
+  width: 100%;
+}
+
+.embedsocial-hashtag .embedsocial-hashtag-item,
+.embedsocial-hashtag .embedsocial-hashtag-post,
+.embedsocial-hashtag > div > div {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 15px !important;
+  width: 100% !important;
+}
+
+/* Alternative: If EmbedSocial uses different structure */
+.embedsocial-hashtag ul,
+.embedsocial-hashtag .embedsocial-hashtag-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 15px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.embedsocial-hashtag li,
+.embedsocial-hashtag .embedsocial-hashtag-item {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 /* Responsive adjustments for Instagram Feed */
 @media (max-width: 768px) {
   .instagram-feed-section {
@@ -774,6 +805,16 @@
   
   .elfsight-instagram-container {
     min-height: 300px;
+  }
+  
+  /* Mobile: 2 columns */
+  .embedsocial-hashtag .embedsocial-hashtag-item,
+  .embedsocial-hashtag .embedsocial-hashtag-post,
+  .embedsocial-hashtag > div > div,
+  .embedsocial-hashtag ul,
+  .embedsocial-hashtag .embedsocial-hashtag-list {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
 }
 

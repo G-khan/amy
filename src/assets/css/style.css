@@ -2033,6 +2033,60 @@ body.loading {
   text-overflow: ellipsis;
 }
 
+/* Sold Out Badge Styles */
+.sold-out-badge {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: #8B6F47;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(139, 111, 71, 0.4);
+  animation: pulse 2s infinite;
+}
+
+/* Sold Out Portfolio Item - Slightly dimmed */
+.tokyo_tm_portfolio .portfolio_list .entry.sold-out-item {
+  opacity: 0.85;
+  position: relative;
+}
+
+.tokyo_tm_portfolio .portfolio_list .entry.sold-out-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(139, 111, 71, 0.4);
+  }
+  50% {
+    box-shadow: 0 2px 12px rgba(139, 111, 71, 0.6);
+  }
+}
+
+/* Sold Out Status in Modal */
+.status-sold-out {
+  color: #8B6F47 !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .tokyo_tm_portfolio .portfolio_list .overlay {
   position: absolute;
   top: 0;

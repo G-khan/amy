@@ -68,12 +68,15 @@ const Portfolio = () => {
               {filteredItems.map(item => (
                 <li key={item.id} className={item.category}>
                   <div className="inner" onClick={() => openModal(item)}>
-                    <div className="entry tokyo_tm_portfolio_animation_wrap">
+                    <div className={`entry tokyo_tm_portfolio_animation_wrap ${item.details.status === "Sold Out" ? "sold-out-item" : ""}`}>
                       <img 
                         src={item.image} 
                         alt={item.title}
                         style={{ opacity: 1, width: '100%', height: '100%', objectFit: 'cover' }}
                       />
+                      {item.details.status === "Sold Out" && (
+                        <div className="sold-out-badge">SOLD OUT</div>
+                      )}
                     </div>
                     <div className="portfolio_item_content">
                       <h3>{item.title}</h3>
@@ -133,7 +136,9 @@ const Portfolio = () => {
                             </li>
                             <li>
                               <span className="first">Durum</span>
-                              <span>{selectedItem.details.status}</span>
+                              <span className={selectedItem.details.status === "Sold Out" ? "status-sold-out" : ""}>
+                                {selectedItem.details.status}
+                              </span>
                             </li>
                             <li>
                               <span className="first">Paylaş</span>

@@ -44,17 +44,23 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // Load Elfsight script
+    // Load EmbedSocial script
+    const scriptId = 'EmbedSocialHashtagScript';
+    if (document.getElementById(scriptId)) {
+      return;
+    }
+    
     const script = document.createElement('script');
-    script.src = 'https://elfsightcdn.com/platform.js';
+    script.id = scriptId;
+    script.src = 'https://embedsocial.com/cdn/ht.js';
     script.async = true;
-    document.body.appendChild(script);
+    document.getElementsByTagName('head')[0].appendChild(script);
 
     return () => {
       // Cleanup script on unmount
-      const existingScript = document.querySelector('script[src="https://elfsightcdn.com/platform.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
+      const existingScript = document.getElementById(scriptId);
+      if (existingScript && existingScript.parentNode) {
+        existingScript.parentNode.removeChild(existingScript);
       }
     };
   }, []);
@@ -194,11 +200,13 @@ const Home = () => {
           </div>
         </div>
 
-            {/* Elfsight Instagram Feed */}
+            {/* EmbedSocial Instagram Feed */}
         <div className="instagram-feed-section">
-         
             <div className="elfsight-instagram-container">
-              <div className="elfsight-app-c60b783f-b21a-4e47-9c51-248cc62be114" data-elfsight-app-lazy></div>
+              <div 
+                className="embedsocial-hashtag" 
+                data-ref="dd93cfb56c79d5ef2bd86cc9a84311d0e2664143"
+              ></div>
             </div>
         </div>
   

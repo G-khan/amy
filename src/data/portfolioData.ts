@@ -1,5 +1,3 @@
-import crestImage from '../assets/img/portfolio/Crest.jpeg';
-
 export interface PortfolioItem {
   id: number;
   title: string;
@@ -28,134 +26,214 @@ export const categories: Category[] = [
   { id: 'textured', name: 'Textured Art' },
   { id: 'seascape', name: 'Seascape' },
   { id: 'mixed', name: 'Mixed Media' },
-  { id: 'abstract', name: 'Abstract' }
+  { id: 'abstract', name: 'Abstract' },
+  { id: 'geometric', name: 'Geometric' }
 ];
 
 export const portfolioItems: PortfolioItem[] = [
   {
     id: 1,
-    title: "Crest: Dalgaların Tuvale Dansı",
+    title: "Crest",
     category: "seascape",
-    image: crestImage,
+    image: "https://embedsocial.com/admin/cdncache/feed-media/18036/18036137408425128/image_0.jpeg",
     description: {
-      short: "Dalgaların tuval üzerindeki dansı, denizin ritmi ve dokunun harmonisi.",
-      full: `Dalgaların tuval üzerindeki dansı, denizin ritmi ve dokunun harmonisi.
+      short: "Denizin dinginliğini ve dalgaların enerjisini alçı dokusuyla buluşturan özel çalışma.",
+      full: `Bu tablo, tutkunun, denize olan aşkın tuvale yansıması gibi. Her bir dalga, her bir köpük, saatlerce süren titiz bir çalışmanın eseri. Tuval, akrilik boya ve alçının yanı sıra, gerçek deniz kumu ve deniz kabuklarıyla da dokunsal bir deneyim sunuyor. Sanki okyanusun kıyısında, dalgaların sesini dinliyormuş gibi hissedeceksiniz.
 
-Tuval, akrilik boya ve alçı ile şekillenirken, gerçek deniz kumu ve deniz kabukları dokunsal bir deneyim sunuyor. Sanki okyanusun kıyısında, dalgaların sesini dinliyormuş gibi bir his uyandırıyor.
-
-Bu büyüleyici dokuyu ve deniz esintisini kendi yaşam alanınıza taşımak için hemen iletişime geçin ve size özel bir Crest benzeri eserlerin deneyimiyle tanışın! 🌊🎨`
+Bu ilk paylaşımımda, bana eşlik ettiğiniz için çok mutluyum. Umarım "Crest"i siz de benim kadar seversiniz.`
     },
     details: {
       technique: "Akrilik boya ve alçı",
       materials: "Tuval üzerine akrilik, gerçek deniz kumu ve deniz kabukları",
-      size: "80x120 cm",
-      year: "2024",
+      size: "50 cm",
+      year: "2025",
       status: "Available"
     }
   },
   {
     id: 2,
-    title: "Azure Dreams",
-    category: "seascape",
-    image: crestImage,
+    title: "Velvet",
+    category: "mixed",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/18065/18065299331451976/image_0.jpeg",
     description: {
-      short: "Derinliklerin ve dalgaların harmonisi, okyanusun sonsuz maviliğinde kaybolmak.",
-      full: `Derinliklerin ve dalgaların harmonisi, okyanusun sonsuz maviliğinde kaybolmak için bir davet niteliğinde.
+      short: "Evin ruhuna dokunan renkler. Vişne renginin en asil tonunu dokuların derinliğiyle buluşturan özel tasarım.",
+      full: `Zeynep Hanım'ın yaşam alanı için özel olarak tasarladığımız bu parçada, vişne renginin en asil tonunu dokuların derinliğiyle buluşturduk. Alçı ve rölyefin oluşturduğu katmanlı yapı, günün her saatinde ışıkla farklı bir oyun kurarak duvarda bambaşka hikayeler anlatıyor.
 
-Tuval üzerinde dans eden dalgalar, gerçek deniz kumunun dokusuyla buluşuyor. Her bir fırça darbesi, okyanusun ritmine ayak uyduruyor.
-
-Bu eşsiz deniz manzarasını evinize taşıyarak, her gün okyanus esintisini hissedin. 🌊✨`
+Özel istek üzerine tasarlanan bu eser, modern dekorasyonun imza parçalarından biri oldu.`
     },
     details: {
-      technique: "Karışık Teknik",
-      materials: "Tuval üzerine akrilik, deniz kumu, sedef pigmentler",
-      size: "100x150 cm",
-      year: "2024",
-      status: "Available"
+      technique: "Alçı & Rölyef (Mixed Media)",
+      materials: "Tuval üzerine akrilik, alçı, rölyef",
+      size: "120x100 cm",
+      year: "2025",
+      status: "Sold Out"
     }
   },
   {
     id: 3,
-    title: "Coastal Whispers",
-    category: "textured",
-    image: crestImage,
+    title: "Noir",
+    category: "abstract",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/17872/17872355187431308/image_0.jpeg",
     description: {
-      short: "Kıyı şeridinin büyüleyici hikayesi, kumların ve dalgaların sonsuz dansı.",
-      full: `Kıyı şeridinin büyüleyici hikayesi, kumların ve dalgaların sonsuz dansını anlatan bir eser.
+      short: "Geometrik formların doku ve ışıkla olan etkileşimini keşfeden soyut bir çalışma.",
+      full: `Bu eser, tuval üzerine akrilik boya ve alçı ile katmanlandırılarak, boyutlu bir yüzey oluşturma çalışmamın bir sonucudur. Bu soyut tablo, geometrik formların doku ve ışıkla olan etkileşimini keşfeder.
 
-Doğal malzemelerle zenginleştirilmiş tekstür, sahil şeridinin dokusunu tuvale taşıyor. Her bakışta farklı bir detay keşfedeceksiniz.
+Her bir yükselti ve oyuk, dikkatle tasarlanmış ve elle şekillendirilmiştir. Amacım, iki boyutlu bir düzlemi alçının kabartma gücüyle heykelimsi bir forma dönüştürmekti.
 
-Evinizde sürekli bir sahil esintisi yaşamak için ideal bir parça. 🏖️🎨`
+Bu eseri izlerken, detaylara verdiğim özeni ve yüzeyin yarattığı farklı hisleri keşfedeceğinizi umuyorum.`
     },
     details: {
-      technique: "Tekstürel Akrilik",
-      materials: "Tuval üzerine akrilik, kum, deniz kabukları",
-      size: "90x120 cm",
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı",
+      size: "60x80 cm",
       year: "2024",
       status: "Available"
     }
   },
   {
     id: 4,
-    title: "Mediterranean Dreams",
-    category: "mixed",
-    image: crestImage,
+    title: "Stratum",
+    category: "textured",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/18087/18087273706863232/image_0.jpeg",
     description: {
-      short: "Akdeniz'in turkuaz sularından ilham alan, ferah ve dingin bir kompozisyon.",
-      full: `Akdeniz'in turkuaz sularından ilham alan, ferah ve dingin bir kompozisyon.
+      short: "Dokuların ve formların iç içe geçtiği bir katmanlar dünyası. İki ayrı tablo şeklinde kullanıma da uygundur.",
+      full: `Bu tablo benim için tuval, akrilik boya ve alçının dans ettiği bir süreçti. Her bir katman, her bir geometrik şekil, büyük bir emek ve özveriyle tek tek işlendi.
 
-Özel pigmentler ve doğal malzemelerle hazırlanan bu eser, Akdeniz'in benzersiz renklerini yaşam alanınıza taşıyor.
+Stratum, adından da anlaşılacağı gibi, dokuların ve formların iç içe geçtiği bir katmanlar dünyası sunuyor.
 
-Evinize Akdeniz esintisi katmak için mükemmel bir seçim. 🌊💙`
+İki ayrı tablo şeklinde kullanıma da uygundur.`
     },
     details: {
-      technique: "Karışık Teknik",
-      materials: "Tuval üzerine akrilik, özel pigmentler",
-      size: "100x100 cm",
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı",
+      size: "40x80 cm",
       year: "2024",
       status: "Available"
     }
   },
   {
     id: 5,
-    title: "Ocean's Embrace",
-    category: "abstract",
-    image: crestImage,
+    title: "Enigma",
+    category: "geometric",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/17890/17890491093326692/image_0.jpeg",
     description: {
-      short: "Okyanusun derinliklerinden yüzeye yansıyan soyut bir yorum.",
-      full: `Okyanusun derinliklerinden yüzeye yansıyan soyut bir yorum.
+      short: "Alçının dokusu, akrilik boyanın derinliği ve geometrik şekillerin karmaşıklığı ile gizemi derinleştiren eser.",
+      full: `Bu tabloda her bir fırça darbesi, her bir alçı dokunuşu, zihnimdeki soyut geometrik şekilleri somut bir hale dönüştürme çabasıydı.
 
-Metalik pigmentler ve özel tekniklerle oluşturulan katmanlar, suyun altındaki ışık oyunlarını yansıtıyor.
-
-Modern bir dokunuşla denizin derinliklerini keşfedin. 🌊✨`
+"Enigma"yı da alçının dokusu, akrilik boyanın derinliği ve geometrik şekillerin karmaşıklığı, gizemi derinleştiriyor.`
     },
     details: {
-      technique: "Soyut Ekspresyonizm",
-      materials: "Tuval üzerine akrilik, metalik pigmentler",
-      size: "120x120 cm",
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı",
+      size: "70x100 cm",
       year: "2024",
       status: "Available"
     }
   },
   {
     id: 6,
-    title: "Aegean Memories",
-    category: "seascape",
-    image: crestImage,
+    title: "Epigram",
+    category: "abstract",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/17946/17946023960977318/image_0.jpeg",
     description: {
-      short: "Ege'nin masmavi sularından ilham alan, huzur dolu bir eser.",
-      full: `Ege'nin masmavi sularından ilham alan, huzur dolu bir eser.
-
-Dokusal detaylar ve özel pigmentlerle yaratılan bu çalışma, Ege'nin karakteristik maviliğini yansıtıyor.
-
-Evinize Ege'nin dinginliğini taşıyın. 🏊‍♀️🎨`
+      short: "Tuval, akrilik ve alçının serbest dansı. Soyutun dokunsal ifadesi.",
+      full: `Tuval, akrilik ve alçının serbest dansı. Soyutun dokunsal ifadesi. ✨`
     },
     details: {
-      technique: "Tekstürel Akrilik",
-      materials: "Tuval üzerine akrilik, özel dokular",
-      size: "100x150 cm",
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı",
+      size: "60x80 cm",
       year: "2024",
       status: "Available"
+    }
+  },
+  {
+    id: 7,
+    title: "Grace-Vav",
+    category: "mixed",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/18001/18001950881770678/image_0.jpeg",
+    description: {
+      short: "Tuvalin dinginliği, akriliğin canlılığı, alçının dokusuyla hayat bulan bu özel sipariş, Vav'ın ruhunu taşıyor.",
+      full: `Tuvalin dinginliği, akriliğin canlılığı, alçının dokusuyla hayat bulan bu özel tasarımda, Vav'ın ruhunu taşıyor. ✨`
+    },
+    details: {
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı",
+      size: "70x100 cm",
+      year: "2024",
+      status: "Sold Out"
+    }
+  },
+  {
+    id: 8,
+    title: "Clarity",
+    category: "seascape",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/18059/18059436314026620/image_0.jpeg",
+    description: {
+      short: "Gökyüzünün dinginliğini ve denizin berraklığını yansıtan, mekanınıza ferahlık ve huzur katan tablo.",
+      full: `Tuval üzerine akrilik boyalarla hayat bulan bu özel tasarımda, alçı ile şekillendirdiğim dalgaların ve gerçek deniz kumuyla dokunduğum kıyıların 3 boyutlu etkisini gözlemliyorsunuz. Gökyüzünün dinginliğini ve denizin berraklığını yansıtan bu tablo, mekanınıza ferahlık ve huzur katmaya hazır.
+
+Detayları keşfetmek için görsellere göz atmayı unutmayın! ✨`
+    },
+    details: {
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı, gerçek deniz kumu",
+      size: "70x100 cm",
+      year: "2024",
+      status: "Sold Out"
+    }
+  },
+  {
+    id: 9,
+    title: "Vogue",
+    category: "seascape",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/17952/17952455123939049/image_0.jpeg",
+    description: {
+      short: "Denizin dinginliğini ve dalgaların enerjisini alçı dokusuyla buluşturan, gerçek deniz kumu ve minik deniz kabukları içeren özel çalışma.",
+      full: `Denizin dinginliğini ve dalgaların enerjisini alçı dokusuyla buluşturdum. Tuval üzerine akrilik boyalarla hayat bulan bu özel çalışmada, gerçek deniz kumu ve minik deniz kabukları da yer alıyor. Kıyıların o eşsiz hissini evinize taşımak için... ✨`
+    },
+    details: {
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı, gerçek deniz kumu ve deniz kabukları",
+      size: "50 cm",
+      year: "2024",
+      status: "Available"
+    }
+  },
+  {
+    id: 10,
+    title: "Relief",
+    category: "textured",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/17877/17877914331184870/image_0.jpeg",
+    description: {
+      short: "Alçı ile oluşturulan kabartmalar, tabloya derinlik ve dokunsal bir boyut kazandırırken, akrilik boya ile renklerin dansı ortaya çıktı.",
+      full: `Tuval, akrilik boya ve alçının buluştuğu soyut bir çalışma. Alçı ile oluşturduğum kabartmalar, tabloya derinlik ve dokunsal bir boyut kazandırırken, akrilik boya ile renklerin dansı ortaya çıktı.
+
+Yorumlarınızı ve düşüncelerinizi merakla bekliyorum!`
+    },
+    details: {
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı kabartma",
+      size: "60x80 cm",
+      year: "2024",
+      status: "Available"
+    }
+  },
+  {
+    id: 11,
+    title: "Strata",
+    category: "textured",
+    image: "https://embedsocial.com/admin/cdncache/feed-media/18492/18492612679034357/image_0.jpeg",
+    description: {
+      short: "Tuval, akrilik ve alçının dokusal dansına şahit olacağınız, her kabartı ve katmanın özenle şekillendirildiği soyut çalışma.",
+      full: `Strata adını verdiğim bu soyut çalışmamda tuval, akrilik ve alçının dokusal dansına şahit olacaksınız. Her kabartı, her katman özenle şekillendi. Umarım siz de bu derinlikte kendinizden bir parça bulursunuz. ✨`
+    },
+    details: {
+      technique: "Akrilik boya ve alçı",
+      materials: "Tuval üzerine akrilik, alçı",
+      size: "60x150 cm",
+      year: "2024",
+      status: "Sold Out"
     }
   }
 ];
