@@ -7,6 +7,7 @@ import Service from './components/service/Service'
 import Portfolio from './components/portfolio/Portfolio'
 import Contact from './components/contact/Contact'
 import Preloader from './components/layout/Preloader'
+import { LanguageProvider } from './context/LanguageContext'
 import './assets/css/style.css'
 import './assets/css/mobile-fixes.css'
 import './App.css'
@@ -41,10 +42,8 @@ function App() {
     // Handle section visibility on hash change
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1) || 'home';
-      console.log('Hash changed to:', hash);
       setActiveSection(hash);
-      console.log('Active section set to:', hash);
-      
+
       // Scroll to top when changing sections
       window.scrollTo(0, 0);
     };
@@ -65,30 +64,32 @@ function App() {
   }, []);
 
   return (
-    <div className="tokyo_tm_all_wrap" data-magic-cursor="show">
-      {loading ? <Preloader /> : null}
-      <Header />
-      <Sidebar />
-      <div className="rightpart">
-        <div className="rightpart_in">
-          <div className={`tokyo_tm_section ${activeSection === 'home' ? 'active' : ''}`}>
-            <Home />
-          </div>
-          <div className={`tokyo_tm_section ${activeSection === 'about' ? 'active' : ''}`}>
-            <About />
-          </div>
-          <div className={`tokyo_tm_section ${activeSection === 'service' ? 'active' : ''}`}>
-            <Service />
-          </div>
-          <div className={`tokyo_tm_section ${activeSection === 'portfolio' ? 'active' : ''}`}>
-            <Portfolio />
-          </div>
-          <div className={`tokyo_tm_section ${activeSection === 'contact' ? 'active' : ''}`}>
-            <Contact />
+    <LanguageProvider>
+      <div className="tokyo_tm_all_wrap" data-magic-cursor="show">
+        {loading ? <Preloader /> : null}
+        <Header />
+        <Sidebar />
+        <div className="rightpart">
+          <div className="rightpart_in">
+            <div className={`tokyo_tm_section ${activeSection === 'home' ? 'active' : ''}`}>
+              <Home />
+            </div>
+            <div className={`tokyo_tm_section ${activeSection === 'about' ? 'active' : ''}`}>
+              <About />
+            </div>
+            <div className={`tokyo_tm_section ${activeSection === 'service' ? 'active' : ''}`}>
+              <Service />
+            </div>
+            <div className={`tokyo_tm_section ${activeSection === 'portfolio' ? 'active' : ''}`}>
+              <Portfolio />
+            </div>
+            <div className={`tokyo_tm_section ${activeSection === 'contact' ? 'active' : ''}`}>
+              <Contact />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </LanguageProvider>
   );
 }
 

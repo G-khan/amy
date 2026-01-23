@@ -1,14 +1,17 @@
 import React from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const Service = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="tokyo_tm_services">
       <div className="container">
         <div className="tokyo_tm_title">
           <div className="title_flex">
             <div className="left">
-              <span>Services</span>
-              <h3>What I Do</h3>
+              <span>{t('services_section')}</span>
+              <h3>{t('services_title')}</h3>
             </div>
           </div>
         </div>
@@ -16,60 +19,64 @@ const Service = () => {
           <div className="services-grid">
             <div className="service-item">
               <div className="list_inner">
-                <div className="service_icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-                    <path d="M2 2l7.586 7.586"></path>
-                    <circle cx="11" cy="11" r="2"></circle>
-                  </svg>
+                <div className="service_image">
+                  <img src="https://embedsocial.com/admin/cdncache/feed-media/18036/18036137408425128/image_0.jpeg" alt="Custom Artwork" />
                 </div>
                 <span className="number">01</span>
-                <h3 className="title">Custom Artwork Creation</h3>
-                <p className="text">I create unique, custom textured paintings tailored to your specific preferences and space requirements.</p>
+                <h3 className="title">{t('service_1_title')}</h3>
+                <p className="text">{t('service_1_desc')}</p>
               </div>
             </div>
             <div className="service-item">
               <div className="list_inner">
-                <div className="service_icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                    <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                    <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                  </svg>
+                <div className="service_image">
+                  <img src="https://embedsocial.com/admin/cdncache/feed-media/18065/18065299331451976/image_0.jpeg" alt="Art Consultation" />
                 </div>
                 <span className="number">02</span>
-                <h3 className="title">Art Consultation</h3>
-                <p className="text">Professional guidance on selecting artwork that perfectly complements your space and reflects your style.</p>
+                <h3 className="title">{t('service_2_title')}</h3>
+                <p className="text">{t('service_2_desc')}</p>
               </div>
             </div>
             <div className="service-item">
               <div className="list_inner">
-                <div className="service_icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                  </svg>
+                <div className="service_image">
+                  <img src="https://embedsocial.com/admin/cdncache/feed-media/17872/17872355187431308/image_0.jpeg" alt="Art Workshops" />
                 </div>
                 <span className="number">03</span>
-                <h3 className="title">Art Workshops</h3>
-                <p className="text">Interactive workshops teaching textured painting techniques and contemporary art principles.</p>
+                <h3 className="title">{t('service_3_title')}</h3>
+                <p className="text">{t('service_3_desc')}</p>
               </div>
             </div>
             <div className="service-item">
               <div className="list_inner">
-                <div className="service_icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                    <polyline points="2 17 12 22 22 17"></polyline>
-                    <polyline points="2 12 12 17 22 12"></polyline>
-                  </svg>
+                <div className="service_image">
+                  <img src="https://embedsocial.com/admin/cdncache/feed-media/18087/18087273706863232/image_0.jpeg" alt="Commission Work" />
                 </div>
                 <span className="number">04</span>
-                <h3 className="title">Commission Work</h3>
-                <p className="text">Taking on commissioned projects for both residential and commercial spaces.</p>
+                <h3 className="title">{t('service_4_title')}</h3>
+                <p className="text">{t('service_4_desc')}</p>
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* CTA Section */}
+        <div className="services_cta">
+          <div className="cta_buttons">
+            <a 
+              href="mailto:contact@amyartstudio.com" 
+              className="service_cta_button primary"
+            >
+              {t('service_cta_email')}
+            </a>
+            <a 
+              href="https://www.shopier.com/amyart" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="service_cta_button secondary"
+            >
+              {t('service_cta_shop')}
+            </a>
           </div>
         </div>
       </div>

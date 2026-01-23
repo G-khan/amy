@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface FormData {
   name: string;
@@ -13,6 +14,7 @@ interface FormErrors {
 }
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -27,17 +29,17 @@ const Contact = () => {
     const newErrors: FormErrors = {};
     
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = t('form_name_required');
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = t('form_email_required');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = t('form_email_invalid');
     }
     
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = t('form_message_required');
     }
 
     setErrors(newErrors);
@@ -72,7 +74,6 @@ const Contact = () => {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Form submitted:', formData);
       
       setSubmitStatus('success');
       setFormData({
@@ -98,8 +99,8 @@ const Contact = () => {
         <div className="tokyo_tm_title">
           <div className="title_flex">
             <div className="left">
-              <span>Contact</span>
-              <h3>Get in Touch</h3>
+              <span>{t('contact_section')}</span>
+              <h3>{t('contact_title')}</h3>
             </div>
           </div>
         </div>
@@ -109,19 +110,19 @@ const Contact = () => {
             <ul>
               <li>
                 <div className="list_inner">
-                  <h3>Location</h3>
+                  <h3>{t('contact_location')}</h3>
                   <p>İzmir, Turkey</p>
                 </div>
               </li>
               <li>
                 <div className="list_inner">
-                  <h3>Email</h3>
+                  <h3>{t('contact_email')}</h3>
                   <p><a href="mailto:contact@amyartstudio.com">contact@amyartstudio.com</a></p>
                 </div>
               </li>
               <li>
                 <div className="list_inner">
-                  <h3>Phone</h3>
+                  <h3>{t('contact_phone')}</h3>
                   <p><a href="tel:+90 555 555 5555">+90 555 555 5555</a></p>
                 </div>
               </li>
@@ -133,12 +134,12 @@ const Contact = () => {
               <form className="contact_form" onSubmit={handleSubmit}>
                 {submitStatus === 'success' && (
                   <div className="form-success-message">
-                    Message sent successfully! We'll get back to you soon.
+                    {t('form_success')}
                   </div>
                 )}
                 {submitStatus === 'error' && (
                   <div className="form-error-message">
-                    Something went wrong. Please try again later.
+                    {t('form_error')}
                   </div>
                 )}
                 
@@ -146,7 +147,7 @@ const Contact = () => {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder={t('form_name_placeholder')}
                     value={formData.name}
                     onChange={handleChange}
                     className={errors.name ? 'error' : ''}
@@ -159,7 +160,7 @@ const Contact = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder={t('form_email_placeholder')}
                     value={formData.email}
                     onChange={handleChange}
                     className={errors.email ? 'error' : ''}
@@ -171,7 +172,7 @@ const Contact = () => {
                 <div className="form-group">
                   <textarea
                     name="message"
-                    placeholder="Message"
+                    placeholder={t('form_message_placeholder')}
                     value={formData.message}
                     onChange={handleChange}
                     className={errors.message ? 'error' : ''}
@@ -186,7 +187,7 @@ const Contact = () => {
                     disabled={isSubmitting}
                     className={isSubmitting ? 'submitting' : ''}
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? t('form_sending') : t('form_send')}
                   </button>
                 </div>
               </form>
@@ -200,7 +201,7 @@ const Contact = () => {
               </a>
             </li>
             <li>
-              <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/amyart.studio/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-instagram"></i>
               </a>
             </li>

@@ -1,14 +1,16 @@
 import React from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const About = () => {
+  const { t, language } = useLanguage();
+
   return (
     <div className="tokyo_tm_about">
       <div className="container">
         {/* Header Section */}
         <div className="about_header">
           <div className="title_flex">
-            <span className="subtitle">About</span>
-            <h1 className="main_title">About Me</h1>
+            <span className="subtitle">{t('about_subtitle')}</span>
           </div>
         </div>
 
@@ -19,19 +21,10 @@ const About = () => {
           </div>
           <div className="profile_content">
             <h2 className="profile_name">Ayşe Merve Yakut</h2>
-            <span className="profile_title">Contemporary Artist</span>
+            <span className="profile_title">{t('about_profile_title')}</span>
             <div className="profile_text">
-              <p>
-                As a contemporary artist based in İzmir, I specialize in creating unique Textured 
-                Painting artworks that bridge the gap between traditional techniques and modern 
-                expression. My journey in art began with a deep fascination for colors and textures, 
-                which eventually led me to develop my distinctive style in Textured paintings.
-              </p>
-              <p>
-                Each piece I create is a reflection of my passion for experimenting with different
-                materials and techniques. I believe in making art that not only beautifies spaces
-                but also tells stories and creates emotional connections with viewers.
-              </p>
+              <p>{t('about_profile_text_1')}</p>
+              <p>{t('about_profile_text_2')}</p>
             </div>
           </div>
         </div>
@@ -39,20 +32,20 @@ const About = () => {
         {/* Info Grid Section */}
         <div className="about_info_grid">
           <div className="info_card">
-            <h3>Contact Details</h3>
+            <h3>{t('about_contact_details')}</h3>
             <ul>
               <li>
-                <span className="label">Location</span>
+                <span className="label">{t('about_location')}</span>
                 <span className="value">İzmir, Turkey</span>
               </li>
               <li>
-                <span className="label">Email</span>
+                <span className="label">{t('contact_email')}</span>
                 <span className="value">
                   <a href="mailto:contact@amyartstudio.com">contact@amyartstudio.com</a>
                 </span>
               </li>
               <li>
-                <span className="label">Phone</span>
+                <span className="label">{t('contact_phone')}</span>
                 <span className="value">
                   <a href="tel:+90 555 555 5555">+90 555 555 5555</a>
                 </span>
@@ -61,23 +54,23 @@ const About = () => {
           </div>
 
           <div className="info_card">
-            <h3>Professional Info</h3>
+            <h3>{t('about_professional_info')}</h3>
             <ul>
               <li>
-                <span className="label">Nationality</span>
-                <span className="value">Turkish</span>
+                <span className="label">{t('about_nationality')}</span>
+                <span className="value">{language === 'tr' ? 'Türk' : 'Turkish'}</span>
               </li>
               <li>
-                <span className="label">Studio</span>
+                <span className="label">{t('about_studio')}</span>
                 <span className="value">Amy Art Studio</span>
               </li>
               <li>
-                <span className="label">Interest</span>
-                <span className="value">Textured Painting Artist</span>
+                <span className="label">{t('about_interest')}</span>
+                <span className="value">{language === 'tr' ? 'Dokulu Resim Sanatçısı' : 'Textured Painting Artist'}</span>
               </li>
               <li>
-                <span className="label">Freelance</span>
-                <span className="value">Available</span>
+                <span className="label">{t('about_freelance')}</span>
+                <span className="value">{t('about_available')}</span>
               </li>
             </ul>
           </div>
@@ -89,7 +82,7 @@ const About = () => {
             className="cta_button"
             onClick={() => window.location.href = '#contact'}
           >
-            Get in Touch
+            {t('about_cta')}
           </button>
         </div>
       </div>
