@@ -2544,38 +2544,56 @@ body.loading {
 }
 
 .tokyo_tm_portfolio .portfolio_filter ul {
-	margin: 0px;
+	margin: 0;
+	padding: 0;
 	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	/* Space between buttons */
+	justify-content: flex-end;
+	/* Align to the right like before, or center if preferred */
 }
 
 .tokyo_tm_portfolio .portfolio_filter ul li {
-	margin: 0px 25px 0px 0px;
+	margin: 0;
+	/* Removing old margins */
 	display: inline-block;
-}
-
-.tokyo_tm_portfolio .portfolio_filter ul li:last-child {
-	margin-right: 0px;
 }
 
 .tokyo_tm_portfolio .portfolio_filter ul li a {
-	color: #767676;
 	display: inline-block;
 	font-weight: 500;
-	font-family: "Montserrat";
-
-	-webkit-transition: all .3s ease;
-	-moz-transition: all .3s ease;
-	-ms-transition: all .3s ease;
-	-o-transition: all .3s ease;
+	font-family: "Poppins", sans-serif;
+	/* Using a more modern font if available, or fallback */
+	color: #333;
+	padding: 8px 20px;
+	background-color: #f5f5f5;
+	/* Light grey background */
+	border-radius: 50px;
+	/* Pill shape */
 	transition: all .3s ease;
+	font-size: 14px;
+	text-decoration: none;
+	border: 1px solid transparent;
+	/* To prevent layout shift if we add border on hover */
 }
 
 .tokyo_tm_portfolio .portfolio_filter ul li a.current {
-	color: #000;
+	color: #fff;
+	background-color: #000;
+	/* Active state: Black background */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	/* Soft shadow for depth */
+	transform: translateY(-2px);
+	/* Slight lift */
 }
 
-.tokyo_tm_portfolio .portfolio_filter ul li a:hover {
+.tokyo_tm_portfolio .portfolio_filter ul li a:hover:not(.current) {
+	background-color: #e0e0e0;
+	/* Slightly darker grey on hover */
 	color: #000;
+	transform: translateY(-1px);
 }
 
 .tokyo_tm_portfolio .list_wrapper {
@@ -3032,7 +3050,7 @@ body.loading {
 	}
 
 	.tokyo_tm_title .portfolio_filter {
-		padding-top: 48px;
+		padding-top: 5px;
 	}
 
 	.container {

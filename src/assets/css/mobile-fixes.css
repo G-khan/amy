@@ -166,6 +166,22 @@
     height: 280px !important;
   }
 
+  /* Fix portfolio filter on mobile */
+  .tokyo_tm_portfolio .portfolio_filter ul {
+    justify-content: center !important;
+    gap: 5px !important;
+  }
+
+  .tokyo_tm_portfolio .portfolio_filter ul li {
+    margin: 0 !important;
+  }
+
+  .tokyo_tm_portfolio .portfolio_filter ul li a {
+    font-size: 13px !important;
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+  }
+
   /* Fix contact form */
   .tokyo_tm_contact .contact_info {
     flex-direction: column !important;
@@ -422,7 +438,13 @@
 
   /* Portfolio small mobile */
   .tokyo_tm_portfolio {
-    padding: 50px 0 !important;
+    padding: 40px 0 !important;
+    /* Reduced top padding */
+  }
+
+  .tokyo_tm_portfolio .tokyo_tm_title {
+    margin-bottom: 20px !important;
+    /* Reduced bottom margin */
   }
 
   .tokyo_tm_portfolio .portfolio_list .entry {
