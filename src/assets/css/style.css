@@ -2671,6 +2671,7 @@ body.loading {
 	margin: 0;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -3186,9 +3187,6 @@ body.loading {
 	bottom: -10px;
 }
 
-.hamburger--slider .hamburger-inner {
-	top: 2px;
-}
 
 .hamburger--slider.is-active .hamburger-inner {
 	transform: translate3d(0, 10px, 0) rotate(45deg);
@@ -3780,6 +3778,7 @@ body.loading {
 	overflow: hidden;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
 
@@ -3952,7 +3951,7 @@ body.loading {
 	transform: scale(1.05);
 }
 
-.profile_content {}
+
 
 .profile_name {
 	font-size: 32px;
