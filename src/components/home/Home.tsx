@@ -10,6 +10,8 @@ const Home = () => {
   const { t, translateCategory, translateStatus } = useLanguage();
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
@@ -25,12 +27,24 @@ const Home = () => {
 
   const openModal = (item: PortfolioItem) => {
     setSelectedItem(item);
+    setLoading(true);
     setIsModalOpen(true);
+    // Delay adding 'opened' class to allow transition
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setShowModal(true);
+      });
+    });
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedItem(null);
+    setShowModal(false);
+    // Wait for animation before removing from DOM
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setSelectedItem(null);
+      setLoading(false);
+    }, 600); // Match CSS transition duration
   };
 
   const toggleFullscreen = () => {
@@ -117,7 +131,7 @@ const Home = () => {
         {/* Modal (rendered in portal to avoid clipping/stacking issues) */}
         {isModalOpen && selectedItem && createPortal(
           (
-            <div className="tokyo_tm_modalbox opened">
+            <div className={`tokyo_tm_modalbox ${showModal ? 'opened' : ''}`}>
               <div className="box_inner">
                 <div className="close">
                   <a href="#home" onClick={(e) => {
@@ -130,10 +144,12 @@ const Home = () => {
                 <div className="description_wrap">
                   <div className="popup_details">
                     <div className="top_image" onClick={toggleFullscreen}>
+                      {loading && <div className="skeleton-loader"></div>}
                       <img
                         src={selectedItem.image}
                         alt={selectedItem.title}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        onLoad={() => setLoading(false)}
+                        style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s ease' }}
                       />
                     </div>
                     <div className="portfolio_header_row">

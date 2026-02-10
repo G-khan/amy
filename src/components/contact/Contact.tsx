@@ -27,17 +27,17 @@ const Contact = () => {
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = t('form_name_required');
     }
-    
+
     if (!formData.email.trim()) {
       newErrors.email = t('form_email_required');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = t('form_email_invalid');
     }
-    
+
     if (!formData.message.trim()) {
       newErrors.message = t('form_message_required');
     }
@@ -63,7 +63,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -74,14 +74,14 @@ const Contact = () => {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       setSubmitStatus('success');
       setFormData({
         name: '',
         email: '',
         message: ''
       });
-      
+
       // Reset success message after 3 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
@@ -104,47 +104,47 @@ const Contact = () => {
             </div>
           </div>
         </div>
+        <div className="contact_inner_wrapper">
 
-        <div className="contact_info">
           <div className="left">
-            <ul>
-              <li>
-                <div className="list_inner">
-                  <h3>{t('contact_location')}</h3>
-                  <p>İzmir, Turkey</p>
-                </div>
-              </li>
-              <li>
-                <div className="list_inner">
-                  <h3>{t('contact_email')}</h3>
-                  <p><a href="mailto:contact@amyartstudio.com">contact@amyartstudio.com</a></p>
-                </div>
-              </li>
-              <li>
-                <div className="list_inner">
-                  <h3>{t('contact_phone')}</h3>
-                  <p><a href="tel:+90 555 555 5555">+90 555 555 5555</a></p>
-                </div>
-              </li>
-            </ul>
+            <div className="info_list">
+              <ul>
+                <li>
+                  <span className="label">{t('contact_location')}</span>
+                  <span className="value">İzmir, Turkey</span>
+                </li>
+                <li>
+                  <span className="label">{t('contact_email')}</span>
+                  <span className="value"><a href="mailto:contact@amyartstudio.com">contact@amyartstudio.com</a></span>
+                </li>
+                <li>
+                  <span className="label">{t('contact_phone')}</span>
+                  <span className="value"><a href="tel:+90 555 555 5555">+90 555 555 5555</a></span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="social_section">
+              <span className="label">Bize Ulaşın</span>
+              <ul className="social_list">
+                <li><a href="https://facebook.com/your-profile" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/amyart.studio/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a></li>
+                <li><a href="https://pinterest.com/your-profile" target="_blank" rel="noopener noreferrer"><i className="fab fa-pinterest-p"></i></a></li>
+                <li><a href="mailto:contact@amyartstudio.com"><i className="far fa-envelope"></i></a></li>
+              </ul>
+            </div>
           </div>
-          
+
           <div className="right">
-            <div className="fields">
-              <form className="contact_form" onSubmit={handleSubmit}>
-                {submitStatus === 'success' && (
-                  <div className="form-success-message">
-                    {t('form_success')}
-                  </div>
-                )}
-                {submitStatus === 'error' && (
-                  <div className="form-error-message">
-                    {t('form_error')}
-                  </div>
-                )}
-                
-                <div className="form-group">
+            <form className="contact_form" onSubmit={handleSubmit}>
+              {submitStatus === 'success' && <div className="form-success-message">{t('form_success')}</div>}
+              {submitStatus === 'error' && <div className="form-error-message">{t('form_error')}</div>}
+
+              <div className="fields_row">
+                <div className="form-group half-width">
+                  <label htmlFor="name">{t('form_name_placeholder')}</label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
                     placeholder={t('form_name_placeholder')}
@@ -156,8 +156,10 @@ const Contact = () => {
                   {errors.name && <span className="error-message">{errors.name}</span>}
                 </div>
 
-                <div className="form-group">
+                <div className="form-group half-width">
+                  <label htmlFor="email">{t('form_email_placeholder')}</label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     placeholder={t('form_email_placeholder')}
@@ -168,54 +170,34 @@ const Contact = () => {
                   />
                   {errors.email && <span className="error-message">{errors.email}</span>}
                 </div>
+              </div>
 
-                <div className="form-group">
-                  <textarea
-                    name="message"
-                    placeholder={t('form_message_placeholder')}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className={errors.message ? 'error' : ''}
-                    disabled={isSubmitting}
-                  ></textarea>
-                  {errors.message && <span className="error-message">{errors.message}</span>}
-                </div>
+              <div className="form-group">
+                <label htmlFor="message">{t('form_message_placeholder')}</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder={t('form_message_placeholder')}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className={errors.message ? 'error' : ''}
+                  disabled={isSubmitting}
+                ></textarea>
+                {errors.message && <span className="error-message">{errors.message}</span>}
+              </div>
 
-                <div className="tokyo_tm_button">
-                  <button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className={isSubmitting ? 'submitting' : ''}
-                  >
-                    {isSubmitting ? t('form_sending') : t('form_send')}
-                  </button>
-                </div>
-              </form>
-            </div>
+              <div className="tokyo_tm_button">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={isSubmitting ? 'submitting' : ''}
+                >
+                  {isSubmitting ? t('form_sending') : t('form_send')}
+                </button>
+              </div>
+            </form>
           </div>
 
-          <ul className="social_list contact_social_list">
-            <li>
-              <a href="https://facebook.com/your-profile" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/amyart.studio/" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://pinterest.com/your-profile" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-pinterest-p"></i>
-              </a>
-            </li>
-            <li>
-              <a href="mailto:your.email@example.com">
-                <i className="far fa-envelope"></i>
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
