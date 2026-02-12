@@ -68,7 +68,7 @@ const Home = () => {
             <div className="social">
               <ul className="social_list">
                 <li>
-                  <a href="https://facebook.com/your-profile" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.facebook.com/share/1CFCNmJdM8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faFacebookF} />
                   </a>
                 </li>
@@ -78,7 +78,7 @@ const Home = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://pinterest.com/your-profile" target="_blank" rel="noopener noreferrer">
+                  <a href="https://pin.it/5eiin6pIT" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faPinterestP} />
                   </a>
                 </li>

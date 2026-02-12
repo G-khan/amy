@@ -127,9 +127,9 @@ const Contact = () => {
             <div className="social_section">
               <span className="label">Bize Ulaşın</span>
               <ul className="social_list">
-                <li><a href="https://facebook.com/your-profile" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.facebook.com/share/1CFCNmJdM8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a></li>
                 <li><a href="https://www.instagram.com/amyart.studio/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a></li>
-                <li><a href="https://pinterest.com/your-profile" target="_blank" rel="noopener noreferrer"><i className="fab fa-pinterest-p"></i></a></li>
+                <li><a href="https://pin.it/5eiin6pIT" target="_blank" rel="noopener noreferrer"><i className="fab fa-pinterest-p"></i></a></li>
                 <li><a href="mailto:contact@amyartstudio.com"><i className="far fa-envelope"></i></a></li>
               </ul>
             </div>

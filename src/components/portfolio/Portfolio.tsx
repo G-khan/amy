@@ -164,10 +164,10 @@ const Portfolio = () => {
                             <li>
                               <span className="first">{t('detail_share')}</span>
                               <ul className="share">
-                                <li><a href="#" aria-label="Share on Facebook"><i className="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.facebook.com/share/1CFCNmJdM8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i className="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#" aria-label="Share on Twitter"><i className="fab fa-twitter"></i></a></li>
                                 <li><a href="https://www.instagram.com/amyart.studio/" target="_blank" rel="noopener noreferrer" aria-label="Share on Instagram"><i className="fab fa-instagram"></i></a></li>
-                                <li><a href="#" aria-label="Share on Pinterest"><i className="fab fa-pinterest-p"></i></a></li>
+                                <li><a href="https://pin.it/5eiin6pIT" target="_blank" rel="noopener noreferrer" aria-label="Share on Pinterest"><i className="fab fa-pinterest-p"></i></a></li>
                               </ul>
                             </li>
                           </ul>
