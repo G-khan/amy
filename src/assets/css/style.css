@@ -1866,7 +1866,12 @@ body.loading {
 	clear: both;
 	float: left;
 	padding: 0px;
+	margin-top: -60px;
 	background: #f8f8f8;
+}
+
+.tokyo_tm_services .tokyo_tm_title {
+	margin-bottom: 30px;
 }
 
 .tokyo_tm_services .list {
@@ -4687,7 +4692,7 @@ body.loading {
 .service-item.architectural-poster {
 	display: block;
 	width: 100%;
-	aspect-ratio: 1 / 1.414;
+	aspect-ratio: 1 / 1.16;
 	height: auto;
 	height: auto;
 	min-height: 0px;
@@ -4821,12 +4826,10 @@ body.loading {
 .side-text {
 	position: absolute;
 	left: 0%;
-	bottom: 5%;
+	bottom: 1%;
 	z-index: 40;
 	text-align: left;
-	padding: 40px 24px;
-	pointer-events: none;
-	padding: 40px 24px;
+	padding: 20px 24px;
 	pointer-events: none;
 }
 
@@ -4892,7 +4895,10 @@ body.loading {
 		min-height: 480px;
 	}
 
-
+	.hidden-number-back,
+	.hidden-number-front {
+		font-size: 10rem;
+	}
 
 	.gray-frame .inner-frame {
 		width: 72%;

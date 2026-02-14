@@ -793,7 +793,7 @@
   }
 
   /* Improve mobile performance */
-  .tokyo_tm_all_wrap * {
+  .tokyo_tm_all_wrap *:not(.hidden-number-back):not(.hidden-number-front):not(.gray-frame):not(.side-text) {
     -webkit-transform: translateZ(0) !important;
     transform: translateZ(0) !important;
   }
