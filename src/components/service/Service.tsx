@@ -1,5 +1,9 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import crestImg from '../../assets/img/portfolio/Crest.jpg';
+import velvetImg from '../../assets/img/portfolio/Velvet.jpg';
+import enigmaImg from '../../assets/img/portfolio/Enigma.jpg';
+import graceVavImg from '../../assets/img/portfolio/Grace-Vav.jpg';
 
 const Service = () => {
   const { t } = useLanguage();
@@ -18,10 +22,10 @@ const Service = () => {
         <div className="list">
           <div className="services-grid">
             {[
-              { id: 1, image: "https://embedsocial.com/admin/cdncache/feed-media/18036/18036137408425128/image_0.jpeg", titleKey: 'service_1_title', descKey: 'service_1_desc' },
-              { id: 2, image: "https://embedsocial.com/admin/cdncache/feed-media/18065/18065299331451976/image_0.jpeg", titleKey: 'service_2_title', descKey: 'service_2_desc' },
-              { id: 3, image: "https://embedsocial.com/admin/cdncache/feed-media/17872/17872355187431308/image_0.jpeg", titleKey: 'service_3_title', descKey: 'service_3_desc' },
-              { id: 4, image: "https://embedsocial.com/admin/cdncache/feed-media/18087/18087273706863232/image_0.jpeg", titleKey: 'service_4_title', descKey: 'service_4_desc' }
+              { id: 1, image: crestImg, titleKey: 'service_1_title', descKey: 'service_1_desc' },
+              { id: 2, image: velvetImg, titleKey: 'service_2_title', descKey: 'service_2_desc' },
+              { id: 3, image: enigmaImg, titleKey: 'service_3_title', descKey: 'service_3_desc' },
+              { id: 4, image: graceVavImg, titleKey: 'service_4_title', descKey: 'service_4_desc' }
             ].map((service, index) => (
               <div key={service.id} className="service-item architectural-poster">
                 {/* 0. Back Layer Number (0) */}
