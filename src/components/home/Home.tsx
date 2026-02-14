@@ -5,9 +5,10 @@ import { faFacebookF, faInstagram, faPinterestP } from '@fortawesome/free-brands
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { portfolioItems, type PortfolioItem } from '../../data/portfolioData';
 import { useLanguage } from '../../context/LanguageContext';
+import { SOCIAL_LINKS, CONTACT_INFO } from '../../config/constants';
 
 const Home = () => {
-  const { t, translateCategory, translateStatus } = useLanguage();
+  const { t, translateCategory, translateStatus, language } = useLanguage();
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -64,32 +65,32 @@ const Home = () => {
           </div>
           <div className="details">
             <h3 className="name"> Ayşe Merve <span>Yakut</span></h3>
-            <p className="job" dangerouslySetInnerHTML={{ __html: t('home_job') }}></p>
+            <p className="job">{t('home_job_prefix')}<span>{t('home_job_highlight')}</span>{t('home_job_suffix')}</p>
             <div className="social">
               <ul className="social_list">
                 <li>
-                  <a href="https://www.facebook.com/share/1CFCNmJdM8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+                  <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faFacebookF} />
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/amyart.studio/" target="_blank" rel="noopener noreferrer">
+                  <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faInstagram} />
                   </a>
                 </li>
                 <li>
-                  <a href="https://pin.it/5eiin6pIT" target="_blank" rel="noopener noreferrer">
+                  <a href={SOCIAL_LINKS.pinterest} target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faPinterestP} />
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:contact@amyartstudio.com">
+                  <a href={`mailto:${CONTACT_INFO.email}`}>
                     <FontAwesomeIcon icon={faEnvelope} />
                   </a>
                 </li>
                 <li className="shop-button-item">
                   <a
-                    href="https://www.shopier.com/amyart"
+                    href={SOCIAL_LINKS.shop}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="shop-button"
@@ -112,7 +113,7 @@ const Home = () => {
                 onClick={() => openModal(item)}
               >
                 <div className="portfolio-image-wrapper">
-                  <img src={item.image} alt={item.title} />
+                  <img src={item.image} alt={item.title} loading="lazy" />
                   <div className="portfolio-overlay">
                     <div className="overlay-content">
                       <h3>{item.title}</h3>
@@ -159,7 +160,7 @@ const Home = () => {
                       </div>
                       <div className="header_cta">
                         <a
-                          href="https://www.shopier.com/amyart"
+                          href={SOCIAL_LINKS.shop}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="modal-shop-button"
@@ -170,7 +171,7 @@ const Home = () => {
                     </div>
                     <div className="main_details">
                       <div className="textbox">
-                        {selectedItem.description.full.split('\n\n').map((paragraph, index) => (
+                        {selectedItem.description.full[language].split('\n\n').map((paragraph, index) => (
                           <p key={index}>{paragraph}</p>
                         ))}
                       </div>
@@ -178,7 +179,11 @@ const Home = () => {
                         <ul>
                           <li>
                             <span className="first">{t('detail_technique')}</span>
-                            <span>{selectedItem.details.technique}</span>
+                            <span>{selectedItem.details.technique[language]}</span>
+                          </li>
+                          <li>
+                            <span className="first">{t('detail_materials')}</span>
+                            <span>{selectedItem.details.materials[language]}</span>
                           </li>
                           <li>
                             <span className="first">{t('detail_size')}</span>
@@ -197,16 +202,16 @@ const Home = () => {
                           <li className="cta-list-item">
                             <div className="cta-inline-modal">
                               <p>{t('cta_modal_prompt')}</p>
-                              <a href="mailto:contact@amyartstudio.com" className="cta-link">contact@amyartstudio.com</a>
+                              <a href={`mailto:${CONTACT_INFO.email}`} className="cta-link">{CONTACT_INFO.email}</a>
                             </div>
                           </li>
                           <li>
                             <span className="first">{t('detail_share')}</span>
                             <ul className="share">
-                              <li><a href="#" aria-label="Share on Facebook"><i className="fab fa-facebook-f"></i></a></li>
-                              <li><a href="#" aria-label="Share on Twitter"><i className="fab fa-twitter"></i></a></li>
-                              <li><a href="https://www.instagram.com/amyart.studio/" target="_blank" rel="noopener noreferrer" aria-label="Share on Instagram"><i className="fab fa-instagram"></i></a></li>
-                              <li><a href="#" aria-label="Share on Pinterest"><i className="fab fa-pinterest-p"></i></a></li>
+                              <li><a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i className="fab fa-facebook-f"></i></a></li>
+                              <li><a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=Amy%20Art%20Studio`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i className="fab fa-twitter"></i></a></li>
+                              <li><a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Share on Instagram"><i className="fab fa-instagram"></i></a></li>
+                              <li><a href={SOCIAL_LINKS.pinterest} target="_blank" rel="noopener noreferrer" aria-label="Share on Pinterest"><i className="fab fa-pinterest-p"></i></a></li>
                             </ul>
                           </li>
                         </ul>

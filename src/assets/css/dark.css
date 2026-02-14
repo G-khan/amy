@@ -219,19 +219,22 @@ body.dark .tokyo_tm_title span {
 	color: #959595;
 }
 
-body.dark .tokyo_tm_portfolio .portfolio_filter ul li a {
+body.dark .tokyo_tm_portfolio .portfolio_filter ul li a,
+body.dark .tokyo_tm_portfolio .portfolio_filter ul li button {
 	color: #bbb;
 	background-color: #2b2d30;
 	/* Darker background for buttons */
 }
 
-body.dark .tokyo_tm_portfolio .portfolio_filter ul li a:hover {
+body.dark .tokyo_tm_portfolio .portfolio_filter ul li a:hover,
+body.dark .tokyo_tm_portfolio .portfolio_filter ul li button:hover {
 	color: #fff;
 	background-color: #3f4145;
 	/* Slightly lighter on hover */
 }
 
-body.dark .tokyo_tm_portfolio .portfolio_filter ul li a.current {
+body.dark .tokyo_tm_portfolio .portfolio_filter ul li a.current,
+body.dark .tokyo_tm_portfolio .portfolio_filter ul li button.current {
 	background-color: #fff;
 	/* White active background */
 	color: #000;

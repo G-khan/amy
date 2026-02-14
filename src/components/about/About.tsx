@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { CONTACT_INFO } from '../../config/constants';
 
 const About = () => {
   const { t, language } = useLanguage();
@@ -36,18 +37,18 @@ const About = () => {
             <ul>
               <li>
                 <span className="label">{t('about_location')}</span>
-                <span className="value">İzmir, Turkey</span>
+                <span className="value">{CONTACT_INFO.location}</span>
               </li>
               <li>
                 <span className="label">{t('contact_email')}</span>
                 <span className="value">
-                  <a href="mailto:contact@amyartstudio.com">contact@amyartstudio.com</a>
+                  <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
                 </span>
               </li>
               <li>
                 <span className="label">{t('contact_phone')}</span>
                 <span className="value">
-                  <a href="tel:+90 555 555 5555">+90 555 555 5555</a>
+                  <a href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}>{CONTACT_INFO.phone}</a>
                 </span>
               </li>
             </ul>

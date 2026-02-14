@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode, useMemo } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useMemo, useEffect } from 'react';
 
 type Language = 'tr' | 'en';
 
@@ -16,12 +16,19 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const translations = {
-  home_job: {
-    tr: 'Modern anlatılar, <span>dokulu tablolarla</span> buluşuyor.',
-    en: 'I am a modern artist mostly working on <span>Textured Painting</span> artworks.',
+  home_job_prefix: {
+    tr: 'Modern anlatılar, ',
+    en: 'I am a modern artist mostly working on ',
   },
-  home_cta_email: { tr: 'E-posta Gönder', en: 'Send Email' },
-  home_cta_shop: { tr: 'Mağzadan Sipariş', en: 'Order Now' },
+  home_job_highlight: {
+    tr: 'dokulu tablolarla',
+    en: 'Textured Painting',
+  },
+  home_job_suffix: {
+    tr: ' buluşuyor.',
+    en: ' artworks.',
+  },
+  home_cta_shop: { tr: 'Mağazadan Sipariş', en: 'Order Now' },
   about_subtitle: { tr: 'Hakkımda', en: 'About' },
   about_title: { tr: 'Hakkımda', en: 'About Me' },
   about_contact_details: { tr: 'İletişim Bilgileri', en: 'Contact Details' },
@@ -105,7 +112,9 @@ const translations = {
   form_success: { tr: 'Mesaj gönderildi! En kısa sürede dönüş yapacağız.', en: "Message sent successfully! We'll get back to you soon." },
   form_error: { tr: 'Bir şeyler ters gitti. Lütfen tekrar deneyin.', en: 'Something went wrong. Please try again later.' },
   language_label: { tr: 'Dil', en: 'Language' },
-  view_all_works: { tr: 'Tüm Eserleri Gör', en: 'View All Works' },
+  contact_reach: { tr: 'Bize Ulaşın', en: 'Reach Us' },
+  footer_created_by: { tr: 'Created by', en: 'Created by' },
+  aria_toggle_language: { tr: 'Dil değiştir', en: 'Toggle language' },
 } satisfies TranslationMap;
 
 const categoryLabels: Record<string, { tr: string; en: string }> = {
@@ -124,6 +133,10 @@ const statusLabels: Record<string, { tr: string; en: string }> = {
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('tr');
+
+  useEffect(() => {
+    document.documentElement.lang = language === 'tr' ? 'tr' : 'en';
+  }, [language]);
 
   const value = useMemo(
     () => ({

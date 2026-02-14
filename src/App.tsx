@@ -8,6 +8,7 @@ import Portfolio from './components/portfolio/Portfolio'
 import Contact from './components/contact/Contact'
 import Preloader from './components/layout/Preloader'
 import { LanguageProvider } from './context/LanguageContext'
+import { SectionProvider } from './context/SectionContext'
 import './assets/css/style.css'
 import './assets/css/mobile-fixes.css'
 import './App.css'
@@ -46,6 +47,11 @@ function App() {
 
       // Scroll to top when changing sections
       window.scrollTo(0, 0);
+      // Also reset scroll on the active section element itself
+      requestAnimationFrame(() => {
+        const activeEl = document.querySelector('.tokyo_tm_section.active');
+        if (activeEl) activeEl.scrollTop = 0;
+      });
     };
 
     // Listen for hash changes
@@ -65,10 +71,11 @@ function App() {
 
   return (
     <LanguageProvider>
-      <div className="tokyo_tm_all_wrap" data-magic-cursor="show">
-        {loading ? <Preloader /> : null}
-        <Header />
-        <Sidebar />
+      <SectionProvider activeSection={activeSection}>
+        <div className="tokyo_tm_all_wrap" data-magic-cursor="show">
+          {loading ? <Preloader /> : null}
+          <Header />
+          <Sidebar />
         <div className="rightpart">
           <div className="rightpart_in">
             <div className={`tokyo_tm_section ${activeSection === 'home' ? 'active' : ''}`}>
@@ -89,6 +96,7 @@ function App() {
           </div>
         </div>
       </div>
+      </SectionProvider>
     </LanguageProvider>
   );
 }

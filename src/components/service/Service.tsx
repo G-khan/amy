@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { SOCIAL_LINKS, CONTACT_INFO } from '../../config/constants';
 import crestImg from '../../assets/img/portfolio/Crest.jpg';
 import velvetImg from '../../assets/img/portfolio/Velvet.jpg';
 import enigmaImg from '../../assets/img/portfolio/Enigma.jpg';
@@ -48,7 +49,7 @@ const Service = () => {
                 {/* 4. Side Text Layer */}
                 <div className="side-text">
                   <span className="vertical-decoration"></span>
-                  <span className="label font-poster">SERVICE</span>
+                  <span className="label font-poster">{t('services_title')}</span>
                   <h3 className="title font-poster">{t(service.titleKey)}</h3>
                 </div>
               </div>

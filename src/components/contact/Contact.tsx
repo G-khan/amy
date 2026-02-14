@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import { SOCIAL_LINKS, CONTACT_INFO, WEB3FORMS_ACCESS_KEY } from '../../config/constants';
 
 interface FormData {
   name: string;
@@ -24,6 +25,7 @@ const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -70,24 +72,33 @@ const Contact = () => {
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setErrorMessage('');
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const formDataToSend = new FormData();
+      formDataToSend.append('access_key', WEB3FORMS_ACCESS_KEY);
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('message', formData.message);
 
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend,
       });
 
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
-    } catch (error) {
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitStatus('idle'), 3000);
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(data.message || t('form_error'));
+      }
+    } catch {
       setSubmitStatus('error');
+      setErrorMessage(t('form_error'));
     } finally {
       setIsSubmitting(false);
     }
@@ -111,26 +122,26 @@ const Contact = () => {
               <ul>
                 <li>
                   <span className="label">{t('contact_location')}</span>
-                  <span className="value">İzmir, Turkey</span>
+                  <span className="value">{CONTACT_INFO.location}</span>
                 </li>
                 <li>
                   <span className="label">{t('contact_email')}</span>
-                  <span className="value"><a href="mailto:contact@amyartstudio.com">contact@amyartstudio.com</a></span>
+                  <span className="value"><a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a></span>
                 </li>
                 <li>
                   <span className="label">{t('contact_phone')}</span>
-                  <span className="value"><a href="tel:+90 555 555 5555">+90 555 555 5555</a></span>
+                  <span className="value"><a href={`tel:${CONTACT_INFO.phone}`}>{CONTACT_INFO.phone}</a></span>
                 </li>
               </ul>
             </div>
 
             <div className="social_section">
-              <span className="label">Bize Ulaşın</span>
+              <span className="label">{t('contact_reach')}</span>
               <ul className="social_list">
-                <li><a href="https://www.facebook.com/share/1CFCNmJdM8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a></li>
-                <li><a href="https://www.instagram.com/amyart.studio/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a></li>
-                <li><a href="https://pin.it/5eiin6pIT" target="_blank" rel="noopener noreferrer"><i className="fab fa-pinterest-p"></i></a></li>
-                <li><a href="mailto:contact@amyartstudio.com"><i className="far fa-envelope"></i></a></li>
+                <li><a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a></li>
+                <li><a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a></li>
+                <li><a href={SOCIAL_LINKS.pinterest} target="_blank" rel="noopener noreferrer"><i className="fab fa-pinterest-p"></i></a></li>
+                <li><a href={`mailto:${CONTACT_INFO.email}`}><i className="far fa-envelope"></i></a></li>
               </ul>
             </div>
           </div>
@@ -138,7 +149,7 @@ const Contact = () => {
           <div className="right">
             <form className="contact_form" onSubmit={handleSubmit}>
               {submitStatus === 'success' && <div className="form-success-message">{t('form_success')}</div>}
-              {submitStatus === 'error' && <div className="form-error-message">{t('form_error')}</div>}
+              {submitStatus === 'error' && <div className="form-error-message">{errorMessage}</div>}
 
               <div className="fields_row">
                 <div className="form-group half-width">
