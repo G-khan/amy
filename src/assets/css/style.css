@@ -1890,8 +1890,12 @@ body.loading {
 		padding: 60px 0;
 	}
 
+	.tokyo_tm_services .tokyo_tm_title {
+		margin-bottom: 0px;
+	}
+
 	.tokyo_tm_services .list {
-		margin-top: 40px;
+		margin-top: 0px;
 	}
 
 	.tokyo_tm_services .service-item .list_inner {
@@ -2165,7 +2169,7 @@ body.loading {
 	}
 
 	.tokyo_tm_services .list {
-		margin-top: 40px;
+		margin-top: 0px;
 	}
 
 	.tokyo_tm_services .list ul li .list_inner {
@@ -4694,10 +4698,7 @@ body.loading {
 	width: 100%;
 	aspect-ratio: 1 / 1.16;
 	height: auto;
-	height: auto;
 	min-height: 0px;
-	position: relative;
-
 	position: relative;
 	background-color: #fbfbfb;
 	box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.2);
@@ -4726,7 +4727,6 @@ body.loading {
 	font-weight: 300;
 	color: #000;
 	opacity: 0.15;
-	opacity: 0.15;
 	transform: translateX(2%);
 	/* Adjusted from -12% + shifted right */
 }
@@ -4738,7 +4738,6 @@ body.loading {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	z-index: 10;
 	z-index: 10;
 	padding-top: 50px;
 
@@ -4766,7 +4765,6 @@ body.loading {
 	border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* 2. Image Layer */
 /* 2. Image Layer */
 .service_image {
 	position: relative;
@@ -4817,7 +4815,6 @@ body.loading {
 	line-height: 1;
 	font-weight: 300;
 	color: #000;
-	color: #000;
 	transform: translateX(35%);
 	/* 12% + 5% shift */
 }
@@ -4841,8 +4838,6 @@ body.loading {
 	font-weight: 300;
 	color: rgba(0, 0, 0, 0.5);
 	margin-bottom: 8px;
-	color: rgba(0, 0, 0, 0.5);
-	margin-bottom: 8px;
 	animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -4855,8 +4850,6 @@ body.loading {
 	font-weight: 500;
 	color: #000;
 	line-height: 1.1;
-	text-transform: uppercase;
-	margin: 0;
 	text-transform: uppercase;
 	margin: 0;
 	animation: glow 2s ease-in-out infinite alternate;
@@ -4886,6 +4879,15 @@ body.loading {
 }
 
 @media (max-width: 768px) {
+	.tokyo_tm_services {
+		padding: 60px 0;
+		margin-top: 0;
+	}
+
+	.tokyo_tm_services .tokyo_tm_title {
+		margin-bottom: 0px;
+	}
+
 	.tokyo_tm_services .services-grid {
 		grid-template-columns: 1fr !important;
 		gap: 40px;
