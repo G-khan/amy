@@ -1033,7 +1033,6 @@ body.loading {
 	text-decoration: none;
 	transition: color 0.3s ease;
 	line-height: 1.6;
-	padding: 0 6px;
 }
 
 .tokyo_tm_all_wrap .leftpart .sidebar-legal-links a:last-child {
