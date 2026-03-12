@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { portfolioItems, categories, type PortfolioItem } from '../../data/portfolioData';
 import { useLanguage } from '../../context/LanguageContext';
 import { SOCIAL_LINKS, CONTACT_INFO } from '../../config/constants';
+import CheckoutModal from '../checkout/CheckoutModal';
 
 const Portfolio = () => {
   const { t, translateCategory, translateStatus, language } = useLanguage();
@@ -10,6 +11,7 @@ const Portfolio = () => {
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [checkoutItem, setCheckoutItem] = useState<PortfolioItem | null>(null);
 
 
 
@@ -118,14 +120,23 @@ const Portfolio = () => {
                           <span className="category-badge">{translateCategory(selectedItem.category)}</span>
                         </div>
                         <div className="header_cta">
-                          <a
-                            href={SOCIAL_LINKS.shop}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="modal-shop-button"
-                          >
-                            {t('service_cta_shop')}
-                          </a>
+                          {selectedItem.details.status === 'Available' && selectedItem.details.price ? (
+                            <button
+                              className="modal-shop-button"
+                              onClick={() => { setCheckoutItem(selectedItem); closeModal(); }}
+                            >
+                              {t('checkout_buy_now')} — {selectedItem.details.priceDisplay}
+                            </button>
+                          ) : (
+                            <a
+                              href={SOCIAL_LINKS.shop}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="modal-shop-button"
+                            >
+                              {t('service_cta_shop')}
+                            </a>
+                          )}
                         </div>
                       </div>
                       <div className="main_details">
@@ -200,14 +211,10 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* Add Font Awesome CDN */}
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossOrigin="anonymous"
-        referrerPolicy="no-referrer"
-      />
+      {checkoutItem && (
+        <CheckoutModal item={checkoutItem} onClose={() => setCheckoutItem(null)} />
+      )}
+
     </div>
   );
 };

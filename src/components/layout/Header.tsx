@@ -15,6 +15,7 @@ const Header = () => {
       service: language === 'tr' ? 'Hizmetler' : 'Service',
       portfolio: language === 'tr' ? 'Portfolyo' : 'Portfolio',
       contact: language === 'tr' ? 'İletişim' : 'Contact',
+      gallery: language === 'tr' ? 'Galeri' : 'Gallery',
     }),
     [language],
   );
@@ -82,6 +83,7 @@ const Header = () => {
             <li className={activeSection === 'service' ? 'active' : ''}><a href="#service" onClick={() => setIsMenuOpen(false)}>{navLabels.service}</a></li>
             <li className={activeSection === 'portfolio' ? 'active' : ''}><a href="#portfolio" onClick={() => setIsMenuOpen(false)}>{navLabels.portfolio}</a></li>
             <li className={activeSection === 'contact' ? 'active' : ''}><a href="#contact" onClick={() => setIsMenuOpen(false)}>{navLabels.contact}</a></li>
+            <li className={activeSection === 'gallery' ? 'active' : ''}><a href="#gallery" onClick={() => setIsMenuOpen(false)}>{navLabels.gallery}</a></li>
           </ul>
           <div className="mobile_language_switch">
             <button

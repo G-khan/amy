@@ -499,6 +499,84 @@ body.dark .tokyo_tm_modalbox .description_wrap:before {
 	background-color: #34353a;
 }
 
+/* Sidebar Footer - Dark */
+body.dark .tokyo_tm_all_wrap .leftpart .sidebar-footer {
+	border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .tokyo_tm_all_wrap .leftpart .sidebar-legal-links a {
+	color: rgba(255, 255, 255, 0.5);
+	border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .tokyo_tm_all_wrap .leftpart .sidebar-legal-links a:hover {
+	color: #fff;
+}
+
+body.dark .tokyo_tm_all_wrap .leftpart .sidebar-payment-logos img {
+	filter: brightness(0) invert(0.7);
+}
+
+body.dark .tokyo_tm_all_wrap .leftpart .sidebar-payment-logos img:hover {
+	filter: brightness(0) invert(1);
+}
+
+body.dark .tokyo_tm_all_wrap .leftpart .sidebar-footer .footer-copy {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+/* Legal Page - Dark */
+body.dark .legal-page .legal-page-header span {
+	background-color: rgba(255, 255, 255, 0.04);
+	color: #959595;
+}
+
+body.dark .legal-page .legal-page-header h3 {
+	color: #fff;
+}
+
+body.dark .legal-page .legal-content {
+	color: #bbb;
+}
+
+body.dark .legal-page .legal-content h4 {
+	color: #fff;
+	border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .legal-page .legal-content strong {
+	color: #fff;
+}
+
+body.dark .legal-page .legal-content table th {
+	background: rgba(255, 255, 255, 0.05);
+	color: #fff;
+}
+
+body.dark .legal-page .legal-content table th,
+body.dark .legal-page .legal-content table td {
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark .legal-page .legal-content a {
+	color: #bbb;
+}
+
+body.dark .legal-page .legal-content a:hover {
+	color: #fff;
+}
+
+body.dark .legal-page .legal-back-btn {
+	color: #bbb;
+	border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark .legal-page .legal-back-btn:hover {
+	background: #fff;
+	color: #000;
+	border-color: #fff;
+}
+
 body.dark .tokyo_tm_partners {
 	background-color: #494b50;
 }

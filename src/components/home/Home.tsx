@@ -6,6 +6,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { portfolioItems, type PortfolioItem } from '../../data/portfolioData';
 import { useLanguage } from '../../context/LanguageContext';
 import { SOCIAL_LINKS, CONTACT_INFO } from '../../config/constants';
+import CheckoutModal from '../checkout/CheckoutModal';
 
 const Home = () => {
   const { t, translateCategory, translateStatus, language } = useLanguage();
@@ -14,6 +15,7 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [checkoutItem, setCheckoutItem] = useState<PortfolioItem | null>(null);
 
   useEffect(() => {
     // Set background image for avatar
@@ -159,14 +161,23 @@ const Home = () => {
                         <span className="category-badge">{translateCategory(selectedItem.category)}</span>
                       </div>
                       <div className="header_cta">
-                        <a
-                          href={SOCIAL_LINKS.shop}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="modal-shop-button"
-                        >
-                          {t('service_cta_shop')}
-                        </a>
+                        {selectedItem.details.status === 'Available' && selectedItem.details.price ? (
+                          <button
+                            className="modal-shop-button"
+                            onClick={() => { setCheckoutItem(selectedItem); closeModal(); }}
+                          >
+                            {t('checkout_buy_now')} — {selectedItem.details.priceDisplay}
+                          </button>
+                        ) : (
+                          <a
+                            href={SOCIAL_LINKS.shop}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="modal-shop-button"
+                          >
+                            {t('service_cta_shop')}
+                          </a>
+                        )}
                       </div>
                     </div>
                     <div className="main_details">
@@ -238,6 +249,9 @@ const Home = () => {
           ),
           document.body
         )}
+      {checkoutItem && (
+        <CheckoutModal item={checkoutItem} onClose={() => setCheckoutItem(null)} />
+      )}
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ const Sidebar = () => {
       service: language === 'tr' ? 'Hizmetler' : 'Service',
       portfolio: language === 'tr' ? 'Portfolyo' : 'Portfolio',
       contact: language === 'tr' ? 'İletişim' : 'Contact',
+      gallery: language === 'tr' ? 'Galeri' : 'Gallery',
     }),
     [language],
   );
@@ -49,6 +50,7 @@ const Sidebar = () => {
             <li className={activeSection === 'service' ? 'active' : ''}><a href="#service">{navLabels.service}</a></li>
             <li className={activeSection === 'portfolio' ? 'active' : ''}><a href="#portfolio">{navLabels.portfolio}</a></li>
             <li className={activeSection === 'contact' ? 'active' : ''}><a href="#contact">{navLabels.contact}</a></li>
+            <li className={activeSection === 'gallery' ? 'active' : ''}><a href="#gallery">{navLabels.gallery}</a></li>
           </ul>
         </div>
         <div className="">
@@ -57,8 +59,20 @@ const Sidebar = () => {
             <a href={`mailto:${CONTACT_INFO.email}`}><strong>{CONTACT_INFO.email}</strong></a>
           </p>
         </div>
-        <div className="copyright">
-
+        <div className="sidebar-footer">
+          <div className="sidebar-payment-logos">
+            <img src="/img/payment/visa.svg" alt="Visa" />
+            <img src="/img/payment/mastercard.svg" alt="MasterCard" />
+            <img src="/img/payment/troy.svg" alt="Troy" />
+          </div>
+          <div className="sidebar-legal-links">
+            <a href="#legal-distance-sales">{t('legal_distance_sales')}</a>
+            <a href="#legal-pre-info">{t('legal_pre_info')}</a>
+            <a href="#legal-cancellation">{t('legal_cancellation')}</a>
+            <a href="#legal-warranty">{t('legal_warranty')}</a>
+            <a href="#legal-kvkk">{t('legal_kvkk')}</a>
+            <a href="#legal-cookies">{t('legal_cookies')}</a>
+          </div>
           <p className="footer-copy">&copy; 2025 {t('footer_created_by')} Amy Art Studio</p>
         </div>
       </div>

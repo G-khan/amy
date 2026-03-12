@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense, lazy } from 'react'
 import Header from './components/layout/Header'
 import Sidebar from './components/layout/Sidebar'
 import Home from './components/home/Home'
@@ -6,7 +6,9 @@ import About from './components/about/About'
 import Service from './components/service/Service'
 import Portfolio from './components/portfolio/Portfolio'
 import Contact from './components/contact/Contact'
+import LegalPage from './components/legal/LegalPage'
 import Preloader from './components/layout/Preloader'
+const Gallery = lazy(() => import('./components/gallery/Gallery'))
 import { LanguageProvider } from './context/LanguageContext'
 import { SectionProvider } from './context/SectionContext'
 import './assets/css/style.css'
@@ -93,6 +95,18 @@ function App() {
             <div className={`tokyo_tm_section ${activeSection === 'contact' ? 'active' : ''}`}>
               <Contact />
             </div>
+            {activeSection === 'gallery' && (
+              <div className="tokyo_tm_section active">
+                <Suspense fallback={<div className="gallery-loading">Loading 3D Gallery...</div>}>
+                  <Gallery isActive={true} />
+                </Suspense>
+              </div>
+            )}
+            {activeSection.startsWith('legal-') && (
+              <div className="tokyo_tm_section active">
+                <LegalPage legalId={activeSection.replace('legal-', '')} />
+              </div>
+            )}
           </div>
         </div>
       </div>

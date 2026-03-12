@@ -28,6 +28,8 @@ export interface PortfolioItem {
     size: string;
     year: string;
     status: string;
+    price?: number;
+    priceDisplay?: string;
   };
 }
 
@@ -73,7 +75,9 @@ I'm so happy you're with me on this first share. I hope you'll love "Crest" as m
       },
       size: "50 cm",
       year: "2025",
-      status: "Available"
+      status: "Available",
+      price: 350000,
+      priceDisplay: "3.500 TL"
     }
   },
   {
@@ -131,7 +135,9 @@ I hope that while viewing this piece, you'll discover the care I put into the de
       materials: { tr: "Tuval üzerine akrilik, alçı", en: "Acrylic, plaster on canvas" },
       size: "60x80 cm",
       year: "2024",
-      status: "Available"
+      status: "Available",
+      price: 450000,
+      priceDisplay: "4.500 TL"
     }
   },
   {
@@ -162,7 +168,9 @@ It can also be used as two separate paintings.`
       materials: { tr: "Tuval üzerine akrilik, alçı", en: "Acrylic, plaster on canvas" },
       size: "40x80 cm",
       year: "2024",
-      status: "Available"
+      status: "Available",
+      price: 400000,
+      priceDisplay: "4.000 TL"
     }
   },
   {
@@ -189,7 +197,9 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
       materials: { tr: "Tuval üzerine akrilik, alçı", en: "Acrylic, plaster on canvas" },
       size: "70x100 cm",
       year: "2024",
-      status: "Available"
+      status: "Available",
+      price: 550000,
+      priceDisplay: "5.500 TL"
     }
   },
   {
@@ -212,7 +222,9 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
       materials: { tr: "Tuval üzerine akrilik, alçı", en: "Acrylic, plaster on canvas" },
       size: "60x80 cm",
       year: "2024",
-      status: "Available"
+      status: "Available",
+      price: 420000,
+      priceDisplay: "4.200 TL"
     }
   },
   {
@@ -242,7 +254,7 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
     id: 8,
     title: "Clarity",
     category: "seascape",
-    image: "https://embedsocial.com/admin/cdncache/feed-media/18059/18059436314026620/image_0.jpeg",
+    image: "/img/portfolio/Clarity.jpeg",
     description: {
       short: {
         tr: "Gökyüzünün dinginliğini ve denizin berraklığını yansıtan, mekanınıza ferahlık ve huzur katan tablo.",
@@ -291,14 +303,16 @@ Don't forget to check out the images to discover the details! ✨`
       },
       size: "50 cm",
       year: "2024",
-      status: "Available"
+      status: "Available",
+      price: 350000,
+      priceDisplay: "3.500 TL"
     }
   },
   {
     id: 10,
     title: "Relief",
     category: "textured",
-    image: "https://embedsocial.com/admin/cdncache/feed-media/17877/17877914331184870/image_0.jpeg",
+    image: "/img/portfolio/Relief.jpeg",
     description: {
       short: {
         tr: "Alçı ile oluşturulan kabartmalar, tabloya derinlik ve dokunsal bir boyut kazandırırken, akrilik boya ile renklerin dansı ortaya çıktı.",
@@ -321,14 +335,16 @@ I look forward to your comments and thoughts!`
       },
       size: "60x80 cm",
       year: "2024",
-      status: "Available"
+      status: "Available",
+      price: 450000,
+      priceDisplay: "4.500 TL"
     }
   },
   {
     id: 11,
     title: "Strata",
     category: "textured",
-    image: "https://embedsocial.com/admin/cdncache/feed-media/18492/18492612679034357/image_0.jpeg",
+    image: "/img/portfolio/Strata.jpeg",
     description: {
       short: {
         tr: "Tuval, akrilik ve alçının dokusal dansına şahit olacağınız, her kabartı ve katmanın özenle şekillendirildiği soyut çalışma.",

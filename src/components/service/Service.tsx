@@ -61,13 +61,13 @@ const Service = () => {
         <div className="services_cta">
           <div className="cta_buttons">
             <a
-              href="mailto:contact@amyartstudio.com"
+              href={`mailto:${CONTACT_INFO.email}`}
               className="service_cta_button primary"
             >
               {t('service_cta_email')}
             </a>
             <a
-              href="https://www.shopier.com/amyart"
+              href={SOCIAL_LINKS.shop}
               target="_blank"
               rel="noopener noreferrer"
               className="service_cta_button secondary"
