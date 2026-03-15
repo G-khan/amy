@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useSection } from '../../context/SectionContext';
 import { CONTACT_INFO } from '../../config/constants';
@@ -53,27 +53,11 @@ const Sidebar = () => {
             <li className={activeSection === 'gallery' ? 'active' : ''}><a href="#gallery">{navLabels.gallery}</a></li>
           </ul>
         </div>
-        <div className="">
+        <div className="sidebar-cta">
           <p className="footer-cta">
             {t('cta_inquiry_line').split(CONTACT_INFO.email)[0]}
             <a href={`mailto:${CONTACT_INFO.email}`}><strong>{CONTACT_INFO.email}</strong></a>
           </p>
-        </div>
-        <div className="sidebar-footer">
-          <div className="sidebar-payment-logos">
-            <img src="/img/payment/visa.svg" alt="Visa" />
-            <img src="/img/payment/mastercard.svg" alt="MasterCard" />
-            <img src="/img/payment/troy.svg" alt="Troy" />
-          </div>
-          <div className="sidebar-legal-links">
-            <a href="#legal-distance-sales">{t('legal_distance_sales')}</a>
-            <a href="#legal-pre-info">{t('legal_pre_info')}</a>
-            <a href="#legal-cancellation">{t('legal_cancellation')}</a>
-            <a href="#legal-warranty">{t('legal_warranty')}</a>
-            <a href="#legal-kvkk">{t('legal_kvkk')}</a>
-            <a href="#legal-cookies">{t('legal_cookies')}</a>
-          </div>
-          <p className="footer-copy">&copy; 2025 {t('footer_created_by')} Amy Art Studio</p>
         </div>
       </div>
     </div>

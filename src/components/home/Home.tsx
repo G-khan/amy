@@ -61,7 +61,7 @@ const Home = () => {
   return (
     <div className="container">
       <div className="tokyo_tm_home">
-        <div className="home_content" style={{ marginBottom: '0px', marginTop: '0px' }}>
+        <div className="home_content">
           <div className="avatar" data-type="wave">
             <div className="image" data-img-url="/img/logo/amy.jpeg"></div>
           </div>
@@ -137,12 +137,9 @@ const Home = () => {
             <div className={`tokyo_tm_modalbox ${showModal ? 'opened' : ''}`}>
               <div className="box_inner">
                 <div className="close">
-                  <a href="#home" onClick={(e) => {
-                    e.preventDefault();
-                    closeModal();
-                  }}>
-                    <i className="icon-cancel">✕</i>
-                  </a>
+                  <button type="button" onClick={closeModal} aria-label="Close">
+                    <span>✕</span>
+                  </button>
                 </div>
                 <div className="description_wrap">
                   <div className="popup_details">
@@ -239,7 +236,7 @@ const Home = () => {
         {isFullscreen && selectedItem && createPortal(
           (
             <div className={`fullscreen-image-modal ${isFullscreen ? 'opened' : ''}`} onClick={closeFullscreen}>
-              <div className="close-fullscreen" onClick={closeFullscreen}>X</div>
+              <button type="button" className="close-fullscreen" onClick={closeFullscreen} aria-label="Close fullscreen">✕</button>
               <img
                 src={selectedItem.image}
                 alt={selectedItem.title}

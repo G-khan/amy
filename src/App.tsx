@@ -7,6 +7,7 @@ import Service from './components/service/Service'
 import Portfolio from './components/portfolio/Portfolio'
 import Contact from './components/contact/Contact'
 import LegalPage from './components/legal/LegalPage'
+import Footer from './components/layout/Footer'
 import Preloader from './components/layout/Preloader'
 const Gallery = lazy(() => import('./components/gallery/Gallery'))
 import { LanguageProvider } from './context/LanguageContext'
@@ -82,29 +83,36 @@ function App() {
           <div className="rightpart_in">
             <div className={`tokyo_tm_section ${activeSection === 'home' ? 'active' : ''}`}>
               <Home />
+              <Footer />
             </div>
             <div className={`tokyo_tm_section ${activeSection === 'about' ? 'active' : ''}`}>
               <About />
+              <Footer />
             </div>
             <div className={`tokyo_tm_section ${activeSection === 'service' ? 'active' : ''}`}>
               <Service />
+              <Footer />
             </div>
             <div className={`tokyo_tm_section ${activeSection === 'portfolio' ? 'active' : ''}`}>
               <Portfolio />
+              <Footer />
             </div>
             <div className={`tokyo_tm_section ${activeSection === 'contact' ? 'active' : ''}`}>
               <Contact />
+              <Footer />
             </div>
             {activeSection === 'gallery' && (
               <div className="tokyo_tm_section active">
                 <Suspense fallback={<div className="gallery-loading">Loading 3D Gallery...</div>}>
                   <Gallery isActive={true} />
                 </Suspense>
+                <Footer />
               </div>
             )}
             {activeSection.startsWith('legal-') && (
               <div className="tokyo_tm_section active">
                 <LegalPage legalId={activeSection.replace('legal-', '')} />
+                <Footer />
               </div>
             )}
           </div>

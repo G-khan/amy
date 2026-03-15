@@ -992,62 +992,116 @@ body.loading {
 	margin-top: 6px;
 }
 
-/* Sidebar Footer */
-.tokyo_tm_all_wrap .leftpart .sidebar-footer {
+/* Site Footer */
+.site-footer {
 	width: 100%;
-	margin-top: auto;
-	padding-top: 20px;
-	border-top: 1px solid rgba(0, 0, 0, 0.06);
+	clear: both;
+	float: left;
+	padding: 40px 20px 30px;
+	margin-top: 60px;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
 	text-align: center;
 }
 
-.tokyo_tm_all_wrap .leftpart .sidebar-payment-logos {
+.site-footer .footer-inner {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.site-footer .footer-payment-logos {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 10px;
-	margin-bottom: 16px;
+	gap: 15px;
+	margin-bottom: 20px;
 }
 
-.tokyo_tm_all_wrap .leftpart .sidebar-payment-logos img {
-	height: 22px;
-	opacity: 0.7;
+.site-footer .footer-payment-logos img {
+	height: 28px;
+	opacity: 0.6;
 	transition: opacity 0.3s ease;
 }
 
-.tokyo_tm_all_wrap .leftpart .sidebar-payment-logos img:hover {
+.site-footer .footer-payment-logos img:hover {
 	opacity: 1;
 }
 
-.tokyo_tm_all_wrap .leftpart .sidebar-legal-links {
+.site-footer .footer-legal-links {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 4px 0;
-	margin-bottom: 14px;
+	gap: 6px 16px;
+	margin-bottom: 16px;
 }
 
-.tokyo_tm_all_wrap .leftpart .sidebar-legal-links a {
-	font-size: 10px;
-	color: #999;
+.site-footer .footer-legal-links a {
+	font-size: 12px;
+	color: #777;
 	text-decoration: none;
 	transition: color 0.3s ease;
-	line-height: 1.6;
 }
 
-.tokyo_tm_all_wrap .leftpart .sidebar-legal-links a:last-child {
-	border-right: none;
-}
-
-.tokyo_tm_all_wrap .leftpart .sidebar-legal-links a:hover {
+.site-footer .footer-legal-links a:hover {
 	color: #000;
 }
 
-.tokyo_tm_all_wrap .leftpart .sidebar-footer .footer-copy {
-	font-size: 11px;
+.site-footer .footer-contact-info {
+	font-size: 13px;
+	color: #888;
+	margin-bottom: 12px;
+}
+
+.site-footer .footer-contact-info a {
+	color: #666;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.site-footer .footer-contact-info a:hover {
+	color: #000;
+}
+
+.site-footer .footer-contact-info .separator {
+	margin: 0 8px;
+	color: #ccc;
+}
+
+.site-footer .footer-copy {
+	font-size: 12px;
 	color: #999;
 	font-family: "Montserrat";
 	margin: 0;
+}
+
+@media (max-width: 768px) {
+	.site-footer {
+		padding: 30px 15px 25px;
+		margin-top: 40px;
+	}
+
+	.site-footer .footer-legal-links {
+		gap: 4px 12px;
+	}
+
+	.site-footer .footer-legal-links a {
+		font-size: 11px;
+	}
+
+	.site-footer .footer-contact-info {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 480px) {
+	.site-footer .footer-contact-info {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.site-footer .footer-contact-info .separator {
+		display: none;
+	}
 }
 
 /* Legal Page Styles */
@@ -1170,6 +1224,53 @@ body.loading {
 	background: #000;
 	color: #fff;
 	border-color: #000;
+}
+
+@media (max-width: 768px) {
+	.legal-page {
+		padding: 25px 20px;
+	}
+
+	.legal-page .legal-page-header {
+		margin-bottom: 25px;
+	}
+
+	.legal-page .legal-page-header h3 {
+		font-size: 20px;
+	}
+
+	.legal-page .legal-content {
+		font-size: 13px;
+	}
+
+	.legal-page .legal-content h4 {
+		font-size: 14px;
+	}
+
+	.legal-page .legal-content table {
+		font-size: 12px;
+	}
+
+	.legal-page .legal-content table th,
+	.legal-page .legal-content table td {
+		padding: 8px 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	.legal-page {
+		padding: 20px 15px;
+	}
+
+	.legal-page .legal-page-header h3 {
+		font-size: 18px;
+	}
+
+	.legal-page .legal-content table {
+		display: block;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
 }
 
 /*---------------------------------------------------*/
@@ -2919,21 +3020,25 @@ body.loading {
 	z-index: 2;
 }
 
-.tokyo_tm_modalbox .close a {
-	display: block;
+.tokyo_tm_modalbox .close a,
+.tokyo_tm_modalbox .close button {
+	display: flex;
 	width: 40px;
 	height: 40px;
 	background: #fff;
+	border: none;
 	border-radius: 100%;
-	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: #000;
+	cursor: pointer;
+	font-size: 16px;
 	transition: all 0.3s ease;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.tokyo_tm_modalbox .close a:hover {
+.tokyo_tm_modalbox .close a:hover,
+.tokyo_tm_modalbox .close button:hover {
 	background: #000;
 	color: #fff;
 }
@@ -4227,6 +4332,7 @@ body.loading {
 	width: 40px;
 	height: 40px;
 	background: rgba(255, 255, 255, 0.1);
+	border: none;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;

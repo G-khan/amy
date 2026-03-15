@@ -499,30 +499,45 @@ body.dark .tokyo_tm_modalbox .description_wrap:before {
 	background-color: #34353a;
 }
 
-/* Sidebar Footer - Dark */
-body.dark .tokyo_tm_all_wrap .leftpart .sidebar-footer {
+/* Site Footer - Dark */
+body.dark .site-footer {
 	border-top-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .sidebar-legal-links a {
-	color: rgba(255, 255, 255, 0.5);
-	border-right-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark .tokyo_tm_all_wrap .leftpart .sidebar-legal-links a:hover {
-	color: #fff;
-}
-
-body.dark .tokyo_tm_all_wrap .leftpart .sidebar-payment-logos img {
+body.dark .site-footer .footer-payment-logos img {
 	filter: brightness(0) invert(0.7);
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .sidebar-payment-logos img:hover {
+body.dark .site-footer .footer-payment-logos img:hover {
 	filter: brightness(0) invert(1);
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .sidebar-footer .footer-copy {
+body.dark .site-footer .footer-legal-links a {
 	color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark .site-footer .footer-legal-links a:hover {
+	color: #fff;
+}
+
+body.dark .site-footer .footer-contact-info {
+	color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark .site-footer .footer-contact-info a {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark .site-footer .footer-contact-info a:hover {
+	color: #fff;
+}
+
+body.dark .site-footer .footer-contact-info .separator {
+	color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark .site-footer .footer-copy {
+	color: rgba(255, 255, 255, 0.4);
 }
 
 /* Legal Page - Dark */

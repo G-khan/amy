@@ -12,8 +12,7 @@ const Portfolio = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [checkoutItem, setCheckoutItem] = useState<PortfolioItem | null>(null);
-
-
+  const [loading, setLoading] = useState(false);
 
   const filteredItems = activeFilter === '*'
     ? portfolioItems
@@ -21,6 +20,7 @@ const Portfolio = () => {
 
   const openModal = (item: PortfolioItem) => {
     setSelectedItem(item);
+    setLoading(true);
     setIsModalOpen(true);
   };
 
@@ -98,20 +98,19 @@ const Portfolio = () => {
               <div className="tokyo_tm_modalbox opened">
                 <div className="box_inner">
                   <div className="close">
-                    <a href="#portfolio" onClick={(e) => {
-                      e.preventDefault();
-                      closeModal();
-                    }}>
-                      <i className="icon-cancel">✕</i>
-                    </a>
+                    <button type="button" onClick={closeModal} aria-label="Close">
+                      <span>✕</span>
+                    </button>
                   </div>
                   <div className="description_wrap">
                     <div className="popup_details">
                       <div className="top_image" onClick={toggleFullscreen}>
+                        {loading && <div className="skeleton-loader"></div>}
                         <img
                           src={selectedItem.image}
                           alt={selectedItem.title}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                          onLoad={() => setLoading(false)}
+                          style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s ease', width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                       </div>
                       <div className="portfolio_header_row">
@@ -198,7 +197,7 @@ const Portfolio = () => {
           {isFullscreen && selectedItem && createPortal(
             (
               <div className={`fullscreen-image-modal ${isFullscreen ? 'opened' : ''}`} onClick={closeFullscreen}>
-                <div className="close-fullscreen" onClick={closeFullscreen}>X</div>
+                <button type="button" className="close-fullscreen" onClick={closeFullscreen} aria-label="Close fullscreen">✕</button>
                 <img
                   src={selectedItem.image}
                   alt={selectedItem.title}

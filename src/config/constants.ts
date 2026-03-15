@@ -6,7 +6,7 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const CONTACT_INFO = {
-  email: 'contact@amyartstudio.com',
+  email: 'amywallart.studio@gmail.com',
   phone: '+90 555 555 5555',
   location: 'İzmir, Turkey',
 } as const;

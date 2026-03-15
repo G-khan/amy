@@ -11,10 +11,11 @@ const COMPANY = {
   name: 'AMY Art Studio',
   owner: 'Amy Art Studio',
   address: 'İzmir, Türkiye',
-  email: 'contact@amyartstudio.com',
+  email: 'amywallart.studio@gmail.com',
   phone: '+90 555 555 5555',
-  website: 'https://www.amyartstudio.com',
-  lastUpdated: '12.03.2026',
+  website: 'https://amyart.com.tr',
+  website2: 'http://amywallart.com.tr',
+  lastUpdated: '14.03.2026',
 };
 
 export const legalDocuments: LegalDocument[] = [
@@ -40,6 +41,7 @@ export const legalDocuments: LegalDocument[] = [
   <li><strong>Adres:</strong> ${COMPANY.address}</li>
   <li><strong>E-posta:</strong> ${COMPANY.email}</li>
   <li><strong>Telefon:</strong> ${COMPANY.phone}</li>
+  <li><strong>Web Sitesi:</strong> <a href="${COMPANY.website}">${COMPANY.website}</a> | <a href="${COMPANY.website2}">${COMPANY.website2}</a></li>
 </ul>
 <p><strong>1.2. ALICI:</strong></p>
 <p>Sipariş esnasında belirtilen ad, soyad, adres, e-posta ve telefon bilgilerine sahip gerçek veya tüzel kişi.</p>
@@ -100,6 +102,7 @@ export const legalDocuments: LegalDocument[] = [
   <li><strong>Address:</strong> ${COMPANY.address}</li>
   <li><strong>Email:</strong> ${COMPANY.email}</li>
   <li><strong>Phone:</strong> ${COMPANY.phone}</li>
+  <li><strong>Website:</strong> <a href="${COMPANY.website}">${COMPANY.website}</a> | <a href="${COMPANY.website2}">${COMPANY.website2}</a></li>
 </ul>
 <p><strong>1.2. BUYER:</strong></p>
 <p>The individual or legal entity whose name, surname, address, email, and phone number are specified during the order process.</p>
@@ -174,7 +177,7 @@ export const legalDocuments: LegalDocument[] = [
   <li><strong>Adres:</strong> ${COMPANY.address}</li>
   <li><strong>Telefon:</strong> ${COMPANY.phone}</li>
   <li><strong>E-posta:</strong> ${COMPANY.email}</li>
-  <li><strong>Web Sitesi:</strong> ${COMPANY.website}</li>
+  <li><strong>Web Sitesi:</strong> <a href="${COMPANY.website}">${COMPANY.website}</a> | <a href="${COMPANY.website2}">${COMPANY.website2}</a></li>
 </ul>
 
 <h4>2. ÜRÜN/HİZMET BİLGİLERİ</h4>
@@ -224,7 +227,7 @@ export const legalDocuments: LegalDocument[] = [
   <li><strong>Address:</strong> ${COMPANY.address}</li>
   <li><strong>Phone:</strong> ${COMPANY.phone}</li>
   <li><strong>Email:</strong> ${COMPANY.email}</li>
-  <li><strong>Website:</strong> ${COMPANY.website}</li>
+  <li><strong>Website:</strong> <a href="${COMPANY.website}">${COMPANY.website}</a> | <a href="${COMPANY.website2}">${COMPANY.website2}</a></li>
 </ul>
 
 <h4>2. PRODUCT/SERVICE INFORMATION</h4>

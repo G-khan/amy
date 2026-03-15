@@ -89,12 +89,12 @@ const translations = {
   contact_email: { tr: 'E-posta', en: 'Email' },
   contact_phone: { tr: 'Telefon', en: 'Phone' },
   cta_inquiry_line: {
-    tr: 'Eserlerin uygunluğu veya özel sipariş için: contact@amyartstudio.com',
-    en: 'For availability or commissions: contact@amyartstudio.com'
+    tr: 'Eserlerin uygunluğu veya özel sipariş için: amywallart.studio@gmail.com',
+    en: 'For availability or commissions: amywallart.studio@gmail.com'
   },
   cta_portfolio_banner: {
-    tr: 'Müsaitlik & özel sipariş: contact@amyartstudio.com | +90 555 555 5555',
-    en: 'Availability & commissions: contact@amyartstudio.com | +90 555 555 5555'
+    tr: 'Müsaitlik & özel sipariş: amywallart.studio@gmail.com | +90 555 555 5555',
+    en: 'Availability & commissions: amywallart.studio@gmail.com | +90 555 555 5555'
   },
   cta_modal_prompt: {
     tr: 'Müsaitlik veya özel sipariş için e-posta gönderin.',
