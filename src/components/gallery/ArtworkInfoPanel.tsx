@@ -1,7 +1,8 @@
 import { createPortal } from 'react-dom';
 import { type PortfolioItem } from '../../data/portfolioData';
 import { useLanguage } from '../../context/LanguageContext';
-import { SOCIAL_LINKS, CONTACT_INFO } from '../../config/constants';
+import { CONTACT_INFO } from '../../config/constants';
+import ProductPurchaseActions from '../checkout/ProductPurchaseActions';
 
 interface Props {
   item: PortfolioItem;
@@ -39,14 +40,7 @@ export default function ArtworkInfoPanel({ item, onClose }: Props) {
                 <span className="category-badge">{translateCategory(item.category)}</span>
               </div>
               <div className="header_cta">
-                <a
-                  href={SOCIAL_LINKS.shop}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="modal-shop-button"
-                >
-                  {t('service_cta_shop')}
-                </a>
+                <ProductPurchaseActions item={item} onQuickBuy={onClose} onContactRequest={onClose} />
               </div>
             </div>
             <div className="main_details">

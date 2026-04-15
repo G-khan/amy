@@ -1,20 +1,26 @@
 import { useEffect, useState, Suspense, lazy } from 'react'
-import Header from './components/layout/Header'
-import Sidebar from './components/layout/Sidebar'
-import Home from './components/home/Home'
 import About from './components/about/About'
-import Service from './components/service/Service'
-import Portfolio from './components/portfolio/Portfolio'
+import CartStatusBar from './components/checkout/CartStatusBar'
+import CheckoutPage from './components/checkout/CheckoutPage'
+import PaymentStatusPage from './components/checkout/PaymentStatusPage'
 import Contact from './components/contact/Contact'
-import LegalPage from './components/legal/LegalPage'
+import CustomOrderPage from './components/custom-order/CustomOrderPage'
+import Home from './components/home/Home'
 import Footer from './components/layout/Footer'
+import Header from './components/layout/Header'
 import Preloader from './components/layout/Preloader'
-const Gallery = lazy(() => import('./components/gallery/Gallery'))
+import Sidebar from './components/layout/Sidebar'
+import LegalPage from './components/legal/LegalPage'
+import Portfolio from './components/portfolio/Portfolio'
+import Service from './components/service/Service'
+import { CartProvider } from './context/CartContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { SectionProvider } from './context/SectionContext'
 import './assets/css/style.css'
 import './assets/css/mobile-fixes.css'
 import './App.css'
+
+const Gallery = lazy(() => import('./components/gallery/Gallery'))
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -46,7 +52,8 @@ function App() {
     // Handle section visibility on hash change
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1) || 'home';
-      setActiveSection(hash);
+      const sectionName = hash.split('?')[0] || 'home';
+      setActiveSection(sectionName);
 
       // Scroll to top when changing sections
       window.scrollTo(0, 0);
@@ -74,53 +81,78 @@ function App() {
 
   return (
     <LanguageProvider>
-      <SectionProvider activeSection={activeSection}>
-        <div className="tokyo_tm_all_wrap" data-magic-cursor="show">
-          {loading ? <Preloader /> : null}
-          <Header />
-          <Sidebar />
-        <div className="rightpart">
-          <div className="rightpart_in">
-            <div className={`tokyo_tm_section ${activeSection === 'home' ? 'active' : ''}`}>
-              <Home />
-              <Footer />
-            </div>
-            <div className={`tokyo_tm_section ${activeSection === 'about' ? 'active' : ''}`}>
-              <About />
-              <Footer />
-            </div>
-            <div className={`tokyo_tm_section ${activeSection === 'service' ? 'active' : ''}`}>
-              <Service />
-              <Footer />
-            </div>
-            <div className={`tokyo_tm_section ${activeSection === 'portfolio' ? 'active' : ''}`}>
-              <Portfolio />
-              <Footer />
-            </div>
-            <div className={`tokyo_tm_section ${activeSection === 'contact' ? 'active' : ''}`}>
-              <Contact />
-              <Footer />
-            </div>
-            {activeSection === 'gallery' && (
-              <div className="tokyo_tm_section active">
-                <Suspense fallback={<div className="gallery-loading">Loading 3D Gallery...</div>}>
-                  <Gallery isActive={true} />
-                </Suspense>
-                <Footer />
+      <CartProvider>
+        <SectionProvider activeSection={activeSection}>
+          <div className="tokyo_tm_all_wrap" data-magic-cursor="show">
+            {loading ? <Preloader /> : null}
+            <Header />
+            <Sidebar />
+            <div className="rightpart">
+              <div className="rightpart_in">
+                <div className="global-cart-entry">
+                  <CartStatusBar activeSection={activeSection} />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'home' ? 'active' : ''}`}>
+                  <Home />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'about' ? 'active' : ''}`}>
+                  <About />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'service' ? 'active' : ''}`}>
+                  <Service />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'portfolio' ? 'active' : ''}`}>
+                  <Portfolio />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'contact' ? 'active' : ''}`}>
+                  <Contact />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'custom-order' ? 'active' : ''}`}>
+                  <CustomOrderPage />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'checkout' ? 'active' : ''}`}>
+                  <CheckoutPage />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'payment-success' ? 'active' : ''}`}>
+                  <PaymentStatusPage variant="success" />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'payment-fail' ? 'active' : ''}`}>
+                  <PaymentStatusPage variant="fail" />
+                  <Footer />
+                </div>
+                <div className={`tokyo_tm_section ${activeSection === 'bank-transfer-success' ? 'active' : ''}`}>
+                  <PaymentStatusPage variant="bankTransfer" />
+                  <Footer />
+                </div>
+                {activeSection === 'gallery' && (
+                  <div className="tokyo_tm_section active">
+                    <Suspense fallback={<div className="gallery-loading">Loading 3D Gallery...</div>}>
+                      <Gallery isActive={true} />
+                    </Suspense>
+                    <Footer />
+                  </div>
+                )}
+                {activeSection.startsWith('legal-') && (
+                  <div className="tokyo_tm_section active">
+                    <LegalPage legalId={activeSection.replace('legal-', '')} />
+                    <Footer />
+                  </div>
+                )}
               </div>
-            )}
-            {activeSection.startsWith('legal-') && (
-              <div className="tokyo_tm_section active">
-                <LegalPage legalId={activeSection.replace('legal-', '')} />
-                <Footer />
-              </div>
-            )}
+            </div>
           </div>
-        </div>
-      </div>
-      </SectionProvider>
+        </SectionProvider>
+      </CartProvider>
     </LanguageProvider>
-  );
+  )
 }
 
 export default App;

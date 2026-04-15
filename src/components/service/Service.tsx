@@ -1,10 +1,16 @@
-import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { SOCIAL_LINKS, CONTACT_INFO } from '../../config/constants';
+import { CONTACT_INFO } from '../../config/constants';
 import crestImg from '../../assets/img/portfolio/Crest.jpg';
 import velvetImg from '../../assets/img/portfolio/Velvet.jpg';
 import enigmaImg from '../../assets/img/portfolio/Enigma.jpg';
 import graceVavImg from '../../assets/img/portfolio/Grace-Vav.jpg';
+
+const services = [
+  { id: 1, image: crestImg, titleKey: 'service_1_title', descKey: 'service_1_desc' },
+  { id: 2, image: velvetImg, titleKey: 'service_2_title', descKey: 'service_2_desc' },
+  { id: 3, image: enigmaImg, titleKey: 'service_3_title', descKey: 'service_3_desc' },
+  { id: 4, image: graceVavImg, titleKey: 'service_4_title', descKey: 'service_4_desc' }
+] as const;
 
 const Service = () => {
   const { t } = useLanguage();
@@ -22,12 +28,7 @@ const Service = () => {
         </div>
         <div className="list">
           <div className="services-grid">
-            {[
-              { id: 1, image: crestImg, titleKey: 'service_1_title', descKey: 'service_1_desc' },
-              { id: 2, image: velvetImg, titleKey: 'service_2_title', descKey: 'service_2_desc' },
-              { id: 3, image: enigmaImg, titleKey: 'service_3_title', descKey: 'service_3_desc' },
-              { id: 4, image: graceVavImg, titleKey: 'service_4_title', descKey: 'service_4_desc' }
-            ].map((service, index) => (
+            {services.map((service) => (
               <div key={service.id} className="service-item architectural-poster">
                 {/* 0. Back Layer Number (0) */}
                 <div className="hidden-number-back font-poster">0</div>
@@ -67,9 +68,7 @@ const Service = () => {
               {t('service_cta_email')}
             </a>
             <a
-              href={SOCIAL_LINKS.shop}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#portfolio"
               className="service_cta_button secondary"
             >
               {t('service_cta_shop')}

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { portfolioItems, categories, type PortfolioItem } from '../../data/portfolioData';
 import { useLanguage } from '../../context/LanguageContext';
 import { SOCIAL_LINKS, CONTACT_INFO } from '../../config/constants';
-import CheckoutModal from '../checkout/CheckoutModal';
+import ProductPurchaseActions from '../checkout/ProductPurchaseActions';
 
 const Portfolio = () => {
   const { t, translateCategory, translateStatus, language } = useLanguage();
@@ -11,7 +11,6 @@ const Portfolio = () => {
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [checkoutItem, setCheckoutItem] = useState<PortfolioItem | null>(null);
   const [loading, setLoading] = useState(false);
 
   const filteredItems = activeFilter === '*'
@@ -85,6 +84,12 @@ const Portfolio = () => {
                     <div className="portfolio_item_content">
                       <h3>{item.title}</h3>
                       <p>{item.description.short[language]}</p>
+                      <div className="portfolio-card-footer">
+                        <strong className="portfolio-card-price">
+                          {item.details.priceDisplay ?? translateStatus(item.details.status)}
+                        </strong>
+                        <ProductPurchaseActions item={item} layout="stack" />
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -112,6 +117,9 @@ const Portfolio = () => {
                           onLoad={() => setLoading(false)}
                           style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s ease', width: '100%', height: '100%', objectFit: 'cover' }}
                         />
+                        {selectedItem.details.status === 'Sold Out' ? (
+                          <div className="sold-out-badge">{t('sold_out_badge')}</div>
+                        ) : null}
                       </div>
                       <div className="portfolio_header_row">
                         <div className="portfolio_main_title">
@@ -119,23 +127,11 @@ const Portfolio = () => {
                           <span className="category-badge">{translateCategory(selectedItem.category)}</span>
                         </div>
                         <div className="header_cta">
-                          {selectedItem.details.status === 'Available' && selectedItem.details.price ? (
-                            <button
-                              className="modal-shop-button"
-                              onClick={() => { setCheckoutItem(selectedItem); closeModal(); }}
-                            >
-                              {t('checkout_buy_now')} — {selectedItem.details.priceDisplay}
-                            </button>
-                          ) : (
-                            <a
-                              href={SOCIAL_LINKS.shop}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="modal-shop-button"
-                            >
-                              {t('service_cta_shop')}
-                            </a>
-                          )}
+                          <ProductPurchaseActions
+                            item={selectedItem}
+                            onQuickBuy={closeModal}
+                            onContactRequest={closeModal}
+                          />
                         </div>
                       </div>
                       <div className="main_details">
@@ -209,10 +205,6 @@ const Portfolio = () => {
           )}
         </div>
       </div>
-
-      {checkoutItem && (
-        <CheckoutModal item={checkoutItem} onClose={() => setCheckoutItem(null)} />
-      )}
 
     </div>
   );

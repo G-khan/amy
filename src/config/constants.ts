@@ -2,13 +2,19 @@ export const SOCIAL_LINKS = {
   facebook: 'https://www.facebook.com/share/1CFCNmJdM8/?mibextid=wwXIfr',
   instagram: 'https://www.instagram.com/amyart.studio/',
   pinterest: 'https://pin.it/5eiin6pIT',
-  shop: 'https://www.shopier.com/amyart',
 } as const;
 
 export const CONTACT_INFO = {
   email: 'amywallart.studio@gmail.com',
   phone: '+90 555 555 5555',
   location: 'İzmir, Turkey',
+} as const;
+
+export const BANK_TRANSFER_DETAILS = {
+  bankName: 'Garanti BBVA',
+  accountHolder: 'Ayse Merve Yakut',
+  iban: 'TR00 0000 0000 0000 0000 0000 00',
+  note: 'Havale aciklamasina siparis referansinizi ekleyin.',
 } as const;
 
 /** Web3Forms access key - get yours at https://web3forms.com */

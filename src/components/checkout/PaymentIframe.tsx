@@ -1,20 +1,41 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { PortfolioItem } from '../../data/portfolioData';
-import { CheckoutFormData } from './CheckoutForm';
+import type { CartLine, CheckoutFormData, PaymentRequestItem } from '../../types/checkout';
+import { saveCheckoutSnapshot } from '../../utils/checkoutStorage';
 
 interface PaymentIframeProps {
-  item: PortfolioItem;
+  items: CartLine[];
   formData: CheckoutFormData;
   onSuccess: () => void;
   onFail: () => void;
 }
 
-const PaymentIframe: React.FC<PaymentIframeProps> = ({ item, formData, onSuccess, onFail }) => {
+const PaymentIframe: React.FC<PaymentIframeProps> = ({ items, formData, onSuccess, onFail }) => {
   const { t } = useLanguage();
   const [iframeToken, setIframeToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const serializePaymentItems = (lines: CartLine[]): PaymentRequestItem[] =>
+    lines.map((line) =>
+      line.item.kind === 'standard'
+        ? {
+            kind: 'standard',
+            productId: line.item.productId,
+            quantity: line.quantity,
+          }
+        : {
+            kind: 'custom',
+            quantity: line.quantity,
+            referenceArtworkId: line.item.referenceArtworkId,
+            sizeCode: line.item.sizeCode,
+            colorCode: line.item.colorCode,
+            colorNote: line.item.colorNote,
+            textureCode: line.item.textureCode,
+            textureNote: line.item.textureNote,
+            note: line.item.note,
+          },
+    );
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -23,13 +44,11 @@ const PaymentIframe: React.FC<PaymentIframeProps> = ({ item, formData, onSuccess
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            productId: item.id,
-            productTitle: item.title,
-            price: item.details.price,
+            items: serializePaymentItems(items),
             customerName: formData.name,
             customerEmail: formData.email,
             customerPhone: formData.phone,
-            customerAddress: `${formData.address}, ${formData.city} ${formData.postalCode}`,
+            customerAddress: `${formData.deliveryAddress}, ${formData.deliveryCity} ${formData.deliveryPostalCode}`,
             customerTcKimlik: formData.tcKimlik,
           }),
         });
@@ -40,6 +59,17 @@ const PaymentIframe: React.FC<PaymentIframeProps> = ({ item, formData, onSuccess
 
         const data = await response.json();
         if (data.token) {
+          saveCheckoutSnapshot({
+            customerName: formData.name,
+            itemCount: items.reduce((sum, line) => sum + line.quantity, 0),
+            itemTitles: items.map((line) => line.item.title),
+            orderId: data.merchantOid,
+            status: 'success',
+            totalAmount: items.reduce(
+              (sum, line) => sum + line.item.price * line.quantity,
+              0,
+            ),
+          });
           setIframeToken(data.token);
         } else {
           throw new Error(data.error || 'No token received');
@@ -52,7 +82,7 @@ const PaymentIframe: React.FC<PaymentIframeProps> = ({ item, formData, onSuccess
     };
 
     fetchToken();
-  }, [item, formData]);
+  }, [formData, items]);
 
   // Listen for PayTR postMessage events
   useEffect(() => {

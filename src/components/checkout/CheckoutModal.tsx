@@ -1,8 +1,9 @@
 import { useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { useLanguage } from '../../context/LanguageContext';
-import { PortfolioItem } from '../../data/portfolioData';
-import CheckoutForm, { CheckoutFormData } from './CheckoutForm';
+import type { PortfolioItem } from '../../data/portfolioData';
+import type { CheckoutFormData } from '../../types/checkout';
+import CheckoutForm, { createEmptyCheckoutFormData } from './CheckoutForm';
 import PaymentIframe from './PaymentIframe';
 import PaymentResult from './PaymentResult';
 import './checkout.css';
@@ -17,13 +18,11 @@ interface CheckoutModalProps {
 const CheckoutModal: React.FC<CheckoutModalProps> = ({ item, onClose }) => {
   const { language, t } = useLanguage();
   const [step, setStep] = useState<CheckoutStep>('form');
-  const [formData, setFormData] = useState<CheckoutFormData | null>(null);
+  const [formData, setFormData] = useState<CheckoutFormData>(createEmptyCheckoutFormData());
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = useCallback((data: CheckoutFormData) => {
     setFormData(data);
-    setLoading(false);
     setStep('payment');
   }, []);
 
@@ -67,12 +66,12 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ item, onClose }) => {
         </div>
 
         {step === 'form' && (
-          <CheckoutForm onSubmit={handleFormSubmit} loading={loading} />
+          <CheckoutForm onSubmit={handleFormSubmit} loading={false} initialData={formData} />
         )}
 
-        {step === 'payment' && formData && (
+        {step === 'payment' && (
           <PaymentIframe
-            item={item}
+            items={[{ item, quantity: 1 }]}
             formData={formData}
             onSuccess={handlePaymentSuccess}
             onFail={handlePaymentFail}
