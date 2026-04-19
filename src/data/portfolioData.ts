@@ -17,6 +17,8 @@ export interface PortfolioItem {
   id: number;
   title: string;
   category: string;
+  /** Öne çıkan imza eser — grid’de premium çerçeve ve rozet */
+  isSignature?: boolean;
   image: string;
   description: {
     short: BilingualText;
@@ -49,6 +51,31 @@ export const categories: Category[] = [
 
 export const portfolioItems: PortfolioItem[] = [
   {
+    id: 11,
+    title: "Strata",
+    category: "textured",
+    isSignature: true,
+    image: "/img/portfolio/Strata.jpeg",
+    description: {
+      short: {
+        tr: "Tuval, akrilik ve alçının dokusal dansına şahit olacağınız, her kabartı ve katmanın özenle şekillendirildiği soyut çalışma.",
+        en: "An abstract work where you'll witness the textural dance of canvas, acrylic and plaster, with every relief and layer carefully shaped."
+      },
+      full: {
+        tr: `Strata adını verdiğim bu soyut çalışmamda tuval, akrilik ve alçının dokusal dansına şahit olacaksınız. Her kabartı, her katman özenle şekillendi. Umarım siz de bu derinlikte kendinizden bir parça bulursunuz. ✨`,
+        en: `In this abstract work I've named Strata, you'll witness the textural dance of canvas, acrylic and plaster. Every relief, every layer has been carefully shaped. I hope you'll find a piece of yourself in this depth too. ✨`
+      }
+    },
+    details: {
+      technique: { tr: "Akrilik boya ve alçı", en: "Acrylic paint and plaster" },
+      materials: { tr: "Tuval üzerine akrilik, alçı", en: "Acrylic, plaster on canvas" },
+      size: "60x150 cm",
+      year: "2024",
+      status: "Sold Out",
+      priceDisplay: "22.000 TL"
+    }
+  },
+  {
     id: 1,
     title: "Crest",
     category: "seascape",
@@ -76,8 +103,8 @@ I'm so happy you're with me on this first share. I hope you'll love "Crest" as m
       size: "50 cm",
       year: "2025",
       status: "Available",
-      price: 350000,
-      priceDisplay: "3.500 TL"
+      price: 825000,
+      priceDisplay: "8.250 TL"
     }
   },
   {
@@ -104,7 +131,8 @@ This artwork designed on commission has become one of the signature pieces of mo
       materials: { tr: "Tuval üzerine akrilik, alçı, rölyef", en: "Acrylic, plaster, relief on canvas" },
       size: "120x100 cm",
       year: "2025",
-      status: "Sold Out"
+      status: "Sold Out",
+      priceDisplay: "16.500 TL"
     }
   },
   {
@@ -136,8 +164,8 @@ I hope that while viewing this piece, you'll discover the care I put into the de
       size: "60x80 cm",
       year: "2024",
       status: "Available",
-      price: 450000,
-      priceDisplay: "4.500 TL"
+      price: 900000,
+      priceDisplay: "9.000 TL"
     }
   },
   {
@@ -169,8 +197,8 @@ It can also be used as two separate paintings.`
       size: "40x80 cm",
       year: "2024",
       status: "Available",
-      price: 400000,
-      priceDisplay: "4.000 TL"
+      price: 625000,
+      priceDisplay: "6.250 TL"
     }
   },
   {
@@ -198,8 +226,8 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
       size: "70x100 cm",
       year: "2024",
       status: "Available",
-      price: 550000,
-      priceDisplay: "5.500 TL"
+      price: 675000,
+      priceDisplay: "6.750 TL"
     }
   },
   {
@@ -223,8 +251,8 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
       size: "60x80 cm",
       year: "2024",
       status: "Available",
-      price: 420000,
-      priceDisplay: "4.200 TL"
+      price: 550000,
+      priceDisplay: "5.500 TL"
     }
   },
   {
@@ -247,7 +275,8 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
       materials: { tr: "Tuval üzerine akrilik, alçı", en: "Acrylic, plaster on canvas" },
       size: "70x100 cm",
       year: "2024",
-      status: "Sold Out"
+      status: "Sold Out",
+      priceDisplay: "6.750 TL"
     }
   },
   {
@@ -277,7 +306,8 @@ Don't forget to check out the images to discover the details! ✨`
       },
       size: "70x100 cm",
       year: "2024",
-      status: "Sold Out"
+      status: "Sold Out",
+      priceDisplay: "12.500 TL"
     }
   },
   {
@@ -304,8 +334,8 @@ Don't forget to check out the images to discover the details! ✨`
       size: "50 cm",
       year: "2024",
       status: "Available",
-      price: 350000,
-      priceDisplay: "3.500 TL"
+      price: 825000,
+      priceDisplay: "8.250 TL"
     }
   },
   {
@@ -336,31 +366,8 @@ I look forward to your comments and thoughts!`
       size: "60x80 cm",
       year: "2024",
       status: "Available",
-      price: 450000,
-      priceDisplay: "4.500 TL"
-    }
-  },
-  {
-    id: 11,
-    title: "Strata",
-    category: "textured",
-    image: "/img/portfolio/Strata.jpeg",
-    description: {
-      short: {
-        tr: "Tuval, akrilik ve alçının dokusal dansına şahit olacağınız, her kabartı ve katmanın özenle şekillendirildiği soyut çalışma.",
-        en: "An abstract work where you'll witness the textural dance of canvas, acrylic and plaster, with every relief and layer carefully shaped."
-      },
-      full: {
-        tr: `Strata adını verdiğim bu soyut çalışmamda tuval, akrilik ve alçının dokusal dansına şahit olacaksınız. Her kabartı, her katman özenle şekillendi. Umarım siz de bu derinlikte kendinizden bir parça bulursunuz. ✨`,
-        en: `In this abstract work I've named Strata, you'll witness the textural dance of canvas, acrylic and plaster. Every relief, every layer has been carefully shaped. I hope you'll find a piece of yourself in this depth too. ✨`
-      }
-    },
-    details: {
-      technique: { tr: "Akrilik boya ve alçı", en: "Acrylic paint and plaster" },
-      materials: { tr: "Tuval üzerine akrilik, alçı", en: "Acrylic, plaster on canvas" },
-      size: "60x150 cm",
-      year: "2024",
-      status: "Sold Out"
+      price: 900000,
+      priceDisplay: "9.000 TL"
     }
   }
 ];

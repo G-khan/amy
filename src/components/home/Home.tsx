@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faPinterestP } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { portfolioItems, type PortfolioItem } from '../../data/portfolioData';
 import { useLanguage } from '../../context/LanguageContext';
 import { CONTACT_INFO, SOCIAL_LINKS } from '../../config/constants';
@@ -57,6 +58,13 @@ const Home = () => {
     setIsFullscreen(false);
   };
 
+  const handleCardKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, item: PortfolioItem) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openModal(item);
+    }
+  };
+
   return (
     <div className="container">
       <div className="tokyo_tm_home">
@@ -89,6 +97,11 @@ const Home = () => {
                     <FontAwesomeIcon icon={faEnvelope} />
                   </a>
                 </li>
+                <li>
+                  <a href={SOCIAL_LINKS.shopier} target="_blank" rel="noopener noreferrer" aria-label="Shop on Shopier">
+                    <FontAwesomeIcon icon={faBagShopping} />
+                  </a>
+                </li>
                 <li className="shop-button-item">
                   <a
                     href="#portfolio"
@@ -106,12 +119,14 @@ const Home = () => {
         <div className="home-portfolio-section">
           <div className="home-portfolio-grid">
             {portfolioItems.map((item) => (
-              <div
+              <button
                 key={item.id}
-                className={`home-portfolio-item ${item.details.status === "Sold Out" ? "sold-out-item" : ""}`}
+                type="button"
+                className={`home-portfolio-item ${item.details.status === "Sold Out" ? "sold-out-item" : ""}${item.isSignature ? " signature-piece" : ""}`}
                 onClick={() => openModal(item)}
+                onKeyDown={(event) => handleCardKeyDown(event, item)}
               >
-                <div className="portfolio-image-wrapper">
+                <div className={`portfolio-image-wrapper${item.isSignature ? ' signature-piece-mat' : ''}`}>
                   <img src={item.image} alt={item.title} loading="lazy" />
                   <div className="portfolio-overlay">
                     <div className="overlay-content">
@@ -119,11 +134,14 @@ const Home = () => {
                       <span className="category-tag">{translateCategory(item.category)}</span>
                     </div>
                   </div>
+                  {item.isSignature ? (
+                    <div className="signature-piece-badge">{t('signature_piece_badge')}</div>
+                  ) : null}
                   {item.details.status === "Sold Out" && (
                     <div className="sold-out-badge">{t('sold_out_badge')}</div>
                   )}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -148,6 +166,9 @@ const Home = () => {
                         onLoad={() => setLoading(false)}
                         style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s ease' }}
                       />
+                      {selectedItem.isSignature ? (
+                        <div className="signature-piece-badge signature-piece-badge--modal">{t('signature_piece_badge')}</div>
+                      ) : null}
                       {selectedItem.details.status === 'Sold Out' ? (
                         <div className="sold-out-badge">{t('sold_out_badge')}</div>
                       ) : null}

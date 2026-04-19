@@ -2,6 +2,7 @@ export const SOCIAL_LINKS = {
   facebook: 'https://www.facebook.com/share/1CFCNmJdM8/?mibextid=wwXIfr',
   instagram: 'https://www.instagram.com/amyart.studio/',
   pinterest: 'https://pin.it/5eiin6pIT',
+  shopier: 'https://www.shopier.com/amyart',
 } as const;
 
 export const CONTACT_INFO = {

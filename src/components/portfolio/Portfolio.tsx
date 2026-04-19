@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { portfolioItems, categories, type PortfolioItem } from '../../data/portfolioData';
 import { useLanguage } from '../../context/LanguageContext';
@@ -10,22 +10,82 @@ const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('*');
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const MODAL_CLOSE_MS = 600;
+  const closeTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current !== null) {
+        clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isModalOpen && !isFullscreen) {
+      return;
+    }
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isModalOpen, isFullscreen]);
+
+  const closeModal = useCallback(() => {
+    if (closeTimerRef.current !== null) {
+      clearTimeout(closeTimerRef.current);
+    }
+    setShowModal(false);
+    setIsFullscreen(false);
+    closeTimerRef.current = window.setTimeout(() => {
+      closeTimerRef.current = null;
+      setIsModalOpen(false);
+      setSelectedItem(null);
+      setLoading(false);
+    }, MODAL_CLOSE_MS);
+  }, []);
+
+  useEffect(() => {
+    if (!isModalOpen && !isFullscreen) {
+      return;
+    }
+    const onKeyDown = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== 'Escape') {
+        return;
+      }
+      event.preventDefault();
+      if (isFullscreen) {
+        setIsFullscreen(false);
+      } else {
+        closeModal();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isModalOpen, isFullscreen, closeModal]);
 
   const filteredItems = activeFilter === '*'
     ? portfolioItems
     : portfolioItems.filter(item => item.category === activeFilter);
 
   const openModal = (item: PortfolioItem) => {
+    if (closeTimerRef.current !== null) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
     setSelectedItem(item);
     setLoading(true);
     setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedItem(null);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setShowModal(true);
+      });
+    });
   };
 
   const toggleFullscreen = () => {
@@ -51,7 +111,7 @@ const Portfolio = () => {
                 <ul>
                   {categories.map(cat => (
                     <li key={cat.id}>
-                        <button
+                      <button
                         type="button"
                         className={activeFilter === cat.id ? 'current' : ''}
                         onClick={() => setActiveFilter(cat.id)}
@@ -69,25 +129,41 @@ const Portfolio = () => {
             <ul className="portfolio_list">
               {filteredItems.map(item => (
                 <li key={item.id} className={item.category}>
-                  <div className="inner" onClick={() => openModal(item)}>
-                    <div className={`entry tokyo_tm_portfolio_animation_wrap ${item.details.status === "Sold Out" ? "sold-out-item" : ""}`}>
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        loading="lazy"
-                        style={{ opacity: 1, width: '100%', height: '100%', objectFit: 'cover' }}
-                      />
-                      {item.details.status === "Sold Out" && (
-                        <div className="sold-out-badge">{t('sold_out_badge')}</div>
-                      )}
-                    </div>
-                    <div className="portfolio_item_content">
+                  <div className={`inner${item.isSignature ? ' signature-piece' : ''}`}>
+                    <button
+                      type="button"
+                      className="portfolio-card-media-trigger"
+                      aria-label={`${item.title} — ${t('portfolio_open_details')}`}
+                      onClick={() => openModal(item)}
+                    >
+                      <div
+                        className={`entry tokyo_tm_portfolio_animation_wrap ${item.details.status === 'Sold Out' ? 'sold-out-item' : ''}${item.isSignature ? ' signature-piece-entry' : ''}`}
+                      >
+                        <img
+                          src={item.image}
+                          alt=""
+                          loading="lazy"
+                          style={{ opacity: 1, width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                        {item.isSignature ? (
+                          <div className="signature-piece-badge">{t('signature_piece_badge')}</div>
+                        ) : null}
+                        {item.details.status === 'Sold Out' ? (
+                          <div className="sold-out-badge">{t('sold_out_badge')}</div>
+                        ) : null}
+                      </div>
+                    </button>
+                    <div
+                      className={`portfolio_item_content${item.isSignature ? ' signature-piece-content' : ''}`}
+                    >
                       <h3>{item.title}</h3>
                       <p>{item.description.short[language]}</p>
                       <div className="portfolio-card-footer">
-                        <strong className="portfolio-card-price">
-                          {item.details.priceDisplay ?? translateStatus(item.details.status)}
-                        </strong>
+                        {item.details.status === 'Sold Out' ? null : (
+                          <strong className="portfolio-card-price">
+                            {item.details.priceDisplay ?? translateStatus(item.details.status)}
+                          </strong>
+                        )}
                         <ProductPurchaseActions item={item} layout="stack" />
                       </div>
                     </div>
@@ -100,7 +176,13 @@ const Portfolio = () => {
           {/* Modal (rendered in portal to avoid clipping/stacking issues) */}
           {isModalOpen && selectedItem && createPortal(
             (
-              <div className="tokyo_tm_modalbox opened">
+              <div className={`tokyo_tm_modalbox ${showModal ? 'opened' : ''}`}>
+                <button
+                  type="button"
+                  className="tokyo_tm_modalbox__backdrop"
+                  onClick={closeModal}
+                  aria-label={t('payment_close')}
+                />
                 <div className="box_inner">
                   <div className="close">
                     <button type="button" onClick={closeModal} aria-label="Close">
@@ -117,6 +199,9 @@ const Portfolio = () => {
                           onLoad={() => setLoading(false)}
                           style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s ease', width: '100%', height: '100%', objectFit: 'cover' }}
                         />
+                        {selectedItem.isSignature ? (
+                          <div className="signature-piece-badge signature-piece-badge--modal">{t('signature_piece_badge')}</div>
+                        ) : null}
                         {selectedItem.details.status === 'Sold Out' ? (
                           <div className="sold-out-badge">{t('sold_out_badge')}</div>
                         ) : null}
@@ -160,7 +245,7 @@ const Portfolio = () => {
                             </li>
                             <li>
                               <span className="first">{t('detail_status')}</span>
-                              <span className={selectedItem.details.status === "Sold Out" ? "status-sold-out" : ""}>
+                              <span className={selectedItem.details.status === 'Sold Out' ? 'status-sold-out' : ''}>
                                 {translateStatus(selectedItem.details.status)}
                               </span>
                             </li>

@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faInstagram, faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { useLanguage } from '../../context/LanguageContext';
 import { SOCIAL_LINKS, CONTACT_INFO, WEB3FORMS_ACCESS_KEY } from '../../config/constants';
 
@@ -138,10 +142,11 @@ const Contact = () => {
             <div className="social_section">
               <span className="label">{t('contact_reach')}</span>
               <ul className="social_list">
-                <li><a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a></li>
-                <li><a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a></li>
-                <li><a href={SOCIAL_LINKS.pinterest} target="_blank" rel="noopener noreferrer"><i className="fab fa-pinterest-p"></i></a></li>
-                <li><a href={`mailto:${CONTACT_INFO.email}`}><i className="far fa-envelope"></i></a></li>
+                <li><a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FontAwesomeIcon icon={faFacebookF} /></a></li>
+                <li><a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FontAwesomeIcon icon={faInstagram} /></a></li>
+                <li><a href={SOCIAL_LINKS.pinterest} target="_blank" rel="noopener noreferrer" aria-label="Pinterest"><FontAwesomeIcon icon={faPinterestP} /></a></li>
+                <li><a href={`mailto:${CONTACT_INFO.email}`} aria-label="Email"><FontAwesomeIcon icon={faEnvelope} /></a></li>
+                <li><a href={SOCIAL_LINKS.shopier} target="_blank" rel="noopener noreferrer" aria-label="Shop on Shopier"><FontAwesomeIcon icon={faBagShopping} /></a></li>
               </ul>
             </div>
           </div>

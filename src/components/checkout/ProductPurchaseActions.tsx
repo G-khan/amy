@@ -7,7 +7,6 @@ import './checkout.css';
 interface ProductPurchaseActionsProps {
   item: PortfolioItem;
   layout?: 'inline' | 'stack';
-  showCartButton?: boolean;
   onQuickBuy?: () => void;
   onContactRequest?: () => void;
 }
@@ -15,14 +14,12 @@ interface ProductPurchaseActionsProps {
 const ProductPurchaseActions = ({
   item,
   layout = 'inline',
-  showCartButton = true,
   onQuickBuy,
   onContactRequest,
 }: ProductPurchaseActionsProps) => {
   const { t } = useLanguage();
-  const { addToCart, cartItemCount, isInCart, startCartCheckout, startQuickBuy } = useCart();
+  const { addToCart, isInCart, startQuickBuy } = useCart();
   const isAvailable = item.details.status === 'Available' && Boolean(item.details.price);
-  const isStackLayout = layout === 'stack';
 
   const stopEvent = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -37,7 +34,7 @@ const ProductPurchaseActions = ({
           className="purchase-btn sold-out-cta"
           onClick={(event) => {
             stopEvent(event);
-            window.location.hash = `custom-order?ref=${item.id}`;
+            globalThis.location.hash = `custom-order?ref=${item.id}`;
             onContactRequest?.();
           }}
         >
@@ -49,6 +46,9 @@ const ProductPurchaseActions = ({
 
   return (
     <div className={`product-purchase-actions ${layout}`}>
+      {layout === 'inline' && item.details.priceDisplay ? (
+        <span className="purchase-price-tag">{item.details.priceDisplay}</span>
+      ) : null}
       <button
         type="button"
         className="purchase-btn secondary"
@@ -70,18 +70,6 @@ const ProductPurchaseActions = ({
       >
         {t('checkout_buy_now')}
       </button>
-      {!isStackLayout && showCartButton && cartItemCount > 0 && (
-        <button
-          type="button"
-          className="purchase-btn tertiary"
-          onClick={(event) => {
-            stopEvent(event);
-            startCartCheckout();
-          }}
-        >
-          {t('cart_show')}
-        </button>
-      )}
     </div>
   );
 };
