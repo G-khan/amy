@@ -4,6 +4,7 @@ import { portfolioItems, categories, type PortfolioItem } from '../../data/portf
 import { useLanguage } from '../../context/LanguageContext';
 import { SOCIAL_LINKS, CONTACT_INFO } from '../../config/constants';
 import ProductPurchaseActions from '../checkout/ProductPurchaseActions';
+import SignatureArtworkModal from './SignatureArtworkModal';
 
 const Portfolio = () => {
   const { t, translateCategory, translateStatus, language } = useLanguage();
@@ -129,7 +130,9 @@ const Portfolio = () => {
             <ul className="portfolio_list">
               {filteredItems.map(item => (
                 <li key={item.id} className={item.category}>
-                  <div className={`inner${item.isSignature ? ' signature-piece' : ''}`}>
+                  <div
+                    className={`inner${item.isSignature ? ' signature-piece' : ''}${item.isSignature && isModalOpen && selectedItem?.id === item.id ? ' signature-piece--modal-open' : ''}`}
+                  >
                     <button
                       type="button"
                       className="portfolio-card-media-trigger"
@@ -183,92 +186,101 @@ const Portfolio = () => {
                   onClick={closeModal}
                   aria-label={t('payment_close')}
                 />
-                <div className="box_inner">
-                  <div className="close">
+                <div className={`box_inner${selectedItem.isSignature ? ' signature-modal-box' : ''}`}>
+                  <div className={`close${selectedItem.isSignature ? ' close--signature-modal' : ''}`}>
                     <button type="button" onClick={closeModal} aria-label="Close">
                       <span>✕</span>
                     </button>
                   </div>
-                  <div className="description_wrap">
-                    <div className="popup_details">
-                      <div className="top_image" onClick={toggleFullscreen}>
-                        {loading && <div className="skeleton-loader"></div>}
-                        <img
-                          src={selectedItem.image}
-                          alt={selectedItem.title}
-                          onLoad={() => setLoading(false)}
-                          style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s ease', width: '100%', height: '100%', objectFit: 'cover' }}
-                        />
-                        {selectedItem.isSignature ? (
-                          <div className="signature-piece-badge signature-piece-badge--modal">{t('signature_piece_badge')}</div>
-                        ) : null}
-                        {selectedItem.details.status === 'Sold Out' ? (
-                          <div className="sold-out-badge">{t('sold_out_badge')}</div>
-                        ) : null}
-                      </div>
-                      <div className="portfolio_header_row">
-                        <div className="portfolio_main_title">
-                          <h3 className="gradient-text">{selectedItem.title}</h3>
-                          <span className="category-badge">{translateCategory(selectedItem.category)}</span>
-                        </div>
-                        <div className="header_cta">
-                          <ProductPurchaseActions
-                            item={selectedItem}
-                            onQuickBuy={closeModal}
-                            onContactRequest={closeModal}
+                  {selectedItem.isSignature ? (
+                    <div className="description_wrap">
+                      <SignatureArtworkModal
+                        selectedItem={selectedItem}
+                        loading={loading}
+                        onImageLoad={() => setLoading(false)}
+                        onImageClick={toggleFullscreen}
+                        onCloseModal={closeModal}
+                      />
+                    </div>
+                  ) : (
+                    <div className="description_wrap">
+                      <div className="popup_details">
+                        <div className="top_image" onClick={toggleFullscreen}>
+                          {loading && <div className="skeleton-loader"></div>}
+                          <img
+                            src={selectedItem.image}
+                            alt={selectedItem.title}
+                            onLoad={() => setLoading(false)}
+                            style={{ opacity: loading ? 0 : 1, transition: 'opacity 0.3s ease', width: '100%', height: '100%', objectFit: 'cover' }}
                           />
+                          {selectedItem.details.status === 'Sold Out' ? (
+                            <div className="sold-out-badge">{t('sold_out_badge')}</div>
+                          ) : null}
                         </div>
-                      </div>
-                      <div className="main_details">
-                        <div className="textbox">
-                          {selectedItem.description.full[language].split('\n\n').map((paragraph, index) => (
-                            <p key={index}>{paragraph}</p>
-                          ))}
+                        <div className="portfolio_header_row">
+                          <div className="portfolio_main_title">
+                            <h3 className="gradient-text">{selectedItem.title}</h3>
+                            <span className="category-badge">{translateCategory(selectedItem.category)}</span>
+                          </div>
+                          <div className="header_cta">
+                            <ProductPurchaseActions
+                              item={selectedItem}
+                              onQuickBuy={closeModal}
+                              onContactRequest={closeModal}
+                            />
+                          </div>
                         </div>
-                        <div className="detailbox">
-                          <ul>
-                            <li>
-                              <span className="first">{t('detail_technique')}</span>
-                              <span>{selectedItem.details.technique[language]}</span>
-                            </li>
-                            <li>
-                              <span className="first">{t('detail_materials')}</span>
-                              <span>{selectedItem.details.materials[language]}</span>
-                            </li>
-                            <li>
-                              <span className="first">{t('detail_size')}</span>
-                              <span>{selectedItem.details.size}</span>
-                            </li>
-                            <li>
-                              <span className="first">{t('detail_year')}</span>
-                              <span>{selectedItem.details.year}</span>
-                            </li>
-                            <li>
-                              <span className="first">{t('detail_status')}</span>
-                              <span className={selectedItem.details.status === 'Sold Out' ? 'status-sold-out' : ''}>
-                                {translateStatus(selectedItem.details.status)}
-                              </span>
-                            </li>
-                            <li className="cta-list-item">
-                              <div className="cta-inline-modal">
-                                <p>{t('cta_modal_prompt')}</p>
-                                <a href={`mailto:${CONTACT_INFO.email}`} className="cta-link">{CONTACT_INFO.email}</a>
-                              </div>
-                            </li>
-                            <li>
-                              <span className="first">{t('detail_share')}</span>
-                              <ul className="share">
-                                <li><a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i className="fab fa-facebook-f"></i></a></li>
-                                <li><a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=Amy%20Art%20Studio`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i className="fab fa-twitter"></i></a></li>
-                                <li><a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Share on Instagram"><i className="fab fa-instagram"></i></a></li>
-                                <li><a href={SOCIAL_LINKS.pinterest} target="_blank" rel="noopener noreferrer" aria-label="Share on Pinterest"><i className="fab fa-pinterest-p"></i></a></li>
-                              </ul>
-                            </li>
-                          </ul>
+                        <div className="main_details">
+                          <div className="textbox">
+                            {selectedItem.description.full[language].split('\n\n').map((paragraph, index) => (
+                              <p key={index}>{paragraph}</p>
+                            ))}
+                          </div>
+                          <div className="detailbox">
+                            <ul>
+                              <li>
+                                <span className="first">{t('detail_technique')}</span>
+                                <span>{selectedItem.details.technique[language]}</span>
+                              </li>
+                              <li>
+                                <span className="first">{t('detail_materials')}</span>
+                                <span>{selectedItem.details.materials[language]}</span>
+                              </li>
+                              <li>
+                                <span className="first">{t('detail_size')}</span>
+                                <span>{selectedItem.details.size}</span>
+                              </li>
+                              <li>
+                                <span className="first">{t('detail_year')}</span>
+                                <span>{selectedItem.details.year}</span>
+                              </li>
+                              <li>
+                                <span className="first">{t('detail_status')}</span>
+                                <span className={selectedItem.details.status === 'Sold Out' ? 'status-sold-out' : ''}>
+                                  {translateStatus(selectedItem.details.status)}
+                                </span>
+                              </li>
+                              <li className="cta-list-item">
+                                <div className="cta-inline-modal">
+                                  <p>{t('cta_modal_prompt')}</p>
+                                  <a href={`mailto:${CONTACT_INFO.email}`} className="cta-link">{CONTACT_INFO.email}</a>
+                                </div>
+                              </li>
+                              <li>
+                                <span className="first">{t('detail_share')}</span>
+                                <ul className="share">
+                                  <li><a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i className="fab fa-facebook-f"></i></a></li>
+                                  <li><a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=Amy%20Art%20Studio`} target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i className="fab fa-twitter"></i></a></li>
+                                  <li><a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" aria-label="Share on Instagram"><i className="fab fa-instagram"></i></a></li>
+                                  <li><a href={SOCIAL_LINKS.pinterest} target="_blank" rel="noopener noreferrer" aria-label="Share on Pinterest"><i className="fab fa-pinterest-p"></i></a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             ),

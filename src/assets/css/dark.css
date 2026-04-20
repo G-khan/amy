@@ -282,9 +282,22 @@ body.dark .tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-
 body.dark .tokyo_tm_portfolio .portfolio_list .inner.signature-piece {
 	background: linear-gradient(145deg, #2a2620 0%, #2b2d30 45%, #252320 100%);
 	box-shadow:
-		0 0 0 1px rgba(255, 255, 255, 0.06),
-		0 6px 22px rgba(0, 0, 0, 0.4),
-		0 0 36px rgba(196, 163, 90, 0.12);
+		0 0 0 1px rgba(255, 255, 255, 0.09),
+		0 0 0 2px rgba(196, 163, 90, 0.22),
+		0 8px 28px rgba(0, 0, 0, 0.44),
+		0 0 48px rgba(196, 163, 90, 0.2),
+		0 0 80px rgba(196, 163, 90, 0.08);
+}
+
+body.dark .tokyo_tm_portfolio .portfolio_list .inner.signature-piece:hover,
+body.dark .tokyo_tm_portfolio .portfolio_list .inner.signature-piece.signature-piece--modal-open {
+	transform: translateY(-4px);
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.12),
+		0 0 0 2px rgba(232, 204, 136, 0.35),
+		0 14px 40px rgba(0, 0, 0, 0.5),
+		0 0 56px rgba(196, 163, 90, 0.32),
+		0 0 100px rgba(196, 163, 90, 0.14);
 }
 
 body.dark .tokyo_tm_portfolio .portfolio_list .portfolio-card-media-trigger:focus-visible {
@@ -420,8 +433,21 @@ body.dark .tokyo_tm_modalbox .box_inner {
 	background-color: #34353a;
 }
 
+body.dark .tokyo_tm_modalbox .box_inner.signature-modal-box {
+	background: linear-gradient(145deg, #2a2620, #2b2d30);
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.06),
+		0 6px 22px rgba(0, 0, 0, 0.4),
+		0 0 36px rgba(196, 163, 90, 0.12);
+}
+
 body.dark .tokyo_tm_modalbox .main_details .detailbox .first {
 	color: #fff;
+}
+
+body.dark .tokyo_tm_modalbox .popup_details.signature-popup .main_details .detailbox .first {
+	color: #c8c2b8;
+	font-weight: 600;
 }
 
 body.dark .tokyo_tm_modalbox .main_details .detailbox span a {

@@ -2892,28 +2892,33 @@ body.loading {
 	animation: pulse 2s infinite;
 }
 
-/* İmza eser — dengeli gölge + glow (orta yoğunluk) */
+/* İmza eser — koleksiyon sınıfı koyu yüzey + belirgin altın glow */
 .tokyo_tm_portfolio .portfolio_list .inner.signature-piece {
-	background: linear-gradient(145deg, #fdfbf7 0%, #ffffff 40%, #faf6ef 100%);
+	position: relative;
+	z-index: 0;
+	background: linear-gradient(145deg, #2a2620, #2b2d30);
 	box-shadow:
-		0 0 0 1px rgba(0, 0, 0, 0.78),
-		0 2px 6px rgba(0, 0, 0, 0.05),
-		0 10px 32px rgba(0, 0, 0, 0.09),
-		0 0 32px rgba(196, 163, 90, 0.3),
-		0 0 56px rgba(212, 183, 106, 0.18);
+		0 0 0 1px rgba(255, 255, 255, 0.09),
+		0 0 0 2px rgba(196, 163, 90, 0.22),
+		0 8px 28px rgba(0, 0, 0, 0.44),
+		0 0 48px rgba(196, 163, 90, 0.2),
+		0 0 80px rgba(196, 163, 90, 0.08);
 	transition:
 		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-		box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		z-index 0s;
 }
 
-.tokyo_tm_portfolio .portfolio_list .inner.signature-piece:hover {
-	transform: translateY(-3px);
+.tokyo_tm_portfolio .portfolio_list .inner.signature-piece:hover,
+.tokyo_tm_portfolio .portfolio_list .inner.signature-piece.signature-piece--modal-open {
+	z-index: 2;
+	transform: translateY(-4px);
 	box-shadow:
-		0 0 0 1px rgba(0, 0, 0, 0.82),
-		0 4px 10px rgba(0, 0, 0, 0.06),
-		0 14px 38px rgba(0, 0, 0, 0.11),
-		0 0 40px rgba(212, 183, 106, 0.38),
-		0 0 72px rgba(230, 200, 120, 0.22);
+		0 0 0 1px rgba(255, 255, 255, 0.12),
+		0 0 0 2px rgba(232, 204, 136, 0.35),
+		0 14px 40px rgba(0, 0, 0, 0.5),
+		0 0 56px rgba(196, 163, 90, 0.32),
+		0 0 100px rgba(196, 163, 90, 0.14);
 }
 
 .tokyo_tm_portfolio .portfolio_list .inner.signature-piece img {
@@ -2921,70 +2926,84 @@ body.loading {
 }
 
 .tokyo_tm_portfolio .portfolio_list .inner.signature-piece:hover img {
-	transform: scale(1.06);
+	transform: none;
 }
 
 .tokyo_tm_portfolio .portfolio_list .entry.signature-piece-entry {
 	box-shadow:
-		inset 0 0 0 5px #f4f1eb,
-		inset 0 0 0 6px rgba(0, 0, 0, 0.2),
-		inset 0 0 32px rgba(196, 163, 90, 0.06);
+		inset 0 0 0 1px rgba(196, 163, 90, 0.4),
+		inset 0 0 24px rgba(196, 163, 90, 0.06);
 }
 
 .signature-piece-badge {
 	position: absolute;
-	top: 18px;
-	left: 18px;
+	top: 16px;
+	left: 16px;
 	z-index: 12;
-	padding: 6px 12px;
-	border-radius: 4px;
-	font-size: 10px;
+	padding: 10px 16px;
+	border-radius: 999px;
+	font-family: 'Mulish', sans-serif;
+	font-size: 12px;
 	font-weight: 700;
-	letter-spacing: 0.16em;
-	text-transform: uppercase;
-	color: #1a1510;
-	background: linear-gradient(135deg, #f3e5c8 0%, #e8d5a3 45%, #d4bc7a 100%);
-	border: 1px solid rgba(62, 52, 38, 0.45);
-	outline: 1px solid rgba(255, 252, 245, 0.5);
-	outline-offset: 1px;
+	letter-spacing: 0.06em;
+	text-transform: none;
+	color: #2a1f14;
+	background: linear-gradient(135deg, #c4a35a, #e8cc88);
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	outline: none;
+	box-shadow: none;
 	pointer-events: none;
 }
 
 .signature-piece-badge--modal {
-	top: 22px;
-	left: 22px;
-	padding: 8px 16px;
-	font-size: 12px;
-	border-radius: 8px;
+	top: 20px;
+	left: 20px;
+	padding: 11px 18px;
+	font-size: 13px;
 }
 
-/* Home grid — dengeli gölge + glow */
+/* Home grid — imza eser (portföy ile aynı koleksiyon dili) */
 .home-portfolio-item.signature-piece {
+	position: relative;
+	z-index: 0;
+	background: linear-gradient(145deg, #2a2620, #2b2d30);
+	/* İnce altın çerçeve */
+	outline: 1px solid #c4a35a;
+	outline-offset: 2px;
 	box-shadow:
-		0 0 0 1px rgba(0, 0, 0, 0.78),
-		0 2px 6px rgba(0, 0, 0, 0.06),
-		0 10px 34px rgba(0, 0, 0, 0.1),
-		0 0 36px rgba(196, 163, 90, 0.28),
-		0 0 60px rgba(212, 183, 106, 0.16);
+		0 0 0 1px rgba(255, 255, 255, 0.09),
+		0 0 0 2px rgba(196, 163, 90, 0.22),
+		0 8px 28px rgba(0, 0, 0, 0.44),
+		0 0 48px rgba(196, 163, 90, 0.2),
+		0 0 80px rgba(196, 163, 90, 0.08);
 	transition:
 		transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-		box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+		box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+		outline-color 0.2s ease,
+		z-index 0s;
 }
 
-.home-portfolio-item.signature-piece:hover {
-	transform: translateY(-5px) scale(1.015);
+.home-portfolio-item.signature-piece:focus-visible {
+	outline: 1px solid #c4a35a;
+	outline-offset: 2px;
+}
+
+.home-portfolio-item.signature-piece:hover,
+.home-portfolio-item.signature-piece.signature-piece--modal-open {
+	z-index: 2;
+	transform: translateY(-4px);
 	box-shadow:
-		0 0 0 1px rgba(0, 0, 0, 0.82),
-		0 4px 12px rgba(0, 0, 0, 0.07),
-		0 14px 42px rgba(0, 0, 0, 0.12),
-		0 0 44px rgba(212, 183, 106, 0.36),
-		0 0 76px rgba(230, 200, 120, 0.2);
+		0 0 0 1px rgba(255, 255, 255, 0.12),
+		0 0 0 2px rgba(232, 204, 136, 0.35),
+		0 14px 40px rgba(0, 0, 0, 0.5),
+		0 0 56px rgba(196, 163, 90, 0.32),
+		0 0 100px rgba(196, 163, 90, 0.14);
 }
 
 .home-portfolio-item.signature-piece .portfolio-image-wrapper.signature-piece-mat {
 	box-shadow:
-		inset 0 0 0 4px #f4f1eb,
-		inset 0 0 0 5px rgba(0, 0, 0, 0.18);
+		inset 0 0 0 1px rgba(196, 163, 90, 0.4),
+		inset 0 0 24px rgba(196, 163, 90, 0.06);
 }
 
 .home-portfolio-item.signature-piece .portfolio-image-wrapper img {
@@ -2992,7 +3011,7 @@ body.loading {
 }
 
 .home-portfolio-item.signature-piece:hover .portfolio-image-wrapper img {
-	transform: scale(1.08);
+	transform: none;
 }
 
 .home-portfolio-item .signature-piece-badge {
@@ -3002,8 +3021,10 @@ body.loading {
 
 /* İmza kartı metin alanı */
 .tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content {
-	padding: 24px 22px 22px;
-	background: linear-gradient(180deg, #faf9f7 0%, #ffffff 55%, #ffffff 100%);
+	padding: 26px 22px 24px;
+	background: linear-gradient(180deg, #2e2a24 0%, #2b2d30 55%, #2b2d30 100%);
+	border-top: 1px solid rgba(196, 163, 90, 0.28);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .signature-featured-label {
@@ -3012,29 +3033,79 @@ body.loading {
 	font-weight: 600;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	color: #7a6a52;
+	color: #c8c2b8;
 	margin: 0 0 8px;
 }
 
 .tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content h3 {
-	font-size: 19px;
-	font-weight: 600;
-	letter-spacing: 0.035em;
-	color: #141210;
+	font-family: 'Bodoni Moda', serif;
+	font-size: 24px;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	color: #f5f0e8;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content h3::after {
 	content: '';
 	display: block;
-	width: 40px;
+	width: 56px;
 	height: 2px;
-	margin-top: 10px;
-	background: linear-gradient(90deg, #b8954a, rgba(196, 163, 90, 0.15));
+	margin-top: 14px;
+	background: #c4a35a;
 	border-radius: 1px;
+	box-shadow: 0 0 12px rgba(196, 163, 90, 0.45);
 }
 
 .tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content p {
-	color: #555;
+	font-family: 'Mulish', sans-serif;
+	font-weight: 400;
+	color: #c8c2b8;
+}
+
+.tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content .portfolio-card-price {
+	font-family: 'Mulish', sans-serif;
+	font-weight: 700;
+	color: #c4a35a;
+	font-size: 18px;
+	letter-spacing: 0.02em;
+	text-shadow: 0 0 20px rgba(196, 163, 90, 0.35);
+}
+
+.tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content .product-purchase-actions .purchase-btn {
+	font-family: 'Mulish', sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	line-height: 1.25;
+	-webkit-font-smoothing: antialiased;
+}
+
+.tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content .purchase-btn.secondary {
+	color: #141210;
+}
+
+.tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content .purchase-btn.sold-out-cta {
+	color: #e8e4dc;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	box-shadow: none;
+}
+
+.tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content .purchase-btn.sold-out-cta:hover:not(:focus) {
+	background: rgba(255, 255, 255, 0.12);
+	border-color: rgba(255, 255, 255, 0.3);
+	color: #e8e4dc;
+}
+
+.tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content .purchase-btn.sold-out-cta:focus {
+	color: #fff;
+	outline: none;
+}
+
+.tokyo_tm_portfolio .portfolio_list .portfolio_item_content.signature-piece-content .purchase-btn.sold-out-cta:focus-visible {
+	outline: 2px solid rgba(255, 255, 255, 0.55);
+	outline-offset: 2px;
 }
 
 /* Sold Out Portfolio Item - Slightly dimmed */
@@ -3352,6 +3423,134 @@ body.loading {
 .tokyo_tm_modalbox .main_details .detailbox .share a:hover {
 	background: #000;
 	color: #fff;
+}
+
+/* İmza eseri modal — koleksiyon paleti (koyu yüzey, altın vurgu, sıcak tipografi) */
+.tokyo_tm_modalbox .box_inner.signature-modal-box {
+	background: linear-gradient(145deg, #2a2620, #2b2d30);
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.06),
+		0 6px 22px rgba(0, 0, 0, 0.4),
+		0 0 36px rgba(196, 163, 90, 0.12);
+}
+
+.tokyo_tm_modalbox .close.close--signature-modal button {
+	background: rgba(42, 38, 32, 0.94);
+	color: #f5f0e8;
+	box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.tokyo_tm_modalbox .close.close--signature-modal button:hover {
+	background: #1f1c18;
+	color: #f5f0e8;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .top_image {
+	background: #1a1810;
+	padding: 0;
+	align-items: stretch;
+	justify-content: stretch;
+	min-height: min(48vh, 480px);
+	max-height: 70vh;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .top_image img {
+	width: 100%;
+	height: auto;
+	min-height: min(48vh, 480px);
+	max-height: 70vh;
+	max-width: none;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.tokyo_tm_modalbox .box_inner.signature-modal-box .skeleton-loader {
+	background: linear-gradient(90deg, #2a2624 0%, #3a3430 50%, #2a2624 100%);
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .portfolio_main_title h3 {
+	font-family: 'Bodoni Moda', serif;
+	font-weight: 700;
+	padding: 15px 0 8px 0;
+	color: #f5f0e8 !important;
+	background: none !important;
+	-webkit-text-fill-color: #f5f0e8 !important;
+	background-image: none !important;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .portfolio_main_title span.category-badge {
+	display: inline-block;
+	margin-top: 4px;
+	padding: 6px 12px;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #c8c2b8;
+	background: rgba(255, 255, 255, 0.06);
+	border-radius: 6px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .portfolio_main_title .portfolio-modal-signature-price {
+	margin: 10px 0 0;
+	font-family: 'Mulish', sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+	color: #c4a35a;
+	letter-spacing: 0.02em;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .main_details .textbox p {
+	color: #c8c2b8;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .main_details .detailbox ul li {
+	border-bottom-color: #e2e2e2;
+	color: #c8c2b8;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .main_details .detailbox .first {
+	color: #c8c2b8;
+	font-weight: 600;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .main_details .detailbox ul li > span:not(.first) {
+	color: #f5f0e8;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .main_details .detailbox .status-sold-out {
+	color: #c4a35a !important;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .cta-inline-modal p {
+	color: #c8c2b8;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .cta-inline-modal .cta-link {
+	color: #e8cc88;
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .main_details .detailbox .share a {
+	background: rgba(255, 255, 255, 0.08);
+	color: #f5f0e8;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.tokyo_tm_modalbox .popup_details.signature-popup .main_details .detailbox .share a:hover {
+	background: #c4a35a;
+	color: #2a1f14;
+	border-color: #c4a35a;
+}
+
+@media (max-width: 768px) {
+	.tokyo_tm_modalbox .popup_details.signature-popup .portfolio_main_title span.category-badge {
+		background-color: rgba(255, 255, 255, 0.06) !important;
+		color: #c8c2b8 !important;
+		border: 1px solid rgba(255, 255, 255, 0.08) !important;
+	}
 }
 
 @media (max-width: 1024px) {

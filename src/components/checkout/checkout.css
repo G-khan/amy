@@ -739,6 +739,57 @@
   background: rgba(var(--checkout-accent-rgb), 0.18);
 }
 
+/* Signature artwork modal — single Add to Cart (palette #63014e) */
+.purchase-btn--signature-cart {
+  background: #63014e;
+  color: #fff;
+  border: none;
+  min-height: 46px;
+  padding: 12px 22px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.purchase-btn--signature-cart:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.purchase-btn--signature-soldout {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ccc !important;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: none;
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Odak yokken (hover dahil) hep kırık beyaz; yalnızca :focus ile #fff */
+.purchase-btn--signature-soldout:hover:not(:focus) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #e8e4dc;
+}
+
+.purchase-btn--signature-soldout:focus {
+  color: #fff;
+  outline: none;
+}
+
+.purchase-btn--signature-soldout:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 2px;
+}
+
 .checkout-error-banner {
   margin-bottom: 16px;
   padding: 12px 14px;

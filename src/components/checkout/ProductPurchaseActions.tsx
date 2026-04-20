@@ -7,6 +7,8 @@ import './checkout.css';
 interface ProductPurchaseActionsProps {
   item: PortfolioItem;
   layout?: 'inline' | 'stack';
+  /** Signature modal: single Add to Cart CTA (accent #63014e), no Buy Now */
+  mode?: 'default' | 'signatureModal';
   onQuickBuy?: () => void;
   onContactRequest?: () => void;
 }
@@ -14,6 +16,7 @@ interface ProductPurchaseActionsProps {
 const ProductPurchaseActions = ({
   item,
   layout = 'inline',
+  mode = 'default',
   onQuickBuy,
   onContactRequest,
 }: ProductPurchaseActionsProps) => {
@@ -28,10 +31,10 @@ const ProductPurchaseActions = ({
 
   if (!isAvailable) {
     return (
-      <div className={`product-purchase-actions ${layout}`}>
+      <div className={`product-purchase-actions ${layout}${mode === 'signatureModal' ? ' signature-modal-actions' : ''}`}>
         <button
           type="button"
-          className="purchase-btn sold-out-cta"
+          className={`purchase-btn sold-out-cta${mode === 'signatureModal' ? ' purchase-btn--signature-soldout' : ''}`}
           onClick={(event) => {
             stopEvent(event);
             globalThis.location.hash = `custom-order?ref=${item.id}`;
@@ -39,6 +42,23 @@ const ProductPurchaseActions = ({
           }}
         >
           {t('sold_out_custom_order')}
+        </button>
+      </div>
+    );
+  }
+
+  if (mode === 'signatureModal') {
+    return (
+      <div className="product-purchase-actions signature-modal-actions">
+        <button
+          type="button"
+          className="purchase-btn purchase-btn--signature-cart"
+          onClick={(event) => {
+            stopEvent(event);
+            addToCart(item);
+          }}
+        >
+          {isInCart(item.id) ? t('cart_add_more') : t('cart_add')}
         </button>
       </div>
     );

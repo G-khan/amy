@@ -58,12 +58,20 @@ export const portfolioItems: PortfolioItem[] = [
     image: "/img/portfolio/Strata.jpeg",
     description: {
       short: {
-        tr: "Tuval, akrilik ve alçının dokusal dansına şahit olacağınız, her kabartı ve katmanın özenle şekillendirildiği soyut çalışma.",
-        en: "An abstract work where you'll witness the textural dance of canvas, acrylic and plaster, with every relief and layer carefully shaped."
+        tr: "Koleksiyonun imza eseri: akrilik ve alçının onlarca ince katmanıyla inşa edilmiş, dokunulabilir derinliğe sahip anıtsal soyut çalışma.",
+        en: "The collection's signature piece: a monumental abstract work built from dozens of fine acrylic and plaster layers, offering tangible depth."
       },
       full: {
-        tr: `Strata adını verdiğim bu soyut çalışmamda tuval, akrilik ve alçının dokusal dansına şahit olacaksınız. Her kabartı, her katman özenle şekillendi. Umarım siz de bu derinlikte kendinizden bir parça bulursunuz. ✨`,
-        en: `In this abstract work I've named Strata, you'll witness the textural dance of canvas, acrylic and plaster. Every relief, every layer has been carefully shaped. I hope you'll find a piece of yourself in this depth too. ✨`
+        tr: `Strata, Amy Art Studio koleksiyonunun imza eseri. 60x150 cm'lik anıtsal formatında, akrilik boya ve alçının onlarca ince tabakasını günlerce süren bir süreçte, katman katman elle inşa ettim.
+
+Yüzeyde gezen ışık, bu tabakaların arasında farklı derinlikler, gölgeler ve sıcak tonlar ortaya çıkarıyor — adını taşıdığı jeolojik katmanlar gibi, eser de zamanın biriktirdiği bir hafıza olarak okunabiliyor.
+
+Strata bir yandan soyut bir kompozisyon, diğer yandan dokunulabilir bir rölyef. Mekâna yalnızca bir duvar parçası değil, yakından incelemeye ve ona yaklaştıkça yeni detaylar keşfetmeye davet eden, tek ve tekrar üretilmeyecek bir koleksiyon eseri katar. ✦`,
+        en: `Strata is the signature piece of the Amy Art Studio collection. Across its monumental 60x150 cm format, I built dozens of fine acrylic and plaster layers by hand, over days of careful work.
+
+Light travelling across the surface reveals different depths, shadows and warm tones between these layers; like the geological strata it is named after, the work reads as a memory accumulated over time.
+
+Strata is at once an abstract composition and a tactile relief. It doesn't simply occupy a wall — it invites you closer, rewarding you with new details the nearer you get. A singular collector's piece, created as a one-of-a-kind work and never to be reproduced. ✦`
       }
     },
     details: {
