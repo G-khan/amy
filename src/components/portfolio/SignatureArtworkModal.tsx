@@ -37,7 +37,6 @@ const SignatureArtworkModal = ({
             objectFit: 'cover',
           }}
         />
-        <div className="signature-piece-badge signature-piece-badge--modal">{t('signature_piece_badge')}</div>
         {selectedItem.details.status === 'Sold Out' ? (
           <div className="sold-out-badge">{t('sold_out_badge')}</div>
         ) : null}

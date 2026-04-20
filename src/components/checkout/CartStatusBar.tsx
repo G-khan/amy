@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../context/LanguageContext';
 import type { CartLine } from '../../types/checkout';
@@ -11,6 +11,22 @@ interface CartStatusBarProps {
 
 const hiddenSections = new Set(['checkout', 'payment-success', 'payment-fail', 'bank-transfer-success', 'gallery']);
 const AUTO_COLLAPSE_DELAY_MS = 4500;
+const MOBILE_CART_MQ = '(max-width: 768px)';
+
+function useMobileCartViewport() {
+  return useSyncExternalStore(
+    (onChange) => {
+      if (globalThis.window === undefined) {
+        return () => {};
+      }
+      const mq = globalThis.window.matchMedia(MOBILE_CART_MQ);
+      mq.addEventListener('change', onChange);
+      return () => mq.removeEventListener('change', onChange);
+    },
+    () => globalThis.window?.matchMedia(MOBILE_CART_MQ).matches ?? false,
+    () => false,
+  );
+}
 
 const CartIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -36,6 +52,7 @@ const buildCartTitlesSummary = (cartItems: CartLine[]) => {
 const CartStatusBar = ({ activeSection }: CartStatusBarProps) => {
   const { cartItems, cartItemCount, cartTotal, startCartCheckout } = useCart();
   const { language, t } = useLanguage();
+  const isMobileViewport = useMobileCartViewport();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const previousItemCount = useRef(cartItemCount);
   const cartTitlesSummary = useMemo(() => buildCartTitlesSummary(cartItems), [cartItems]);
@@ -57,6 +74,11 @@ const CartStatusBar = ({ activeSection }: CartStatusBarProps) => {
 
     previousItemCount.current = cartItemCount;
 
+    /* Mobilde otomatik küçültme kapat — peek çubuğu kayboluyor / tıklanamıyor algısı */
+    if (isMobileViewport) {
+      return undefined;
+    }
+
     if (isCollapsed) {
       return undefined;
     }
@@ -68,7 +90,7 @@ const CartStatusBar = ({ activeSection }: CartStatusBarProps) => {
     return () => {
       globalThis.clearTimeout(timer);
     };
-  }, [cartItemCount, isCollapsed, isHidden]);
+  }, [cartItemCount, isCollapsed, isHidden, isMobileViewport]);
 
   if (cartItemCount === 0 || isHidden) {
     return null;

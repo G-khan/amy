@@ -37,20 +37,24 @@ export interface ArtworkPlacement {
   frameHeight: number;
 }
 
+/**
+ * Seyrek yerleşim (sabit merkezler). Çerçeve boyutları portföydeki cm ile orantılı:
+ * örn. 60×80 → 1.5×2.0, Strata → 3.75×2.35.
+ */
 export const ARTWORK_PLACEMENTS: ArtworkPlacement[] = [
-  // North wall (facing south, toward +Z)
-  { itemId: 1, position: [-6, 2.2, -14.95], rotation: [0, 0, 0], frameWidth: 1.5, frameHeight: 1.5 },
+  // Kuzey
+  { itemId: 1, position: [-6, 2.2, -14.95], rotation: [0, 0, 0], frameWidth: 1.05, frameHeight: 1.3  },
   { itemId: 2, position: [0, 2.2, -14.95], rotation: [0, 0, 0], frameWidth: 2.4, frameHeight: 2.0 },
-  { itemId: 3, position: [6, 2.2, -14.95], rotation: [0, 0, 0], frameWidth: 1.5, frameHeight: 2.0 },
-  // West wall (facing east, toward +X)
-  { itemId: 4, position: [-9.95, 2.2, -8], rotation: [0, Math.PI / 2, 0], frameWidth: 1.2, frameHeight: 2.0 },
+  { itemId: 3, position: [6, 2.2, -14.95], rotation: [0, 0, 0], frameWidth: 1.425, frameHeight: 1.9 },
+  // Batı
+  { itemId: 4, position: [-9.95, 2.2, -8], rotation: [0, Math.PI / 2, 0], frameWidth: 1.55, frameHeight: 2.0 },
   { itemId: 5, position: [-9.95, 2.2, -1], rotation: [0, Math.PI / 2, 0], frameWidth: 1.75, frameHeight: 2.0 },
   { itemId: 6, position: [-9.95, 2.2, 6], rotation: [0, Math.PI / 2, 0], frameWidth: 1.5, frameHeight: 2.0 },
-  // East wall (facing west, toward -X)
+  // Doğu
   { itemId: 7, position: [9.95, 2.2, -8], rotation: [0, -Math.PI / 2, 0], frameWidth: 1.75, frameHeight: 2.0 },
   { itemId: 8, position: [9.95, 2.2, -1], rotation: [0, -Math.PI / 2, 0], frameWidth: 1.75, frameHeight: 2.0 },
-  { itemId: 9, position: [9.95, 2.2, 6], rotation: [0, -Math.PI / 2, 0], frameWidth: 1.5, frameHeight: 1.5 },
-  // South wall (facing north, toward -Z)
-  { itemId: 10, position: [-3.5, 2.2, 14.95], rotation: [0, Math.PI, 0], frameWidth: 1.5, frameHeight: 2.0 },
-  { itemId: 11, position: [3.5, 2.2, 14.95], rotation: [0, Math.PI, 0], frameWidth: 2.5, frameHeight: 1.0 },
+  { itemId: 9, position: [9.95, 2.2, 6], rotation: [0, -Math.PI / 2, 0], frameWidth: 1.1, frameHeight: 1.2 },
+  // Güney — Strata 150×60 cm: boy biraz Relief’ten yüksek; en = boy×(150/60)
+  { itemId: 10, position: [-3.5, 2.2, 14.95], rotation: [0, Math.PI, 0], frameWidth: 1.05, frameHeight: 1.3 },
+  { itemId: 11, position: [3.5, 2.2, 14.95], rotation: [0, Math.PI, 0], frameWidth: 3.75, frameHeight: 2.35 },
 ];

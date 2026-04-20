@@ -56,17 +56,18 @@ export default function ArtworkFrame({ item, placement, onSelect, onHover }: Pro
       if (disposed.current) return;
       setTexture(null);
     };
-    if (item.image.startsWith('http')) {
+    const src = item.galleryImage ?? item.image;
+    if (src.startsWith('http')) {
       img.crossOrigin = 'anonymous';
     }
-    img.src = item.image;
+    img.src = src;
 
     return () => {
       disposed.current = true;
       img.onload = null;
       img.onerror = null;
     };
-  }, [item.image]);
+  }, [item.galleryImage, item.image]);
 
   useEffect(() => {
     getLogoTexture((tex) => {

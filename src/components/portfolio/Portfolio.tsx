@@ -148,9 +148,6 @@ const Portfolio = () => {
                           loading="lazy"
                           style={{ opacity: 1, width: '100%', height: '100%', objectFit: 'cover' }}
                         />
-                        {item.isSignature ? (
-                          <div className="signature-piece-badge">{t('signature_piece_badge')}</div>
-                        ) : null}
                         {item.details.status === 'Sold Out' ? (
                           <div className="sold-out-badge">{t('sold_out_badge')}</div>
                         ) : null}

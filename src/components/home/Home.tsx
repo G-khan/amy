@@ -135,9 +135,6 @@ const Home = () => {
                       <span className="category-tag">{translateCategory(item.category)}</span>
                     </div>
                   </div>
-                  {item.isSignature ? (
-                    <div className="signature-piece-badge">{t('signature_piece_badge')}</div>
-                  ) : null}
                   {item.details.status === "Sold Out" && (
                     <div className="sold-out-badge">{t('sold_out_badge')}</div>
                   )}

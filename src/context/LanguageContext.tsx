@@ -126,6 +126,7 @@ const translations = {
   gallery_back: { tr: 'Siteye Dön', en: 'Back to Site' },
   gallery_loading: { tr: 'Galeri Yükleniyor...', en: 'Loading Gallery...' },
   gallery_mobile_hint: { tr: '3D galeri deneyimi masaüstü tarayıcılarda en iyi şekilde çalışır.', en: 'The 3D gallery is best experienced on desktop with keyboard and mouse.' },
+  gallery_view_in_portfolio: { tr: 'Portföy bölümünde aç', en: 'Open in portfolio section' },
   // Legal pages
   legal_section: { tr: 'Yasal', en: 'Legal' },
   legal_back: { tr: 'Geri Dön', en: 'Go Back' },
@@ -146,7 +147,8 @@ const translations = {
   cart_expand: { tr: 'Sepeti Aç', en: 'Open Cart' },
   cart_collapse: { tr: 'Sepeti Kapat', en: 'Close Cart' },
   cart_add: { tr: 'Sepete Ekle', en: 'Add to Cart' },
-  cart_add_more: { tr: 'Bir Tane Daha Ekle', en: 'Add One More' },
+  cart_qty_decrease: { tr: 'Adedi azalt', en: 'Decrease quantity' },
+  cart_qty_increase: { tr: 'Adedi artır', en: 'Increase quantity' },
   cart_remove: { tr: 'Kaldır', en: 'Remove' },
   cart_summary_description: {
     tr: 'Ürünleriniz hazır. Sipariş özetine geçip teslimat ve ödeme adımını tamamlayabilirsiniz.',
@@ -186,7 +188,7 @@ const translations = {
     tr: 'Sepete ürün ekleyin ya da bir ürün detayından hızlı satın al başlatın.',
     en: 'Add items to the cart or start a quick purchase from an artwork detail.',
   },
-  checkout_continue_shopping: { tr: 'Alışverişe Dön', en: 'Continue Shopping' },
+  checkout_continue_shopping: { tr: 'Alışverişe Devam Et', en: 'Continue Shopping' },
   checkout_order_summary: { tr: 'Sipariş Özeti', en: 'Order Summary' },
   checkout_customer_information: { tr: 'Müşteri İletişim Bilgileri', en: 'Customer Contact Details' },
   checkout_delivery_information: { tr: 'Teslimat Adresi', en: 'Delivery Address' },

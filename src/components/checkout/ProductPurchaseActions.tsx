@@ -1,4 +1,4 @@
-import type { MouseEvent } from 'react';
+import { type MouseEvent, useMemo } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useLanguage } from '../../context/LanguageContext';
 import type { PortfolioItem } from '../../data/portfolioData';
@@ -21,13 +21,51 @@ const ProductPurchaseActions = ({
   onContactRequest,
 }: ProductPurchaseActionsProps) => {
   const { t } = useLanguage();
-  const { addToCart, isInCart, startQuickBuy } = useCart();
+  const { addToCart, cartItems, startQuickBuy, updateQuantity } = useCart();
   const isAvailable = item.details.status === 'Available' && Boolean(item.details.price);
+
+  const standardKey = `standard-${item.id}`;
+  const cartLine = useMemo(
+    () => cartItems.find((line) => line.item.kind === 'standard' && line.item.productId === item.id),
+    [cartItems, item.id],
+  );
+  const qty = cartLine?.quantity ?? 0;
 
   const stopEvent = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
   };
+
+  const qtyStepper = (stepperClassName?: string) => (
+    <div
+      className={['purchase-qty-stepper', stepperClassName].filter(Boolean).join(' ')}
+      aria-label={t('checkout_quantity')}
+    >
+      <button
+        type="button"
+        className="purchase-qty-btn"
+        onClick={(event) => {
+          stopEvent(event);
+          updateQuantity(standardKey, qty - 1);
+        }}
+        aria-label={t('cart_qty_decrease')}
+      >
+        −
+      </button>
+      <span className="purchase-qty-value">{qty}</span>
+      <button
+        type="button"
+        className="purchase-qty-btn"
+        onClick={(event) => {
+          stopEvent(event);
+          updateQuantity(standardKey, qty + 1);
+        }}
+        aria-label={t('cart_qty_increase')}
+      >
+        +
+      </button>
+    </div>
+  );
 
   if (!isAvailable) {
     return (
@@ -50,16 +88,20 @@ const ProductPurchaseActions = ({
   if (mode === 'signatureModal') {
     return (
       <div className="product-purchase-actions signature-modal-actions">
-        <button
-          type="button"
-          className="purchase-btn purchase-btn--signature-cart"
-          onClick={(event) => {
-            stopEvent(event);
-            addToCart(item);
-          }}
-        >
-          {isInCart(item.id) ? t('cart_add_more') : t('cart_add')}
-        </button>
+        {qty > 0 ? (
+          qtyStepper('purchase-qty-stepper--signature')
+        ) : (
+          <button
+            type="button"
+            className="purchase-btn purchase-btn--signature-cart"
+            onClick={(event) => {
+              stopEvent(event);
+              addToCart(item);
+            }}
+          >
+            {t('cart_add')}
+          </button>
+        )}
       </div>
     );
   }
@@ -69,16 +111,20 @@ const ProductPurchaseActions = ({
       {layout === 'inline' && item.details.priceDisplay ? (
         <span className="purchase-price-tag">{item.details.priceDisplay}</span>
       ) : null}
-      <button
-        type="button"
-        className="purchase-btn secondary"
-        onClick={(event) => {
-          stopEvent(event);
-          addToCart(item);
-        }}
-      >
-        {isInCart(item.id) ? t('cart_add_more') : t('cart_add')}
-      </button>
+      {qty > 0 ? (
+        qtyStepper()
+      ) : (
+        <button
+          type="button"
+          className="purchase-btn secondary"
+          onClick={(event) => {
+            stopEvent(event);
+            addToCart(item);
+          }}
+        >
+          {t('cart_add')}
+        </button>
+      )}
       <button
         type="button"
         className="purchase-btn primary"

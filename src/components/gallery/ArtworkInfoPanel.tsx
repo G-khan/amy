@@ -43,6 +43,19 @@ export default function ArtworkInfoPanel({ item, onClose }: Props) {
                 <ProductPurchaseActions item={item} onQuickBuy={onClose} onContactRequest={onClose} />
               </div>
             </div>
+            <p className="gallery-portfolio-link-wrap">
+              <a
+                href="#portfolio"
+                className="cta-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                  globalThis.location.hash = '#portfolio';
+                }}
+              >
+                {t('gallery_view_in_portfolio')}
+              </a>
+            </p>
             <div className="main_details">
               <div className="textbox">
                 {item.description.full[language].split('\n\n').map((p, i) => (

@@ -1,4 +1,4 @@
-// Import local portfolio images
+// Portföy / ana site (grid, modal, sepet, hizmetler): orijinal görseller
 import crestImg from '../assets/img/portfolio/Crest.jpg';
 import velvetImg from '../assets/img/portfolio/Velvet.jpg';
 import noirImg from '../assets/img/portfolio/Noir.jpg';
@@ -7,6 +7,18 @@ import enigmaImg from '../assets/img/portfolio/Enigma.jpg';
 import epigramImg from '../assets/img/portfolio/Epigram.jpg';
 import graceVavImg from '../assets/img/portfolio/Grace-Vav.jpg';
 import vogueImg from '../assets/img/portfolio/Vogue.jpg';
+
+// 3D galeri duvarları (alternatif fotoğraflar)
+import galleryStrataImg from '../assets/img/portfolio/Strata_.JPG';
+import galleryCrestImg from '../assets/img/portfolio/Crest_.JPG';
+import galleryVelvetImg from '../assets/img/portfolio/Velvet_.JPG';
+import galleryNoirImg from '../assets/img/portfolio/Noir_.JPG';
+import galleryStratumImg from '../assets/img/portfolio/Stratum_.JPG';
+import galleryEnigmaImg from '../assets/img/portfolio/Enigma_.JPEG';
+import galleryEpigramImg from '../assets/img/portfolio/Epigram_.JPEG';
+import galleryGraceVavImg from '../assets/img/portfolio/Grace-Vav_.JPG';
+import galleryClarityImg from '../assets/img/portfolio/Clarity_.JPEG';
+import galleryVogueImg from '../assets/img/portfolio/Vogue_.JPEG';
 
 export interface BilingualText {
   tr: string;
@@ -20,6 +32,8 @@ export interface PortfolioItem {
   /** Öne çıkan imza eser — grid’de premium çerçeve ve rozet */
   isSignature?: boolean;
   image: string;
+  /** 3D galeride çerçevede gösterilir; yoksa `image` kullanılır */
+  galleryImage?: string;
   description: {
     short: BilingualText;
     full: BilingualText;
@@ -56,18 +70,19 @@ export const portfolioItems: PortfolioItem[] = [
     category: "textured",
     isSignature: true,
     image: "/img/portfolio/Strata.jpeg",
+    galleryImage: galleryStrataImg,
     description: {
       short: {
         tr: "Koleksiyonun imza eseri: akrilik ve alçının onlarca ince katmanıyla inşa edilmiş, dokunulabilir derinliğe sahip anıtsal soyut çalışma.",
         en: "The collection's signature piece: a monumental abstract work built from dozens of fine acrylic and plaster layers, offering tangible depth."
       },
       full: {
-        tr: `Strata, Amy Art Studio koleksiyonunun imza eseri. 60x150 cm'lik anıtsal formatında, akrilik boya ve alçının onlarca ince tabakasını günlerce süren bir süreçte, katman katman elle inşa ettim.
+        tr: `Strata, Amy Art Studio koleksiyonunun imza eseri. 150x60 cm'lik anıtsal formatında, akrilik boya ve alçının onlarca ince tabakasını günlerce süren bir süreçte, katman katman elle inşa ettim.
 
 Yüzeyde gezen ışık, bu tabakaların arasında farklı derinlikler, gölgeler ve sıcak tonlar ortaya çıkarıyor — adını taşıdığı jeolojik katmanlar gibi, eser de zamanın biriktirdiği bir hafıza olarak okunabiliyor.
 
 Strata bir yandan soyut bir kompozisyon, diğer yandan dokunulabilir bir rölyef. Mekâna yalnızca bir duvar parçası değil, yakından incelemeye ve ona yaklaştıkça yeni detaylar keşfetmeye davet eden, tek ve tekrar üretilmeyecek bir koleksiyon eseri katar. ✦`,
-        en: `Strata is the signature piece of the Amy Art Studio collection. Across its monumental 60x150 cm format, I built dozens of fine acrylic and plaster layers by hand, over days of careful work.
+        en: `Strata is the signature piece of the Amy Art Studio collection. Across its monumental 150x60 cm format, I built dozens of fine acrylic and plaster layers by hand, over days of careful work.
 
 Light travelling across the surface reveals different depths, shadows and warm tones between these layers; like the geological strata it is named after, the work reads as a memory accumulated over time.
 
@@ -77,7 +92,7 @@ Strata is at once an abstract composition and a tactile relief. It doesn't simpl
     details: {
       technique: { tr: "Akrilik boya ve alçı", en: "Acrylic paint and plaster" },
       materials: { tr: "Tuval üzerine akrilik, alçı", en: "Acrylic, plaster on canvas" },
-      size: "60x150 cm",
+      size: "150x60 cm",
       year: "2024",
       status: "Sold Out",
       priceDisplay: "22.000 TL"
@@ -88,6 +103,7 @@ Strata is at once an abstract composition and a tactile relief. It doesn't simpl
     title: "Crest",
     category: "seascape",
     image: crestImg,
+    galleryImage: galleryCrestImg,
     description: {
       short: {
         tr: "Denizin dinginliğini ve dalgaların enerjisini alçı dokusuyla buluşturan özel çalışma.",
@@ -120,6 +136,7 @@ I'm so happy you're with me on this first share. I hope you'll love "Crest" as m
     title: "Velvet",
     category: "mixed",
     image: velvetImg,
+    galleryImage: galleryVelvetImg,
     description: {
       short: {
         tr: "Evin ruhuna dokunan renkler. Vişne renginin en asil tonunu dokuların derinliğiyle buluşturan özel tasarım.",
@@ -148,6 +165,7 @@ This artwork designed on commission has become one of the signature pieces of mo
     title: "Noir",
     category: "abstract",
     image: noirImg,
+    galleryImage: galleryNoirImg,
     description: {
       short: {
         tr: "Geometrik formların doku ve ışıkla olan etkileşimini keşfeden soyut bir çalışma.",
@@ -181,6 +199,7 @@ I hope that while viewing this piece, you'll discover the care I put into the de
     title: "Stratum",
     category: "textured",
     image: stratumImg,
+    galleryImage: galleryStratumImg,
     description: {
       short: {
         tr: "Dokuların ve formların iç içe geçtiği bir katmanlar dünyası. İki ayrı tablo şeklinde kullanıma da uygundur.",
@@ -214,6 +233,7 @@ It can also be used as two separate paintings.`
     title: "Enigma",
     category: "geometric",
     image: enigmaImg,
+    galleryImage: galleryEnigmaImg,
     description: {
       short: {
         tr: "Alçının dokusu, akrilik boyanın derinliği ve geometrik şekillerin karmaşıklığı ile gizemi derinleştiren eser.",
@@ -243,6 +263,7 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
     title: "Epigram",
     category: "abstract",
     image: epigramImg,
+    galleryImage: galleryEpigramImg,
     description: {
       short: {
         tr: "Tuval, akrilik ve alçının serbest dansı. Soyutun dokunsal ifadesi.",
@@ -268,6 +289,7 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
     title: "Grace-Vav",
     category: "mixed",
     image: graceVavImg,
+    galleryImage: galleryGraceVavImg,
     description: {
       short: {
         tr: "Tuvalin dinginliği, akriliğin canlılığı, alçının dokusuyla hayat bulan bu özel sipariş, Vav'ın ruhunu taşıyor.",
@@ -292,6 +314,7 @@ The texture of plaster, the depth of acrylic paint, and the complexity of geomet
     title: "Clarity",
     category: "seascape",
     image: "/img/portfolio/Clarity.jpeg",
+    galleryImage: galleryClarityImg,
     description: {
       short: {
         tr: "Gökyüzünün dinginliğini ve denizin berraklığını yansıtan, mekanınıza ferahlık ve huzur katan tablo.",
@@ -323,6 +346,7 @@ Don't forget to check out the images to discover the details! ✨`
     title: "Vogue",
     category: "seascape",
     image: vogueImg,
+    galleryImage: galleryVogueImg,
     description: {
       short: {
         tr: "Denizin dinginliğini ve dalgaların enerjisini alçı dokusuyla buluşturan, gerçek deniz kumu ve minik deniz kabukları içeren özel çalışma.",
